@@ -19,3 +19,9 @@
 .sidebar__link:hover {
   background-color: var(--light-gray);
 }
+
+@media screen and (max-width: 64em) {
+  .sidebar {
+    display: none;
+  }
+}
