@@ -87,10 +87,6 @@
   padding: 1rem;
 }
 
-.logout__btn {
-  color: var(--primary-color);
-}
-
 .active__link,
 .sidebar__link:hover {
   background-color: var(--light-gray);
@@ -100,20 +96,21 @@
   .menu {
     display: block;
   }
+
   .profile__icon,
   .navbar__icon_title,
   .navbar__menu {
     display: none;
   }
 
-  .sidebar.sidebar__mobile {
+  .sidebar__mobile {
     width: 30rem;
     display: block;
   }
 }
 
 @media screen and (max-width: 48em) {
-  .navigation .search {
+  .search {
     position: absolute;
     top: 6.4rem;
     left: 0;
