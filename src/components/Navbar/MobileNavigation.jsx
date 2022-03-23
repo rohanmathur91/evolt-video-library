@@ -34,7 +34,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
         </li>
         <li>
           <NavLink
-            to="/videos"
+            to="/explore"
             className={({ isActive }) =>
               `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
             }
@@ -44,7 +44,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
         </li>
         <li>
           <NavLink
-            to="/playlist"
+            to="/explore/playlist"
             className={({ isActive }) =>
               `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
             }
@@ -54,7 +54,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
         </li>
         <li>
           <NavLink
-            to="/watch-later"
+            to="/explore/watch-later"
             className={({ isActive }) =>
               `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
             }
@@ -64,7 +64,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
         </li>
         <li>
           <NavLink
-            to="/history"
+            to="/explore/history"
             className={({ isActive }) =>
               `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
             }

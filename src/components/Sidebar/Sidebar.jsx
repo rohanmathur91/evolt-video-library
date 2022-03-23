@@ -10,7 +10,7 @@ export const Sidebar = () => {
         {sidebarData.map(({ icon, optionName, path }) => (
           <li>
             <NavLink
-              to={`/${path}`}
+              to={`${path}`}
               className={({ isActive }) =>
                 `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
               }
