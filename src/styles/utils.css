@@ -10,3 +10,19 @@
 .text-sm {
   font-size: 1.4rem;
 }
+
+/* cursor */
+.cursor-auto {
+  cursor: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* icons */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
