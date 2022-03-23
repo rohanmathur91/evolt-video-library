@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { mobileNavigationData } from "../../staticData";
 import styles from "./Navbar.module.css";
 
 export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
@@ -22,66 +23,21 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
       </div>
 
       <ul className="mt-1 p-1">
-        <li>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/explore"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            Exlore
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/explore/playlist"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            Playlist
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/explore/watch-later"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            Watch later
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/explore/history"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            History
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              `${styles.sidebar__link} ${isActive ? styles.active__link : ""}`
-            }
-          >
-            Login
-          </NavLink>
-        </li>
+        {mobileNavigationData.map(({ path, icon, optionName }) => (
+          <li>
+            <NavLink
+              to={`${path}`}
+              className={({ isActive }) =>
+                `${styles.sidebar__link} ${
+                  isActive ? styles.active__link : ""
+                } flex-row items-center rounded-sm p-1 text-base`
+              }
+            >
+              <span className="material-icons-outlined mr-2">{icon}</span>
+              {optionName}
+            </NavLink>
+          </li>
+        ))}
       </ul>
     </div>
   );

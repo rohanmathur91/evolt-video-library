@@ -1,4 +1,4 @@
-export const sidebarData = [
+export const mobileNavigationData = [
   { path: "/home", icon: "home", optionName: "Home" },
   { path: "/explore", icon: "explore", optionName: "Exlore" },
   { path: "/explore/playlist", icon: "video_library", optionName: "Playlist" },
@@ -13,4 +13,5 @@ export const sidebarData = [
     optionName: " Liked videos",
   },
   { path: "/explore/history", icon: "history", optionName: "History" },
+  { path: "/profile", icon: "person_outline", optionName: "Profile" },
 ];
