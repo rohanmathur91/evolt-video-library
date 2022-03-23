@@ -13,7 +13,12 @@ export const VideoCard = ({ video }) => {
           className={`${styles.thumbnail} rounded-sm`}
         />
       </div>
-      <h3 className={`${styles.title} my-1`}>{title}</h3>
+      <div className="flex-row content-space-between my-1">
+        <h3 className={`${styles.title}`}>{title}</h3>
+        <button>
+          <span className="material-icons-outlined ml-1">more_vert</span>
+        </button>
+      </div>
       <div className={`${styles.details} flex-row content-space-between`}>
         <div className="text-sm icon-container">
           <span className="material-icons text-sm">visibility</span>

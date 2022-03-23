@@ -6,3 +6,9 @@
   align-items: start;
   gap: 4px;
 }
+
+@media screen and (max-width: 48em) {
+  .videos__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

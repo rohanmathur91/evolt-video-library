@@ -5,9 +5,9 @@ import styles from "./Explore.module.css";
 
 export const Explore = () => {
   return (
-    <div className={`${styles.container} flex-row`}>
+    <div className="flex-row">
       <Sidebar />
-      <div className="w-100">
+      <div className={`${styles.container} w-100`}>
         <Outlet />
       </div>
     </div>
