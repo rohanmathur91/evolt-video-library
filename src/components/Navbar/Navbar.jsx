@@ -28,22 +28,17 @@ export const Navbar = () => {
           </Link>
 
           <div className={`${styles.navbar__menu} ml-4`}>
-            <Link
-              to="/"
-              className={`${styles.navbar__cta} font-semibold mr-1 rounded-sm p-1`}
-            >
+            <Link to="/" className="font-semibold mr-1 rounded-sm p-1">
               Home
             </Link>
-            <Link
-              to="/videos"
-              className={`${styles.navbar__cta} font-semibold rounded-sm p-1`}
-            >
+
+            <Link to="/videos" className=" font-semibold rounded-sm p-1">
               Explore
             </Link>
           </div>
         </div>
 
-        <div className={`${styles.search} relative rounded-sm`}>
+        <span className={`${styles.search} relative rounded-sm`}>
           <span className={`${styles.search__icon} absolute`}>
             <span className="material-icons-outlined">search</span>
           </span>
@@ -53,12 +48,12 @@ export const Navbar = () => {
             placeholder="search..."
             className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
           />
-        </div>
+        </span>
 
         <div className={`${styles.profile__icon}`}>
           <Link to="/profile">
             <div className="cursor-pointer">
-              <div className="icon">
+              <div className="icon-container">
                 <span className="material-icons-outlined">person_outline</span>
               </div>
               <span className="text-sm font-semibold">Profile</span>
