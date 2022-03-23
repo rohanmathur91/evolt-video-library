@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home, Login, VideoListing } from "./pages";
 import { Navbar, Explore } from "./components";
 
-function App() {
+const App = () => {
   return (
     <div className="app">
       <Navbar />
@@ -16,6 +16,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

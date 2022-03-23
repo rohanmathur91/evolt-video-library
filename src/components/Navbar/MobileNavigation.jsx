@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { mobileNavigationData } from "../../staticData";
-import styles from "./Navbar.module.css";
+import styles from "./MobileNavigation.module.css";
 
 export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
   return (
@@ -24,7 +24,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
 
       <ul className="mt-1 p-1">
         {mobileNavigationData.map(({ path, icon, optionName }) => (
-          <li>
+          <li key={path}>
             <NavLink
               to={`${path}`}
               className={({ isActive }) =>

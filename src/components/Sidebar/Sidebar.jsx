@@ -7,8 +7,8 @@ export const Sidebar = () => {
   return (
     <aside className={`${styles.sidebar}`}>
       <ul className="mt-1 p-2">
-        {sidebarData.map(({ icon, optionName, path }) => (
-          <li>
+        {sidebarData.map(({ path, icon, optionName }) => (
+          <li key={path}>
             <NavLink
               to={`${path}`}
               className={({ isActive }) =>
