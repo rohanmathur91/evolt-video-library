@@ -4,11 +4,12 @@ import { Sidebar } from "../Sidebar/Sidebar";
 import styles from "./Explore.module.css";
 
 export const Explore = () => {
-  <div className={`${styles.container} flex-row`}>
-    <Sidebar />
-
-    <div className="w-100">
-      <Outlet />
+  return (
+    <div className={`${styles.container} flex-row`}>
+      <Sidebar />
+      <div className="w-100">
+        <Outlet />
+      </div>
     </div>
-  </div>;
+  );
 };
