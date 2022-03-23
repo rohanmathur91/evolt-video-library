@@ -1,18 +1,12 @@
-/* sidebar */
-.sidebar {
-  min-width: 24rem;
+.videos {
+  max-width: 140.8rem;
 }
 
-.sidebar__link {
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-  margin-bottom: 4px;
-  font-size: 1.6rem;
-  padding: 1rem;
-}
-
-.active__link,
-.sidebar__link:hover {
-  background-color: var(--light-gray);
+.videos__container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  justify-items: center;
+  align-items: start;
+  gap: 4px;
 }

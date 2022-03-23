@@ -1,0 +1,21 @@
+.sidebar {
+  min-width: 24rem;
+  height: calc(100vh - 7.3rem);
+  background-color: var(--white);
+  position: sticky;
+  top: 7.3rem;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.active__link,
+.sidebar__link:hover {
+  background-color: var(--light-gray);
+}
