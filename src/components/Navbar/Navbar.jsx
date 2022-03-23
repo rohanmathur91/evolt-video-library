@@ -52,10 +52,8 @@ export const Navbar = () => {
 
         <div className={`${styles.profile__icon}`}>
           <Link to="/profile">
-            <div className="cursor-pointer">
-              <div className="icon-container">
-                <span className="material-icons-outlined">person_outline</span>
-              </div>
+            <div className="cursor-pointer flex-column items-center">
+              <span className="material-icons-outlined">person_outline</span>
               <span className="text-sm font-semibold">Profile</span>
             </div>
           </Link>

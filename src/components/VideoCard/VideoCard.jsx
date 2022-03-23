@@ -27,3 +27,13 @@ export const VideoCard = ({ video }) => {
     </div>
   );
 };
+
+VideoCard.defaultProps = {
+  video: {
+    alt: "thumbnail",
+    thumbnail: "",
+    views: "0",
+    duration: "0:00",
+    title: "",
+  },
+};

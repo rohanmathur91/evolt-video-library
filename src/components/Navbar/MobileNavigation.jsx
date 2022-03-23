@@ -42,3 +42,8 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
     </div>
   );
 };
+
+MobileNavigation.defaultProps = {
+  showSidebar: false,
+  setShowSidebar: () => {},
+};
