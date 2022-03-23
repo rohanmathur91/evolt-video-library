@@ -1,9 +1,9 @@
 import React from "react";
 import { Sidebar, VideoCard } from "../../components";
 import { videos } from "../../staticData";
-import styles from "./Videos.module.css";
+import styles from "./VideosListing.module.css";
 
-export const Videos = () => {
+export const VideosListing = () => {
   return (
     <div className={`${styles.videos} flex-row`}>
       <Sidebar />
