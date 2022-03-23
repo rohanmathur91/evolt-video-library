@@ -1,0 +1,23 @@
+.card {
+  max-width: 30rem;
+  background-color: var(--white);
+}
+
+.title {
+  line-height: 1.2;
+  font-size: 1.6rem;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+.details {
+  color: var(--text-color);
+}
+
+.views,
+.duration {
+  margin-left: 8px;
+}
