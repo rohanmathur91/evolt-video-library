@@ -32,7 +32,7 @@ export const Navbar = () => {
               Home
             </Link>
 
-            <Link to="/videos" className=" font-semibold rounded-sm p-1">
+            <Link to="/explore" className=" font-semibold rounded-sm p-1">
               Explore
             </Link>
           </div>
