@@ -8,6 +8,10 @@
   user-select: none;
 }
 
+.avatar {
+  width: 6rem;
+}
+
 .title {
   line-height: 1.2;
   font-size: 1.6rem;

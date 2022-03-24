@@ -5,7 +5,7 @@ import styles from "./VideoCard.module.css";
 export const VideoCard = ({ video }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { playlistDispatch } = usePlaylist();
-  const { alt, thumbnail, views, duration, title } = video;
+  const { alt, thumbnail, views, duration, title, avatar, creatorName } = video;
 
   const handleAddToPlayList = (video, playlist) => {
     playlistDispatch({ type: "ADD_TO_PLAYLIST", payload: { video, playlist } });
@@ -22,6 +22,10 @@ export const VideoCard = ({ video }) => {
       </div>
 
       <div className="flex-row content-space-between my-1 relative">
+        <div className={`${styles.avatar} m-1`}>
+          <img className="rounded-full" src={avatar} alt="avatar" />
+        </div>
+
         <h3 className={`${styles.title}`}>{title}</h3>
         <button onClick={() => setShowOptions(true)}>
           <span className="material-icons-outlined ml-1">more_vert</span>
