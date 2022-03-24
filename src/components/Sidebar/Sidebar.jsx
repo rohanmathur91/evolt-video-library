@@ -11,11 +11,8 @@ export const Sidebar = () => {
           <li key={path}>
             <NavLink
               to={`${path}`}
-              className={({ isActive }) =>
-                `${styles.sidebar__link} ${
-                  isActive ? styles.active__link : ""
-                } flex-row items-center rounded-sm p-1 text-base`
-              }
+              className={`${styles.sidebar__link} 
+                 flex-row items-center rounded-sm p-1 text-base`}
             >
               <span className="material-icons-outlined mr-2">{icon}</span>
               {optionName}

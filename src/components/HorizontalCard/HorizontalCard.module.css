@@ -1,7 +1,6 @@
 .card {
-  max-width: 30rem;
-  background-color: var(--white);
-  border: 0.5px solid var(--light-gray);
+  width: 100%;
+  max-width: 60rem;
 }
 
 .thumbnail {
@@ -18,21 +17,13 @@
   text-overflow: ellipsis;
 }
 
-.options {
-  position: absolute;
-  top: 0;
-  right: 0;
-  max-width: 18rem;
-  background-color: var(--white);
-  box-shadow: 0 1px 3px 0px var(--shadow);
-}
-
 .close__btn:hover {
   color: var(--text-color);
 }
 
 .details {
   color: var(--text-color);
+  margin-top: auto;
 }
 
 .views,

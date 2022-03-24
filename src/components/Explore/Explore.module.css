@@ -2,3 +2,9 @@
   margin: 0 auto;
   max-width: 140.8rem;
 }
+
+@media screen and (max-width: 48em) {
+  .container {
+    margin-top: 4rem;
+  }
+}

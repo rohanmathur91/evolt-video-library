@@ -1,0 +1,8 @@
+.chip:hover {
+  background-color: var(--light-gray);
+}
+
+.active {
+  color: var(--primary-color);
+  background-color: var(--light-gray);
+}

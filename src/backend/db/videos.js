@@ -5,17 +5,43 @@
 
 export const videos = [
   {
-    _id: "Wo5dMEP_BbI",
-    title: "Awesome Video about Coding",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
-    creator: "Soham Shah",
+    _id: "bInJjmH31Hk",
+    alt: "review-video",
+    views: "1.2M",
+    duration: "7:38",
+    title: "Sony WH-1000XM4 Review: The Final Form!",
+    thumbnail: "https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg",
   },
   {
-    _id: "F_Riqjdh2oM",
-    title: "Neural Networks from Scratch - P.1 Intro and Neuron Code",
-    creator: "Sentdex",
-    description:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
+    _id: "I49VNQ6lmKk",
+    alt: "review-video",
+    views: "1.2M",
+    duration: "7:38",
+    title: "Sony WH-1000XM4 Review: The Final Form!",
+    thumbnail: "https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg",
+  },
+  {
+    _id: "ux4R5GeKMUU",
+    alt: "review-video",
+    views: "1.2M",
+    duration: "7:38",
+    title: "Sony WH-1000XM4 Review: The Final Form!",
+    thumbnail: "https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg",
+  },
+  {
+    _id: "eAagtcAup0o",
+    alt: "review-video",
+    views: "1.2M",
+    duration: "7:38",
+    title: "Sony WH-1000XM4 Review: The Final Form!",
+    thumbnail: "https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg",
+  },
+  {
+    _id: "O6NiridP0Oo",
+    alt: "review-video",
+    views: "1.2M",
+    duration: "7:38",
+    title: "Sony WH-1000XM4 Review: The Final Form!",
+    thumbnail: "https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg",
   },
 ];

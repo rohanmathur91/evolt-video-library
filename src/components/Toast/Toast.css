@@ -1,0 +1,5 @@
+/* orveride toastify style */
+.Toastify__toast-body > div:last-child {
+  font-size: 1.6rem;
+  font-family: "Montserrat";
+}

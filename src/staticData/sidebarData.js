@@ -4,7 +4,7 @@ export const sidebarData = [
   { path: "/explore/playlist", icon: "video_library", optionName: "Playlist" },
   {
     path: "/explore/watch-later",
-    icon: "bookmark_border",
+    icon: "watch_later",
     optionName: "Watch later",
   },
   {

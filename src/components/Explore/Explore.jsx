@@ -7,7 +7,7 @@ export const Explore = () => {
   return (
     <div className="flex-row">
       <Sidebar />
-      <div className={`${styles.container} w-100`}>
+      <div className={`${styles.container} w-100 mt-1 px-2`}>
         <Outlet />
       </div>
     </div>
