@@ -1,49 +1,54 @@
-import { useContext, createContext, useReducer } from "react";
+import axios from "axios";
+import { useEffect, useContext, createContext, useReducer } from "react";
+import { playlistReducer } from "../reducers";
+import { encodedToken } from "../token";
 
 const PlaylistContext = createContext();
 
-const playlistReducer = (playlistState, { type, payload }) => {
-  switch (type) {
-    case "ADD_TO_PLAYLIST":
-      return !playlistState[payload.playlist].some(
-        ({ _id }) => _id === payload.video._id
-      )
-        ? {
-            ...playlistState,
-            [payload.playlist]: [
-              payload.video,
-              ...playlistState[payload.playlist],
-            ],
-          }
-        : playlistState;
-
-    case "REMOVE_FROM_PLAYLIST":
-      return {
-        ...playlistState,
-        [payload.playlist]: playlistState[payload.playlist].filter(
-          ({ _id }) => _id !== payload._id
-        ),
-      };
-
-    default:
-      return playlistState;
-  }
-};
-
 const PlaylistProvider = ({ children }) => {
-  const [{ saved, liked, watchLater }, playlistDispatch] = useReducer(
-    playlistReducer,
-    {
+  const [{ saved, liked, watchLater, playlists, showModal }, playlistDispatch] =
+    useReducer(playlistReducer, {
       saved: [],
       liked: [],
       watchLater: [],
-      userPlaylist: {},
-    }
-  );
+      playlists: [],
+      showModal: false,
+    });
+
+  const openModal = () =>
+    playlistDispatch({ type: "HANDLE_MODAL", payload: true });
+
+  const closeModal = () =>
+    playlistDispatch({ type: "HANDLE_MODAL", payload: false });
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const {
+          data: { playlists },
+        } = await axios.get("/api/user/playlists", {
+          headers: { authorization: encodedToken },
+        });
+
+        playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <PlaylistContext.Provider
-      value={{ saved, liked, watchLater, playlistDispatch }}
+      value={{
+        saved,
+        liked,
+        watchLater,
+        playlists,
+        showModal,
+        openModal,
+        closeModal,
+        playlistDispatch,
+      }}
     >
       {children}
     </PlaylistContext.Provider>

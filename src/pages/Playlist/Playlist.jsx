@@ -1,26 +1,41 @@
 import React from "react";
-import { HorizontalCard } from "../../components";
+import { Sidebar } from "../../components";
 import { usePlaylist } from "../../contexts";
 import styles from "./Playlist.module.css";
 
 export const Playlist = () => {
-  const { watchLater } = usePlaylist();
+  // const { playlists = [{ _id: "sdsds", title: "dummy" }] } = usePlaylist();
+
+  const playlists = [{ _id: "sdsds", title: "dummy" }];
 
   return (
-    <div className="mt-4 px-2">
-      <button className={`${styles.add__btn} icon-container p-1 rounded-sm`}>
-        <span class="material-icons-outlined mr-1">playlist_add</span> Add new
-        playlist
-      </button>
-
-      {/* TODO: remove later */}
-      {watchLater.length ? (
-        watchLater.map((video) => (
-          <HorizontalCard key={video._id} video={video} playlist="watchLater" />
-        ))
-      ) : (
-        <p className="my-2">There are no videos in this playlist yet</p>
-      )}
+    <div className="flex-row">
+      <Sidebar />
+      <div className="main__container w-100 mt-1 px-2">
+        <div className="mt-4 px-2">
+          <h3 className="m-1 text-center">All playlists</h3>
+          <div className={`${styles.container}`}>
+            <div
+              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+            >
+              Liked videos
+            </div>
+            <div
+              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+            >
+              Saved videos
+            </div>
+            {playlists.map(({ _id, title }) => (
+              <div
+                key={_id}
+                className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+              >
+                {title}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

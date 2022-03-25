@@ -4,7 +4,6 @@
 
 .app {
   color: var(--primary-color);
-  background-color: var(--secondary-color);
 }
 
 @media screen and (max-width: 48em) {

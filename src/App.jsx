@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Home, Login, VideoListing, WatchLater, Playlist } from "./pages";
-import { Navbar, Explore, Toast, Modal } from "./components";
+import { Navbar, Toast } from "./components";
+import Mockman from "mockman-js";
 import "./App.css";
 
 const App = () => {
@@ -8,15 +9,13 @@ const App = () => {
     <div className="app">
       <Navbar />
       <Toast />
-      {/* <Modal /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/explore" element={<Explore />}>
-          <Route index element={<VideoListing />} />
-          <Route path="watch-later" element={<WatchLater />} />
-          <Route path="playlist" element={<Playlist />} />
-        </Route>
+        <Route path="/explore" element={<VideoListing />} />
+        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/watch-later" element={<WatchLater />} />
+        <Route path="/mock" element={<Mockman />} />
       </Routes>
     </div>
   );

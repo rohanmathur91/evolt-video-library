@@ -35,3 +35,15 @@
 .border {
   border: 1px solid var(--light-gray);
 }
+
+/* container */
+.main__container {
+  margin: 0 auto;
+  max-width: 140.8rem;
+}
+
+@media screen and (max-width: 48em) {
+  .main__container {
+    margin-top: 4rem;
+  }
+}

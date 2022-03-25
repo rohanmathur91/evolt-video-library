@@ -1,4 +1,23 @@
-.add__btn {
-  color: var(--secondary-color);
-  background-color: var(--primary-color);
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.playlist__card {
+  background-color: var(--white);
+}
+
+.playlist__card:hover {
+  cursor: pointer;
+  box-shadow: 0 1px 3px 0px var(--shadow);
+}
+
+.material-icons-outlined {
+  user-select: none;
+}
+
+@media screen and (max-width: 48em) {
+  .container {
+    grid-template-columns: 1fr;
+  }
 }
