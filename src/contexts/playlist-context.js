@@ -5,10 +5,17 @@ const PlaylistContext = createContext();
 const playlistReducer = (playlistState, { type, payload }) => {
   switch (type) {
     case "ADD_TO_PLAYLIST":
-      return {
-        ...playlistState,
-        [payload.playlist]: [payload.video, ...playlistState[payload.playlist]],
-      };
+      return !playlistState[payload.playlist].some(
+        ({ _id }) => _id === payload.video._id
+      )
+        ? {
+            ...playlistState,
+            [payload.playlist]: [
+              payload.video,
+              ...playlistState[payload.playlist],
+            ],
+          }
+        : playlistState;
 
     case "REMOVE_FROM_PLAYLIST":
       return {
@@ -33,8 +40,6 @@ const PlaylistProvider = ({ children }) => {
       userPlaylist: {},
     }
   );
-
-  console.log(watchLater);
 
   return (
     <PlaylistContext.Provider

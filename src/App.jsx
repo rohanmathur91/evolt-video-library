@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, VideoListing, WatchLater } from "./pages";
+import { Home, Login, VideoListing, WatchLater, Playlist } from "./pages";
 import { Navbar, Explore, Toast, Modal } from "./components";
 import "./App.css";
 
@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/explore" element={<Explore />}>
           <Route index element={<VideoListing />} />
           <Route path="watch-later" element={<WatchLater />} />
+          <Route path="playlist" element={<Playlist />} />
         </Route>
       </Routes>
     </div>

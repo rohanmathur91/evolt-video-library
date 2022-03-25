@@ -5,6 +5,7 @@
 }
 
 .thumbnail {
+  height: 100%;
   user-select: none;
 }
 
@@ -20,6 +21,10 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+.creator__name {
+  color: var(--text-color);
 }
 
 .options {

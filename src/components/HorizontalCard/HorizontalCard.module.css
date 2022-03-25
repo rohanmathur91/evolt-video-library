@@ -11,6 +11,7 @@
   line-height: 1.2;
   font-size: 1.6rem;
   overflow: hidden;
+  overflow-wrap: break-word;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -29,4 +30,12 @@
 .views,
 .duration {
   margin-left: 8px;
+}
+
+.remove__btn {
+  align-self: flex-start;
+}
+
+.remove__btn:hover {
+  background-color: var(--light-gray);
 }

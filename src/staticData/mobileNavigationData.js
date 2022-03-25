@@ -1,4 +1,5 @@
 export const mobileNavigationData = [
+  { path: "/profile", icon: "person_outline", optionName: "Profile" },
   { path: "/home", icon: "home", optionName: "Home" },
   { path: "/explore", icon: "explore", optionName: "Exlore" },
   { path: "/explore/playlist", icon: "video_library", optionName: "Playlist" },
@@ -13,5 +14,4 @@ export const mobileNavigationData = [
     optionName: " Liked videos",
   },
   { path: "/explore/history", icon: "history", optionName: "History" },
-  { path: "/profile", icon: "person_outline", optionName: "Profile" },
 ];

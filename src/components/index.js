@@ -6,3 +6,4 @@ export { Toast } from "./Toast/Toast";
 export { Categories } from "./Categories/Categories";
 export { Modal } from "./Modal/Modal";
 export { HorizontalCard } from "./HorizontalCard/HorizontalCard";
+export { PlaylistContainer } from "./PlaylistContainer/PlaylistContainer";
