@@ -62,6 +62,12 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         ),
       };
 
+    case "DELETE_PLAYLIST":
+      return {
+        ...playlistState,
+        playlists: playlistState.playlists.filter(({ _id }) => _id !== payload),
+      };
+
     case "HANDLE_MODAL":
       return { ...playlistState, showModal: payload };
 
