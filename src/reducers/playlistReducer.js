@@ -62,9 +62,6 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         ),
       };
 
-    case "UPDATE_CURRENT_PLAYLIST":
-      return { ...playlistState, currentPlaylist: payload };
-
     case "HANDLE_MODAL":
       return { ...playlistState, showModal: payload };
 
