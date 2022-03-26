@@ -1,6 +1,5 @@
-import { useReducer, useEffect, useContext, createContext } from "react";
-import { toast } from "react-toastify";
 import axios from "axios";
+import { useReducer, useEffect, useContext, createContext } from "react";
 
 const VideoContext = createContext();
 
