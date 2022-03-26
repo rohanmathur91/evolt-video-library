@@ -1,12 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Sidebar } from "../../components";
 import { usePlaylist } from "../../contexts";
 import styles from "./Playlist.module.css";
 
 export const Playlist = () => {
-  // const { playlists = [{ _id: "sdsds", title: "dummy" }] } = usePlaylist();
-
-  const playlists = [{ _id: "sdsds", title: "dummy" }];
+  const navigate = useNavigate();
+  const { playlists } = usePlaylist();
 
   return (
     <div className="flex-row">
@@ -16,14 +16,16 @@ export const Playlist = () => {
           <h3 className="m-1 text-center">All playlists</h3>
           <div className={`${styles.container}`}>
             <div
+              onClick={() => navigate("/liked-videos")}
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
               Liked videos
             </div>
             <div
+              onClick={() => navigate("/watch-later")}
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
-              Saved videos
+              Watch later videos
             </div>
             {playlists.map(({ _id, title }) => (
               <div

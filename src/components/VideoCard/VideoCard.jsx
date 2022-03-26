@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { usePlaylist } from "../../contexts";
+import { addToWatchLater } from "../../utils";
 import styles from "./VideoCard.module.css";
 
-export const VideoCard = ({ video }) => {
+export const VideoCard = ({ video, setClickedVideo }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { alt, thumbnail, views, duration, title, avatar, creatorName } = video;
-  const { playlistDispatch } = usePlaylist();
+  const { openModal, playlistDispatch } = usePlaylist();
 
   const handleAddToWatchLater = (video) => {
-    playlistDispatch({
-      type: "ADD_TO_PLAYLIST",
-      payload: { video, playlist: "watchLater" },
-    });
-
     setShowOptions(false);
+    addToWatchLater(video, playlistDispatch);
+  };
+
+  const handleSaveToPlaylist = (video) => {
+    openModal();
+    setShowOptions(false);
+    setClickedVideo(video);
   };
 
   return (
@@ -47,7 +50,7 @@ export const VideoCard = ({ video }) => {
               <div
                 className={`${styles.options} py-1 px-2 flex-row items-start border rounded-sm`}
               >
-                <div className="mr-2">
+                <div>
                   <button
                     onClick={() => handleAddToWatchLater(video)}
                     className="text-sm flex-row items-center py-1"
@@ -57,11 +60,14 @@ export const VideoCard = ({ video }) => {
                     </span>
                     Watch later
                   </button>
-                  <button className="text-sm flex-row items-center py-1">
+                  <button
+                    onClick={() => handleSaveToPlaylist(video)}
+                    className="text-sm flex-row items-center py-1"
+                  >
                     <span className="material-icons-outlined text-base mr-1">
                       bookmark_border
                     </span>
-                    Save video
+                    Save to playlist
                   </button>
                 </div>
                 <button

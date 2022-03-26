@@ -3,7 +3,7 @@ import { HorizontalCard } from "../HorizontalCard/HorizontalCard";
 import hero from "../../assets/images/hero.svg";
 import styles from "./PlaylistContainer.module.css";
 
-export const PlaylistContainer = ({ title, playlist, videoList }) => {
+export const PlaylistContainer = ({ title, videoList }) => {
   return (
     <div className={`${styles.container} mt-4 px-2"`}>
       <div className="flex-column items-center">
@@ -18,7 +18,7 @@ export const PlaylistContainer = ({ title, playlist, videoList }) => {
       <div className="flex-column items-center">
         {videoList.length ? (
           videoList.map((video) => (
-            <HorizontalCard key={video._id} video={video} playlist={playlist} />
+            <HorizontalCard key={video._id} video={video} playlist={title} />
           ))
         ) : (
           <p className="text-center">

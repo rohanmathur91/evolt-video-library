@@ -1,43 +1,78 @@
-import React, { useState } from "react";
 import axios from "axios";
-import { encodedToken } from "../../token";
+import React, { useReducer } from "react";
 import { usePlaylist } from "../../contexts";
+import { modalReducer } from "../../reducers";
+import { addToPlaylist, removeFromPlaylist } from "../../services";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+  isVideoInWatchLater,
+  isVideoInPlaylist,
+} from "../../utils";
+import { encodedToken } from "../../token";
 import styles from "./Modal.module.css";
 
-export const Modal = () => {
-  const [showInput, setShowInput] = useState(false);
-  const [newPlaylist, setNewPlaylist] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { closeModal, playlists, playlistDispatch } = usePlaylist();
+export const Modal = ({ video }) => {
+  const [{ loading, showInput, newPlaylistName }, modalDispatch] = useReducer(
+    modalReducer,
+    {
+      loading: false,
+      showInput: false,
+      newPlaylistName: "",
+    }
+  );
+  const { closeModal, watchLater, playlists, playlistDispatch } = usePlaylist();
+  const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
 
   const handleInputChange = (event) => {
-    setNewPlaylist(event.target.value);
+    modalDispatch({
+      type: "SET_NEW_PLAYLIST_NAME",
+      payload: event.target.value,
+    });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      setLoading(true);
+      modalDispatch({ type: "LOADING", payload: true });
       const {
         data: { playlists },
       } = await axios.post(
         "/api/user/playlists",
         {
-          playlist: { title: newPlaylist },
+          playlist: { title: newPlaylistName },
         },
         {
           headers: { authorization: encodedToken },
         }
       );
 
+      console.log(playlists);
       playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
-      setLoading(false);
-      setShowInput(false);
-      setNewPlaylist("");
+      modalDispatch({ type: "RESET_MODAL_STATES" });
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleWatchLaterChange = (event) => {
+    if (event.target.checked) {
+      addToWatchLater(video, playlistDispatch);
+    } else {
+      removeFromWatchLater(video._id, playlistDispatch);
+    }
+  };
+
+  const handlePlaylistInputChange = (event, playlistId) => {
+    if (event.target.checked) {
+      addToPlaylist(video, playlistId, playlistDispatch);
+    } else {
+      removeFromPlaylist(video._id, playlistId, playlistDispatch);
+    }
+  };
+
+  const handleShowInput = () => {
+    modalDispatch({ type: "SHOW_INPUT", payload: true });
   };
 
   return (
@@ -53,19 +88,36 @@ export const Modal = () => {
         </div>
 
         <div className="pt-1 px-1 flex-column">
-          <label htmlFor="watch-later">
-            <input type="checkbox" id="watch-later" className="my-1 mr-1" />{" "}
+          <label className="cursor-pointer">
+            <input
+              type="checkbox"
+              id="watch-later"
+              checked={videoInWatchLater ?? false}
+              onChange={handleWatchLaterChange}
+              className="my-1 mr-2 cursor-pointer"
+            />
             Watch later
           </label>
 
-          <label htmlFor="saved-videos">
-            <input type="checkbox" id="saved-videos" className="my-1 mr-1" />{" "}
-            Saved Videos
+          <label className="cursor-pointer">
+            <input
+              type="checkbox"
+              id="saved-videos"
+              className="my-1 mr-2 cursor-pointer"
+            />
+            Liked Videos
           </label>
 
           {playlists.map(({ _id, title }) => (
-            <label htmlFor={_id}>
-              <input type="checkbox" id={_id} className="my-1 mr-1" /> {title}
+            <label key={_id} className="cursor-pointer">
+              <input
+                id={_id}
+                type="checkbox"
+                checked={isVideoInPlaylist(video._id, _id, playlists) ?? false}
+                className="my-1 mr-2 cursor-pointer"
+                onChange={(event) => handlePlaylistInputChange(event, _id)}
+              />
+              {title}
             </label>
           ))}
         </div>
@@ -75,9 +127,9 @@ export const Modal = () => {
             <input
               required
               type="text"
-              value={newPlaylist}
+              value={newPlaylistName}
               onChange={handleInputChange}
-              placeholder="add new playlist.."
+              placeholder="Add new playlist.."
               className="border rounded-sm p-1 text-base"
             />
             <button className="p-1 text-base">
@@ -86,8 +138,8 @@ export const Modal = () => {
           </form>
         ) : (
           <button
-            onClick={() => setShowInput(true)}
-            className="flex-row items-center content-space-between pb-1 mr-1"
+            onClick={handleShowInput}
+            className="flex-row items-center content-space-between pb-1 mt-1 mr-1"
           >
             <span
               className={`${styles.add__icon} material-icons-outlined mr-1`}
