@@ -3,8 +3,8 @@ import { usePlaylist } from "../../contexts";
 import { modalReducer } from "../../reducers";
 import {
   addToPlaylist,
-  removeFromPlaylist,
   createPlaylist,
+  removeFromPlaylist,
 } from "../../services";
 import {
   addToWatchLater,
