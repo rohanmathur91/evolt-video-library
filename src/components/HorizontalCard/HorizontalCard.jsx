@@ -1,10 +1,7 @@
 import React from "react";
-import { usePlaylist } from "../../contexts";
-import { removeFromWatchLater } from "../../utils";
 import styles from "./HorizontalCard.module.css";
 
-export const HorizontalCard = ({ video, playlist }) => {
-  const { playlistDispatch } = usePlaylist();
+export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
   const { _id, alt, thumbnail, views, duration, title } = video;
 
   return (
@@ -32,7 +29,7 @@ export const HorizontalCard = ({ video, playlist }) => {
       </div>
 
       <button
-        onClick={() => removeFromWatchLater(_id, playlistDispatch)}
+        onClick={() => handleRemoveFromPlaylist(_id)}
         className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
       >
         <span className="material-icons-outlined mx-1">delete</span>
@@ -50,5 +47,5 @@ HorizontalCard.defaultProps = {
     views: "0",
     duration: "0:00",
   },
-  playlist: "",
+  handleRemoveFromPlaylist: () => {},
 };

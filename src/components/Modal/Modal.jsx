@@ -108,6 +108,7 @@ export const Modal = ({ video }) => {
           <form onSubmit={handleFormSubmit} className="flex-column mt-1">
             <input
               required
+              autoFocus
               type="text"
               value={newPlaylistName}
               onChange={handleInputChange}

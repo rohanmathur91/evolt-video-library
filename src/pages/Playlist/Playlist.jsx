@@ -1,11 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sidebar } from "../../components";
 import { usePlaylist } from "../../contexts";
 import styles from "./Playlist.module.css";
 
 export const Playlist = () => {
-  const navigate = useNavigate();
   const { playlists } = usePlaylist();
 
   return (
@@ -15,25 +14,26 @@ export const Playlist = () => {
         <div className="mt-4 px-2">
           <h3 className="m-1 text-center">All playlists</h3>
           <div className={`${styles.container}`}>
-            <div
-              onClick={() => navigate("/liked-videos")}
+            <Link
+              to="/liked-videos"
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
               Liked videos
-            </div>
-            <div
-              onClick={() => navigate("/watch-later")}
+            </Link>
+            <Link
+              to="/watch-later"
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
               Watch later videos
-            </div>
+            </Link>
             {playlists.map(({ _id, title }) => (
-              <div
+              <Link
                 key={_id}
+                to={`/playlist/${_id}`}
                 className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
               >
                 {title}
-              </div>
+              </Link>
             ))}
           </div>
         </div>

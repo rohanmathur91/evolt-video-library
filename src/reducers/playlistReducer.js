@@ -1,4 +1,5 @@
 export const playlistReducer = (playlistState, { type, payload }) => {
+  console.log(type, payload);
   switch (type) {
     case "SET_PLAYLIST":
       return { ...playlistState, playlists: payload };
@@ -61,6 +62,9 @@ export const playlistReducer = (playlistState, { type, payload }) => {
             : playlist
         ),
       };
+
+    case "UPDATE_CURRENT_PLAYLIST":
+      return { ...playlistState, currentPlaylist: payload };
 
     case "HANDLE_MODAL":
       return { ...playlistState, showModal: payload };

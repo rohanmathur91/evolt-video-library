@@ -13,3 +13,7 @@ export const isVideoInPlaylist = (videoId, playlistId, playlists) => {
     .find(({ _id }) => _id === playlistId)
     ?.videos.some(({ _id }) => _id === videoId);
 };
+
+export const getPlaylistById = (playlistId, playlists) => {
+  return playlists.find(({ _id }) => _id === playlistId);
+};

@@ -7,10 +7,14 @@ export const removeFromPlaylist = async (
   playlistDispatch
 ) => {
   try {
-    await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
-      headers: { authorization: encodedToken },
-    });
+    const { data } = await axios.delete(
+      `/api/user/playlists/${playlistId}/${videoId}`,
+      {
+        headers: { authorization: encodedToken },
+      }
+    );
 
+    console.log("from service::", data);
     playlistDispatch({
       type: "REMOVE_FROM_PLAYLIST",
       payload: { videoId, playlistId },
