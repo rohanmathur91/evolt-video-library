@@ -9,7 +9,7 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className={`${styles.navigation} flex-row items-center content-space-between w-100 sticky top-0 left-0 z-3`}
+        className={`${styles.navigation} flex-row items-center content-space-between w-100 sticky top-0 left-0 z-1`}
       >
         <div className="flex-row flex-center">
           <div
