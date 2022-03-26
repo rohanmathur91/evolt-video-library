@@ -2,8 +2,8 @@ import React, { useReducer } from "react";
 import { usePlaylist } from "../../contexts";
 import { modalReducer } from "../../reducers";
 import {
-  addToPlaylist,
   createPlaylist,
+  addVideoInPlaylist,
   removeFromPlaylist,
 } from "../../services";
 import {
@@ -47,7 +47,7 @@ export const Modal = ({ video }) => {
 
   const handlePlaylistInputChange = (event, playlistId) => {
     if (event.target.checked) {
-      addToPlaylist(video, playlistId, playlistDispatch);
+      addVideoInPlaylist(video, playlistId, playlistDispatch);
     } else {
       removeFromPlaylist(video._id, playlistId, playlistDispatch);
     }
