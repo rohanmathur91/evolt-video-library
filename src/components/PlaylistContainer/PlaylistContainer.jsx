@@ -39,12 +39,14 @@ export const PlaylistContainer = ({ title, videoList }) => {
                 <h3 className="text-base">{title || playlist?.title}</h3>
                 <div>{playlist?.videos.length || videoList.length} videos</div>
               </div>
-              <button
-                onClick={handleDeletePlaylist}
-                className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
-              >
-                <span className="material-icons-outlined mx-1">delete</span>
-              </button>
+              {playlistId && (
+                <button
+                  onClick={handleDeletePlaylist}
+                  className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
+                >
+                  <span className="material-icons-outlined mx-1">delete</span>
+                </button>
+              )}
             </div>
           </div>
           <div className="flex-column items-center">
