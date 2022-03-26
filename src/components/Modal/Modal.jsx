@@ -28,10 +28,6 @@ export const Modal = ({ video }) => {
     });
   };
 
-  const handleFormSubmit = (event) => {
-    createPlaylist(event, newPlaylistName, modalDispatch, playlistDispatch);
-  };
-
   const handleWatchLaterChange = (event) => {
     if (event.target.checked) {
       addToWatchLater(video, playlistDispatch);
@@ -39,8 +35,6 @@ export const Modal = ({ video }) => {
       removeFromWatchLater(video._id, playlistDispatch);
     }
   };
-
-  const handlePlaylistInputChange = (event, playlistId) => {};
 
   const handleShowInput = () => {
     modalDispatch({ type: "SHOW_INPUT", payload: true });
@@ -57,7 +51,6 @@ export const Modal = ({ video }) => {
             <span className="material-icons-outlined">close</span>
           </button>
         </div>
-
         <div className="pt-1 px-1 flex-column">
           <label className="cursor-pointer">
             <input
@@ -78,49 +71,17 @@ export const Modal = ({ video }) => {
             />
             Liked Videos
           </label>
-
-          {playlists.map(({ _id, title }) => (
-            <label key={_id} className="cursor-pointer">
-              <input
-                id={_id}
-                type="checkbox"
-                checked={isVideoInPlaylist(video._id, _id, playlists) ?? false}
-                className="my-1 mr-2 cursor-pointer"
-                onChange={(event) => handlePlaylistInputChange(event, _id)}
-              />
-              {title}
-            </label>
-          ))}
         </div>
 
-        {showInput ? (
-          <form onSubmit={handleFormSubmit} className="flex-column mt-1">
-            <input
-              required
-              autoFocus
-              type="text"
-              value={newPlaylistName}
-              onChange={handleInputChange}
-              placeholder="Add new playlist.."
-              className="border rounded-sm p-1 text-base"
-            />
-            <button className="p-1 text-base">
-              {loading ? "Create..." : "Create"}
-            </button>
-          </form>
-        ) : (
-          <button
-            onClick={handleShowInput}
-            className="flex-row items-center content-space-between pb-1 mt-1 mr-1"
-          >
-            <span
-              className={`${styles.add__icon} material-icons-outlined mr-1`}
-            >
-              add
-            </span>
-            <span className="text-base">Create a new playlist</span>
-          </button>
-        )}
+        <button
+          onClick={handleShowInput}
+          className="flex-row items-center content-space-between pb-1 mt-1 mr-1"
+        >
+          <span className={`${styles.add__icon} material-icons-outlined mr-1`}>
+            add
+          </span>
+          <span className="text-base">Create a new playlist</span>
+        </button>
       </div>
     </div>
   );
