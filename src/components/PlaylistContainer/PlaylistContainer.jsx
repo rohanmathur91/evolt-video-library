@@ -68,7 +68,7 @@ export const PlaylistContainer = ({ title, videoList }) => {
               <p className="text-center">
                 There are no videos in this yet.{" "}
                 <Link to="/playlist" className={`${styles.link} font-semibold`}>
-                  View all playlist
+                  View all playlists
                 </Link>
               </p>
             )}
