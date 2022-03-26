@@ -3,7 +3,7 @@ import { encodedToken } from "../../token";
 
 export const addToPlaylist = async (video, playlistId, playlistDispatch) => {
   try {
-    const { data } = await axios.post(
+    await axios.post(
       `/api/user/playlists/${playlistId}`,
       { video },
       {
