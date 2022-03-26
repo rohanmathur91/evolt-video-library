@@ -1,5 +1,4 @@
 .card {
-  max-width: 30rem;
   background-color: var(--white);
   border: 0.5px solid var(--light-gray);
 }
@@ -10,7 +9,9 @@
 }
 
 .avatar {
-  width: 6rem;
+  width: 3.8rem;
+  height: 3.8rem;
+  flex-shrink: 0;
 }
 
 .title {

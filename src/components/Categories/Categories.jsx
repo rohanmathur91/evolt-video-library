@@ -10,7 +10,7 @@ export const Categories = () => {
       {categories.map(({ _id, categoryName }) => (
         <span
           key={_id}
-          className={`${styles.chip} border py-1 px-2 m-1 rounded-full text-sm cursor-pointer`}
+          className={`${styles.chip} border py-1 px-2 rounded-full text-sm cursor-pointer`}
         >
           {categoryName}
         </span>

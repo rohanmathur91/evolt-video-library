@@ -34,7 +34,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
           <img className="rounded-full" src={avatar} alt="avatar" />
         </div>
 
-        <div>
+        <div className="w-100">
           <div className="flex-row content-space-between items-start my-1 relative">
             <div>
               <h3 className={`${styles.title}`}>{title}</h3>
