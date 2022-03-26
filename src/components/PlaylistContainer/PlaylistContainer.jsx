@@ -3,8 +3,11 @@ import { removeFromWatchLater } from "../../utils";
 import { Sidebar, HorizontalCard } from "../";
 import hero from "../../assets/images/hero.svg";
 import styles from "./PlaylistContainer.module.css";
+import { usePlaylist } from "../../contexts";
 
 export const PlaylistContainer = ({ title, videoList }) => {
+  const { playlistDispatch } = usePlaylist();
+
   const handleRemoveFromPlaylist = (videoId) => {
     removeFromWatchLater(videoId, playlistDispatch);
   };
