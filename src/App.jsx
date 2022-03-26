@@ -1,7 +1,8 @@
-import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, VideoListing } from "./pages";
-import { Navbar, Explore } from "./components";
+import { Home, Login, VideoListing, WatchLater } from "./pages";
+import { Navbar, PlaylistContainer } from "./components";
+import Mockman from "mockman-js";
+import "./App.css";
 
 const App = () => {
   return (
@@ -10,9 +11,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/explore" element={<Explore />}>
-          <Route index element={<VideoListing />} />
-        </Route>
+        <Route path="/explore" element={<VideoListing />} />
+        <Route path="/playlist" element={<VideoListing />} />
+        <Route path="/playlist/:id" element={<PlaylistContainer />} />
+        <Route path="/watch-later" element={<WatchLater />} />
+        <Route path="/mock" element={<Mockman />} />
       </Routes>
     </div>
   );
