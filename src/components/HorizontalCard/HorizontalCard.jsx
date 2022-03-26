@@ -6,8 +6,8 @@ export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
 
   return (
     <div className={`${styles.card} flex-row m-1 p-1 border rounded-sm`}>
-      <div className="w-20">
-        <img className="h-100 rounded-sm" src={thumbnail} alt={alt} />
+      <div className={`${styles.thumbnail}`}>
+        <img className="rounded-sm" src={thumbnail} alt={alt} />
       </div>
 
       <div className="flex-column py-1 px-2">

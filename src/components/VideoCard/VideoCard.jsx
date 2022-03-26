@@ -29,7 +29,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
         />
       </div>
 
-      <div className="flex-row">
+      <div className="flex-row mt-1">
         <div className={`${styles.avatar} m-1`}>
           <img className="rounded-full" src={avatar} alt="avatar" />
         </div>

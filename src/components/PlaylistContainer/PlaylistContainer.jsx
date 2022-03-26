@@ -30,11 +30,13 @@ export const PlaylistContainer = ({ title, videoList }) => {
       <Sidebar />
       <div className="main__container w-100 mt-1 px-2">
         <div className={`${styles.container} mt-4 px-2"`}>
-          <div className="flex-column items-center mx-2">
+          <div
+            className={`${styles.playlist__info} mt-1 flex-column items-center`}
+          >
             <div className="w-20 p-1">
               <img src={hero} alt="hero" />
             </div>
-            <div className="flex-row items-center content-space-between mt-2 border w-100 p-1 rounded-sm">
+            <div className="flex-row items-center content-space-between mt-2 mx-1 border w-100 p-1 rounded-sm">
               <div className="text-base px-1">
                 <h3 className="text-base">{title || playlist?.title}</h3>
                 <div>{playlist?.videos.length || videoList.length} videos</div>

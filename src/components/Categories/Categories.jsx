@@ -6,7 +6,7 @@ export const Categories = () => {
   const { categories } = useVideo();
 
   return (
-    <div className="mt-2 px-3 flex-row wrap">
+    <div className="mb-2 mt-3 px-1 flex-row wrap">
       {categories.map(({ _id, categoryName }) => (
         <span
           key={_id}
