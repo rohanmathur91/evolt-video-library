@@ -6,3 +6,9 @@
   color: var(--primary-color);
   background-color: var(--background-color);
 }
+
+@media screen and (max-width: 48em) {
+  html {
+    font-size: 56%;
+  }
+}
