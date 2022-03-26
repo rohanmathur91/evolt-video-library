@@ -2,23 +2,18 @@ import axios from "axios";
 import { encodedToken } from "../../token";
 
 export const removeFromPlaylist = async (
-  video,
+  videoId,
   playlistId,
   playlistDispatch
 ) => {
   try {
-    const { data } = await axios.delete(
-      `/api/user/playlists/${playlistId}`,
-      { video },
-      {
-        headers: { authorization: encodedToken },
-      }
-    );
+    await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
+      headers: { authorization: encodedToken },
+    });
 
-    console.log(data);
     playlistDispatch({
-      type: "ADD_TO_PLAYLIST",
-      payload: { videoId: video._id, playlistId },
+      type: "REMOVE_FROM_PLAYLIST",
+      payload: { videoId, playlistId },
     });
   } catch (error) {
     console.log(error);

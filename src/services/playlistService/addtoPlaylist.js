@@ -12,7 +12,7 @@ export const addToPlaylist = async (video, playlistId, playlistDispatch) => {
     );
 
     playlistDispatch({
-      type: "REMOVE_FROM_PLAYLIST",
+      type: "ADD_TO_PLAYLIST",
       payload: { video, playlistId },
     });
   } catch (error) {

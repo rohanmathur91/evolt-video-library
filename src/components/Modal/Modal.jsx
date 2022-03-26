@@ -1,15 +1,17 @@
-import axios from "axios";
 import React, { useReducer } from "react";
 import { usePlaylist } from "../../contexts";
 import { modalReducer } from "../../reducers";
-import { addToPlaylist, removeFromPlaylist } from "../../services";
+import {
+  addToPlaylist,
+  removeFromPlaylist,
+  createPlaylist,
+} from "../../services";
 import {
   addToWatchLater,
   removeFromWatchLater,
   isVideoInWatchLater,
   isVideoInPlaylist,
 } from "../../utils";
-import { encodedToken } from "../../token";
 import styles from "./Modal.module.css";
 
 export const Modal = ({ video }) => {
@@ -31,28 +33,8 @@ export const Modal = ({ video }) => {
     });
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      modalDispatch({ type: "LOADING", payload: true });
-      const {
-        data: { playlists },
-      } = await axios.post(
-        "/api/user/playlists",
-        {
-          playlist: { title: newPlaylistName },
-        },
-        {
-          headers: { authorization: encodedToken },
-        }
-      );
-
-      console.log(playlists);
-      playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
-      modalDispatch({ type: "RESET_MODAL_STATES" });
-    } catch (error) {
-      console.log(error);
-    }
+  const handleFormSubmit = (event) => {
+    createPlaylist(event, newPlaylistName, modalDispatch, playlistDispatch);
   };
 
   const handleWatchLaterChange = (event) => {
