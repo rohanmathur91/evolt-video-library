@@ -1,20 +1,8 @@
 import axios from "axios";
 import { useReducer, useEffect, useContext, createContext } from "react";
+import { videoReducer } from "../reducers";
 
 const VideoContext = createContext();
-
-const videoReducer = (videoState, { type, payload }) => {
-  switch (type) {
-    case "INITIALIZE_VIDEOS":
-      return { ...videoState, videos: payload };
-
-    case "INITIALIZE_CATEGORIES":
-      return { ...videoState, categories: payload };
-
-    default:
-      return videoState;
-  }
-};
 
 const VideoProvider = ({ children }) => {
   const [{ videos, categories }, videoDispatch] = useReducer(videoReducer, {
