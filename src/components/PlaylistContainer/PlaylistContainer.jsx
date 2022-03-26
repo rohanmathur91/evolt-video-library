@@ -1,15 +1,23 @@
 import React from "react";
-import { removeFromWatchLater } from "../../utils";
+import { useParams } from "react-router-dom";
+import { removeFromPlaylist } from "../../services";
+import { getPlaylistById, removeFromWatchLater } from "../../utils";
+import { usePlaylist } from "../../contexts";
 import { Sidebar, HorizontalCard } from "../";
 import hero from "../../assets/images/hero.svg";
 import styles from "./PlaylistContainer.module.css";
-import { usePlaylist } from "../../contexts";
 
 export const PlaylistContainer = ({ title, videoList }) => {
-  const { playlistDispatch } = usePlaylist();
+  const { id: playlistId } = useParams();
+  const { playlists, playlistDispatch } = usePlaylist();
+  const playlist = getPlaylistById(playlistId, playlists);
 
   const handleRemoveFromPlaylist = (videoId) => {
-    removeFromWatchLater(videoId, playlistDispatch);
+    if (playlistId) {
+      removeFromPlaylist(videoId, playlistId, playlistDispatch);
+    } else {
+      removeFromWatchLater(videoId, playlistDispatch);
+    }
   };
 
   return (
@@ -22,13 +30,23 @@ export const PlaylistContainer = ({ title, videoList }) => {
               <img src={hero} alt="hero" />
             </div>
             <div className="mt-2">
-              <h3 className="text-base">{title}</h3>
-              <div className="text-base">{videoList.length} videos</div>
+              <h3 className="text-base">{title || playlist?.title}</h3>
+              <div className="text-base">
+                {playlist?.videos.length || videoList.length} videos
+              </div>
             </div>
           </div>
           <div className="flex-column items-center">
             {videoList.length ? (
               videoList.map((video) => (
+                <HorizontalCard
+                  key={video._id}
+                  video={video}
+                  handleRemoveFromPlaylist={handleRemoveFromPlaylist}
+                />
+              ))
+            ) : playlist?.videos.length ? (
+              playlist.videos.map((video) => (
                 <HorizontalCard
                   key={video._id}
                   video={video}
