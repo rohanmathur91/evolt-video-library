@@ -37,7 +37,7 @@ const VideoProvider = ({ children }) => {
 
         videoDispatch({ type: "INITIALIZE_CATEGORIES", payload: categories });
       } catch (error) {
-        toast.error("Something went wrong!");
+        console.log("Something went wrong!");
       }
     })();
   }, []);
