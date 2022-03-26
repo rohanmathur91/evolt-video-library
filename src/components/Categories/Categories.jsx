@@ -1,5 +1,5 @@
 import React from "react";
-import { useVideo } from "../../contexts/video-context";
+import { useVideo } from "../../contexts";
 import styles from "./Categories.module.css";
 
 export const Categories = () => {
