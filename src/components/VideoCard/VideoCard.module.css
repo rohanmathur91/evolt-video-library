@@ -5,7 +5,12 @@
 }
 
 .thumbnail {
+  height: 100%;
   user-select: none;
+}
+
+.avatar {
+  width: 6rem;
 }
 
 .title {
@@ -16,6 +21,22 @@
   display: -webkit-box;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+.creator__name {
+  color: var(--text-color);
+}
+
+.options {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--white);
+  box-shadow: 0 1px 3px 0px var(--shadow);
+}
+
+.close__btn:hover {
+  color: var(--text-color);
 }
 
 .details {

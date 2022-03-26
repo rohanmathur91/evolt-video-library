@@ -1,32 +1,15 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { usePlaylist } from "../../contexts";
-import { modalReducer } from "../../reducers";
 import {
   addToWatchLater,
   removeFromWatchLater,
   isVideoInWatchLater,
-  isVideoInPlaylist,
 } from "../../utils";
 import styles from "./Modal.module.css";
 
 export const Modal = ({ video }) => {
-  const [{ loading, showInput, newPlaylistName }, modalDispatch] = useReducer(
-    modalReducer,
-    {
-      loading: false,
-      showInput: false,
-      newPlaylistName: "",
-    }
-  );
-  const { closeModal, watchLater, playlists, playlistDispatch } = usePlaylist();
+  const { closeModal, watchLater, playlistDispatch } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
-
-  const handleInputChange = (event) => {
-    modalDispatch({
-      type: "SET_NEW_PLAYLIST_NAME",
-      payload: event.target.value,
-    });
-  };
 
   const handleWatchLaterChange = (event) => {
     if (event.target.checked) {
@@ -34,10 +17,6 @@ export const Modal = ({ video }) => {
     } else {
       removeFromWatchLater(video._id, playlistDispatch);
     }
-  };
-
-  const handleShowInput = () => {
-    modalDispatch({ type: "SHOW_INPUT", payload: true });
   };
 
   return (
@@ -73,10 +52,7 @@ export const Modal = ({ video }) => {
           </label>
         </div>
 
-        <button
-          onClick={handleShowInput}
-          className="flex-row items-center content-space-between pb-1 mt-1 mr-1"
-        >
+        <button className="flex-row items-center content-space-between pb-1 mt-1 mr-1">
           <span className={`${styles.add__icon} material-icons-outlined mr-1`}>
             add
           </span>
