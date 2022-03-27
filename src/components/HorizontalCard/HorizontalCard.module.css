@@ -28,8 +28,8 @@
 }
 
 .details {
-  color: var(--text-color);
   margin-top: auto;
+  color: var(--text-color);
 }
 
 .views,

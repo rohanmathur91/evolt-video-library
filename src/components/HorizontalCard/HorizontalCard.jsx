@@ -1,29 +1,36 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./HorizontalCard.module.css";
 
 export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
+  const navigate = useNavigate();
   const { _id, alt, thumbnail, views, duration, title } = video;
 
   return (
     <div className={`${styles.card} flex-row m-1 p-1 border rounded-sm`}>
-      <div className={`${styles.thumbnail}`}>
-        <img className="rounded-sm" src={thumbnail} alt={alt} />
-      </div>
+      <div
+        className="flex-row cursor-pointer"
+        onClick={() => navigate(`/video/${_id}`)}
+      >
+        <div className={`${styles.thumbnail}`}>
+          <img className="rounded-sm" src={thumbnail} alt={alt} />
+        </div>
 
-      <div className="flex-column py-1 px-2">
-        <h3 className={`${styles.title}`}>{title}</h3>
+        <div className="flex-column py-1 px-2">
+          <h3 className={`${styles.title}`}>{title}</h3>
 
-        <div
-          className={`${styles.details} flex-row content-space-between pt-1`}
-        >
-          <div className="text-sm icon-container">
-            <span className="material-icons text-sm">visibility</span>
-            <span className={`${styles.views} text-sm`}>{views} views</span>
-          </div>
+          <div
+            className={`${styles.details} flex-row content-space-between pt-1`}
+          >
+            <div className="text-sm icon-container">
+              <span className="material-icons text-sm">visibility</span>
+              <span className={`${styles.views} text-sm`}>{views} views</span>
+            </div>
 
-          <div className="text-sm icon-container">
-            <span className="material-icons-outlined text-sm">timer</span>
-            <span className={`${styles.duration} text-sm`}>{duration}</span>
+            <div className="text-sm icon-container">
+              <span className="material-icons-outlined text-sm">timer</span>
+              <span className={`${styles.duration} text-sm`}>{duration}</span>
+            </div>
           </div>
         </div>
       </div>
