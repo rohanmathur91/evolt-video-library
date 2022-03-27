@@ -7,7 +7,8 @@ export const SingleVideo = () => {
   const { videoId } = useParams();
   const [video, setVideo] = useState({});
   const [loader, setLoader] = useState(false);
-  const { alt, views, duration, title, avatar, creatorName } = video;
+  const { alt, views, duration, title, avatar, creatorName, description } =
+    video;
 
   useEffect(() => {
     (async () => {
@@ -73,35 +74,27 @@ export const SingleVideo = () => {
 
               <div className={`${styles.video__options} flex-row my-2`}>
                 <button className="icon-container mr-3 font-semibold">
-                  <span className="material-icons-outlined mr-1">thumb_up</span>{" "}
+                  <span className="material-icons-outlined mr-1">thumb_up</span>
                   Like
                 </button>
 
                 <button className="icon-container mr-3 font-semibold">
                   <span className="material-icons-outlined mr-1">
                     turned_in_not
-                  </span>{" "}
+                  </span>
                   Save to playlist
                 </button>
 
                 <button className="icon-container font-semibold">
                   <span className="material-icons-outlined mr-1">
                     watch_later
-                  </span>{" "}
+                  </span>
                   Watch later
                 </button>
               </div>
             </div>
           </section>
-          <section className={`${styles.description} text-sm `}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-            eveniet sequi in maiores voluptas odit laudantium rem, cum fugit
-            eaque qui facere ratione omnis. Tenetur, iure? Nemo pariatur
-            sapiente repellat? Lorem ipsum dolor, sit amet consectetur
-            adipisicing elit. Quasi eveniet sequi in maiores voluptas odit
-            laudantium rem, cum fugit eaque qui facere ratione omnis. Tenetur,
-            iure? Nemo pariatur sapiente repellat?
-          </section>
+          <p className="text-sm">{description}</p>
         </div>
       )}
     </>
