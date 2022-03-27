@@ -16,17 +16,8 @@ export const SingleVideo = () => {
   const { videoId } = useParams();
   const { showModal, openModal, watchLater, playlistDispatch } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
-  const {
-    _id,
-    alt,
-    views,
-    duration,
-    title,
-    avatar,
-    category,
-    creatorName,
-    description,
-  } = video;
+  const { _id, alt, views, duration, title, avatar, creatorName, description } =
+    video;
 
   useEffect(() => {
     (async () => {
