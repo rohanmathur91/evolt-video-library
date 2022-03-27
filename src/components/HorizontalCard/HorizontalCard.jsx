@@ -4,43 +4,63 @@ import styles from "./HorizontalCard.module.css";
 
 export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
   const navigate = useNavigate();
-  const { _id, alt, thumbnail, views, duration, title } = video;
+  const {
+    _id,
+    alt,
+    thumbnail,
+    views,
+    duration,
+    title,
+    description,
+    creatorName,
+  } = video;
 
   return (
-    <div className={`${styles.card} flex-row m-1 p-1 border rounded-sm`}>
-      <div
-        className="flex-row cursor-pointer"
-        onClick={() => navigate(`/video/${_id}`)}
-      >
-        <div className={`${styles.thumbnail}`}>
+    <div className={`${styles.card} flex-row my-1 p-1 border rounded-sm`}>
+      <div className={`${styles.container} flex-row cursor-pointer`}>
+        <div
+          className={`${styles.thumbnail}`}
+          onClick={() => navigate(`/video/${_id}`)}
+        >
           <img className="rounded-sm" src={thumbnail} alt={alt} />
         </div>
 
-        <div className="flex-column py-1 px-2">
-          <h3 className={`${styles.title}`}>{title}</h3>
-
+        <div className="flex-row">
           <div
-            className={`${styles.details} flex-row content-space-between pt-1`}
+            className="flex-column py-1 px-2"
+            onClick={() => navigate(`/video/${_id}`)}
           >
-            <div className="text-sm icon-container">
-              <span className="material-icons text-sm">visibility</span>
-              <span className={`${styles.views} text-sm`}>{views} views</span>
-            </div>
+            <p className={`${styles.creator__name}`}>{creatorName}</p>
+            <h3 className={`${styles.title} sub-header text-ellipsis my-1`}>
+              {title}
+            </h3>
+            <p className={`${styles.description} text-ellipsis text-sm`}>
+              {description}
+            </p>
 
-            <div className="text-sm icon-container">
-              <span className="material-icons-outlined text-sm">timer</span>
-              <span className={`${styles.duration} text-sm`}>{duration}</span>
+            <div className={`${styles.details} flex-row pt-1`}>
+              <div className="text-sm icon-container mr-3">
+                <span className="material-icons text-sm">visibility</span>
+                <span className={`${styles.views} text-ellipsis text-sm`}>
+                  {views} views
+                </span>
+              </div>
+
+              <div className="text-sm icon-container">
+                <span className="material-icons-outlined text-sm">timer</span>
+                <span className={`${styles.duration} text-sm`}>{duration}</span>
+              </div>
             </div>
           </div>
+
+          <button
+            onClick={() => handleRemoveFromPlaylist(_id)}
+            className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
+          >
+            <span class="material-icons-outlined mx-1">close</span>
+          </button>
         </div>
       </div>
-
-      <button
-        onClick={() => handleRemoveFromPlaylist(_id)}
-        className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
-      >
-        <span className="material-icons-outlined mx-1">delete</span>
-      </button>
     </div>
   );
 };
