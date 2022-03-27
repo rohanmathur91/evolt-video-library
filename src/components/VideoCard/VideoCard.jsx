@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { usePlaylist } from "../../contexts";
 import {
   addToWatchLater,
@@ -12,6 +13,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
   const { openModal, playlistDispatch, watchLater } = usePlaylist();
+  const navigate = useNavigate();
   const videoInWatchLater = isVideoInWatchLater(_id, watchLater);
 
   const handleWatchLaterClick = () => {
@@ -31,7 +33,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
 
   return (
     <div className={`${styles.card} p-1 m-1 rounded-sm`}>
-      <div>
+      <div className="cursor-pointer" onClick={() => navigate(`/video/${_id}`)}>
         <img
           alt={alt}
           src={thumbnail}
