@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { useVideo, usePlaylist } from "../../contexts";
-import { Modal, Sidebar, VideoCard, Categories } from "../../components";
+import {
+  Sidebar,
+  VideoCard,
+  Categories,
+  PlaylistModal,
+} from "../../components";
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
@@ -10,7 +15,7 @@ export const VideoListing = () => {
 
   return (
     <>
-      {showModal && <Modal video={clickedVideo} />}
+      {showModal && <PlaylistModal video={clickedVideo} />}
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
