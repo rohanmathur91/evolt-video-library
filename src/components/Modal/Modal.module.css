@@ -9,15 +9,3 @@
   z-index: 2;
   background-color: var(--modal-background);
 }
-
-.container {
-  background-color: var(--white);
-}
-
-.header {
-  border-bottom: 1px solid var(--light-gray);
-}
-
-.add__icon {
-  margin-left: 2px;
-}
