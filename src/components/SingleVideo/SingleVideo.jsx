@@ -1,14 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { usePlaylist } from "../../contexts";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+  isVideoInWatchLater,
+} from "../../utils";
+import { Modal } from "../";
 import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = () => {
-  const { videoId } = useParams();
   const [video, setVideo] = useState({});
   const [loader, setLoader] = useState(false);
-  const { alt, views, duration, title, avatar, creatorName, description } =
-    video;
+  const { videoId } = useParams();
+  const { showModal, openModal, watchLater, playlistDispatch } = usePlaylist();
+  const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
+  const {
+    _id,
+    alt,
+    views,
+    duration,
+    title,
+    avatar,
+    category,
+    creatorName,
+    description,
+  } = video;
 
   useEffect(() => {
     (async () => {
@@ -26,8 +44,17 @@ export const SingleVideo = () => {
     })();
   }, [videoId]);
 
+  const handleWatchLaterClick = () => {
+    if (!videoInWatchLater) {
+      addToWatchLater(video, playlistDispatch);
+    } else {
+      removeFromWatchLater(_id, playlistDispatch);
+    }
+  };
+
   return (
     <>
+      {showModal && <Modal video={video} />}
       {loader ? (
         <p className="text-sm text-center mb-2 p-2">Fetching video...</p>
       ) : (
@@ -59,14 +86,14 @@ export const SingleVideo = () => {
                       <span className="material-icons text-base mr-1">
                         visibility
                       </span>
-                      <span className={` text-sm`}>{views} views</span>
+                      <span className="text-sm">{views} views</span>
                     </div>
 
                     <div className="text-sm icon-container">
                       <span className="material-icons-outlined text-base mr-1">
                         timer
                       </span>
-                      <span className={`text-sm`}>{duration}</span>
+                      <span className="text-sm">{duration}</span>
                     </div>
                   </div>
                 </div>
@@ -78,16 +105,22 @@ export const SingleVideo = () => {
                   Like
                 </button>
 
-                <button className="icon-container mr-3 font-semibold">
+                <button
+                  onClick={openModal}
+                  className="icon-container mr-3 font-semibold"
+                >
                   <span className="material-icons-outlined mr-1">
-                    turned_in_not
+                    bookmark_border
                   </span>
                   Save to playlist
                 </button>
 
-                <button className="icon-container font-semibold">
+                <button
+                  onClick={handleWatchLaterClick}
+                  className="icon-container font-semibold"
+                >
                   <span className="material-icons-outlined mr-1">
-                    watch_later
+                    {videoInWatchLater ? "task_alt" : "watch_later"}
                   </span>
                   Watch later
                 </button>
