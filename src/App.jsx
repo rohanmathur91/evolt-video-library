@@ -1,5 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Login, VideoListing, WatchLater, Playlist } from "./pages";
+import {
+  Home,
+  Login,
+  Video,
+  Playlist,
+  WatchLater,
+  VideoListing,
+} from "./pages";
 import { Navbar, PlaylistContainer } from "./components";
 import "./App.css";
 
@@ -9,6 +16,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/:videoId" element={<Video />} />
         <Route path="/login" element={<Login />} />
         <Route path="/explore" element={<VideoListing />} />
         <Route path="/playlist" element={<Playlist />} />
