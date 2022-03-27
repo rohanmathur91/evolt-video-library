@@ -14,8 +14,8 @@
   display: block;
 }
 
-.hamburger__menu {
-  font-size: 3.5rem;
+.menu .hamburger__menu {
+  font-size: 4rem;
   user-select: none;
 }
 

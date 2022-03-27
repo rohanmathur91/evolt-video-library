@@ -14,7 +14,7 @@ export const Navbar = () => {
         <div className="flex-row flex-center">
           <div
             onClick={() => setShowSidebar(true)}
-            className={`${styles.menu} mr-1`}
+            className={`${styles.menu} icon-container mr-1`}
           >
             <span
               className={`${styles.hamburger__menu} material-icons cursor-pointer`}
