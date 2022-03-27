@@ -54,7 +54,7 @@ export const SingleVideo = () => {
         console.log(error);
       }
     })();
-  }, [video]);
+  }, [video, playlistDispatch]);
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
