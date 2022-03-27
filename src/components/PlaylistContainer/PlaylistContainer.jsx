@@ -4,7 +4,6 @@ import { deletePlaylist, removeFromPlaylist } from "../../services";
 import { getPlaylistById, removeFromWatchLater } from "../../utils";
 import { usePlaylist } from "../../contexts";
 import { Sidebar, HorizontalCard } from "../";
-import hero from "../../assets/images/hero.svg";
 import styles from "./PlaylistContainer.module.css";
 
 export const PlaylistContainer = ({ title, videoList }) => {
@@ -30,39 +29,24 @@ export const PlaylistContainer = ({ title, videoList }) => {
       <Sidebar />
       <div className="main__container w-100 mt-1 px-2">
         <div className={`${styles.container} mt-4 px-2"`}>
-          <div
-            className={`${styles.playlist__info} mt-1 mx-1 flex-column items-center`}
-          >
-            <div className={`${styles.hero__image}`}>
-              <img
-                alt="hero"
-                className="rounded-sm"
-                src={
-                  playlistId
-                    ? !playlist?.videos.length
-                      ? hero
-                      : playlist?.videos[0].thumbnail
-                    : !videoList.length
-                    ? hero
-                    : videoList[0].thumbnail
-                }
-              />
-            </div>
-            <div className="flex-row items-center content-space-between mt-2 border w-100 p-1 rounded-sm">
-              <div className="text-base px-1">
-                <h3 className="text-base">{title || playlist?.title}</h3>
-                <div>{playlist?.videos.length || videoList.length} videos</div>
-              </div>
-              {playlistId && (
-                <button
-                  onClick={handleDeletePlaylist}
-                  className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
-                >
-                  <span className="material-icons-outlined mx-1">delete</span>
-                </button>
-              )}
-            </div>
+          <div className="flex-row items-center content-space-between mt-2 w-100 p-1 rounded-sm">
+            <h2 className="text-lg">
+              {title || playlist?.title}{" "}
+              <span className={`${styles.videos__count} font-semibold`}>
+                . {playlist?.videos.length || videoList.length} videos
+              </span>
+            </h2>
+
+            {(playlistId || title === "History") && (
+              <button
+                onClick={handleDeletePlaylist}
+                className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
+              >
+                <span className="material-icons-outlined mx-1">delete</span>
+              </button>
+            )}
           </div>
+
           <div className="flex-column items-center">
             {videoList.length ? (
               videoList.map((video) => (
@@ -81,7 +65,7 @@ export const PlaylistContainer = ({ title, videoList }) => {
                 />
               ))
             ) : (
-              <p className="text-center">
+              <p className="text-center mt-6">
                 There are no videos in this yet.{" "}
                 <Link to="/explore" className={`${styles.link} font-semibold`}>
                   Explore all videos
