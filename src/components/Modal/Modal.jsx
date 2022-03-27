@@ -74,7 +74,7 @@ export const Modal = ({ video }) => {
             <input
               type="checkbox"
               id="watch-later"
-              checked={videoInWatchLater ?? false}
+              checked={videoInWatchLater}
               onChange={handleWatchLaterChange}
               className="my-1 mr-2 cursor-pointer"
             />
