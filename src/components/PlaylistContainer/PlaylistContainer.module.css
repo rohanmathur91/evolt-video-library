@@ -1,18 +1,22 @@
 .container {
+  margin: 2rem;
   display: grid;
-  grid-template-columns: 2fr 4fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
 .hero__image {
   max-width: 35rem;
 }
 
-.remove__btn {
+.videos__count {
+  color: var(--text-color);
+}
+
+.delete__btn {
   align-self: flex-start;
 }
 
-.remove__btn:hover {
+.delete__btn:hover {
   background-color: var(--light-gray);
 }
 
@@ -22,6 +26,7 @@
 
 @media screen and (max-width: 48em) {
   .container {
+    margin: 1rem;
     grid-template-columns: 1fr;
   }
 }
