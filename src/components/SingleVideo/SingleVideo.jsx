@@ -81,7 +81,7 @@ export const SingleVideo = () => {
             ></iframe>
           </section>
           <section>
-            <h4 className={`${styles.title} my-2`}>{title}</h4>
+            <h2 className={`${styles.title} sub-header my-2`}>{title}</h2>
 
             <div className="flex-row items-center mb-2 wrap">
               <div className="flex-row">
