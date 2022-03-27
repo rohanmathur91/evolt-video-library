@@ -11,8 +11,20 @@
   font-size: 1.6rem;
 }
 
+.sub-header {
+  font-size: 1.8rem;
+}
+
 .headline {
   font-size: 2.4rem;
+}
+
+/* text-overflow */
+.text-ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 
 /* margin */
