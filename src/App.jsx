@@ -16,9 +16,9 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:videoId" element={<Video />} />
         <Route path="/login" element={<Login />} />
         <Route path="/explore" element={<VideoListing />} />
+        <Route path="/video/:videoId" element={<Video />} />
         <Route path="/playlist" element={<Playlist />} />
         <Route path="/playlist/:id" element={<PlaylistContainer />} />
         <Route path="/watch-later" element={<WatchLater />} />

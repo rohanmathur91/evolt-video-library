@@ -3,10 +3,10 @@ import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = ({ videoId }) => {
   return (
-    <div className="main__container p-2">
-      <section className={`${styles.video}`}>
+    <div className="p-2">
+      <section className={`${styles.container}`}>
         <iframe
-          src={`https://www.youtube.com/embed/rbCGmC1J1x8`}
+          src={`https://www.youtube.com/embed/${videoId}`}
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
