@@ -4,6 +4,10 @@
   gap: 1rem;
 }
 
+.hero__image {
+  max-width: 35rem;
+}
+
 .remove__btn {
   align-self: flex-start;
 }
