@@ -20,12 +20,10 @@ export const playlistReducer = (playlistState, { type, payload }) => {
       };
 
     case "ADD_TO_HISTORY":
-      return !playlistState.history.some(({ _id }) => _id === payload._id)
-        ? {
-            ...playlistState,
-            history: playlistState.history.concat(payload),
-          }
-        : playlistState;
+      return {
+        ...playlistState,
+        history: playlistState.history.concat(payload),
+      };
 
     case "REMOVE_FROM_HISTORY":
       return {

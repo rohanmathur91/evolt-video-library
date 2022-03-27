@@ -7,17 +7,18 @@ import {
   removeFromWatchLater,
   isVideoInWatchLater,
 } from "../../utils";
+import { encodedToken } from "../../token";
 import { Modal } from "../";
 import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = () => {
-  const [video, setVideo] = useState({});
+  const [video, setVideo] = useState(null);
   const [loader, setLoader] = useState(false);
   const { videoId } = useParams();
   const { showModal, openModal, watchLater, playlistDispatch } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
-    video;
+    video ?? {};
 
   useEffect(() => {
     (async () => {
@@ -34,6 +35,26 @@ export const SingleVideo = () => {
       }
     })();
   }, [videoId]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        if (video) {
+          await axios.post(
+            "/api/user/history",
+            { video },
+            {
+              headers: { authorization: encodedToken },
+            }
+          );
+
+          playlistDispatch({ type: "ADD_TO_HISTORY", payload: video });
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [video]);
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {

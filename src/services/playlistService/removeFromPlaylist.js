@@ -3,8 +3,8 @@ import { encodedToken } from "../../token";
 
 export const removeFromPlaylist = async (
   videoId,
-  playlistId,
-  playlistDispatch
+  playlistDispatch,
+  playlistId
 ) => {
   try {
     await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
