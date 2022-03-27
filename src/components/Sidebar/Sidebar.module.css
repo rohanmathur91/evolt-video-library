@@ -4,6 +4,7 @@
   background-color: var(--white);
   position: sticky;
   top: 7.3rem;
+  border-right: 1px solid var(--light-gray);
 }
 
 .sidebar__link {

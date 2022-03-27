@@ -4,6 +4,22 @@
   gap: 1rem;
 }
 
+.hero__image {
+  max-width: 35rem;
+}
+
+.remove__btn {
+  align-self: flex-start;
+}
+
+.remove__btn:hover {
+  background-color: var(--light-gray);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 48em) {
   .container {
     grid-template-columns: 1fr;

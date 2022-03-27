@@ -12,7 +12,7 @@
 }
 
 .headline {
-  font-size: 5.8rem;
+  font-size: 2.4rem;
 }
 
 /* cursor */
@@ -44,6 +44,6 @@
 
 @media screen and (max-width: 48em) {
   .main__container {
-    margin-top: 4rem;
+    margin: 4rem 0;
   }
 }

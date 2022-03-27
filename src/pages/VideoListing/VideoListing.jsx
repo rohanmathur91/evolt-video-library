@@ -13,9 +13,9 @@ export const VideoListing = () => {
       {showModal && <Modal video={clickedVideo} />}
       <div className="flex-row">
         <Sidebar />
-        <div className="main__container w-100 mt-1 px-2">
+        <div className="main__container w-100 px-2">
           <Categories />
-          <div className={`${styles.videos__container}`}>
+          <div className={`${styles.videos__container} mb-2`}>
             {videos.map((video) => (
               <VideoCard
                 key={video._id}

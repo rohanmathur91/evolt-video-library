@@ -24,3 +24,7 @@ select:focus {
   outline: none;
   border: 1px solid var(--dark-gray);
 }
+
+img {
+  vertical-align: middle;
+}

@@ -24,7 +24,9 @@ export const Navbar = () => {
           </div>
 
           <Link to="/">
-            <h3 className={`${styles.brand__logo} font-black`}>EVOLT</h3>
+            <h2 className={`${styles.brand__logo} headline font-black`}>
+              EVOLT
+            </h2>
           </Link>
 
           <div className={`${styles.navbar__menu} ml-4`}>
