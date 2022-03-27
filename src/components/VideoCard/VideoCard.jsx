@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 import { usePlaylist } from "../../contexts";
-import { addToWatchLater } from "../../utils";
+import {
+  addToWatchLater,
+  removeFromWatchLater,
+  isVideoInWatchLater,
+} from "../../utils";
 import styles from "./VideoCard.module.css";
 
 export const VideoCard = ({ video, setClickedVideo }) => {
   const [showOptions, setShowOptions] = useState(false);
-  const { alt, thumbnail, views, duration, title, avatar, creatorName } = video;
-  const { openModal, playlistDispatch } = usePlaylist();
+  const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
+    video;
+  const { openModal, playlistDispatch, watchLater } = usePlaylist();
+  const videoInWatchLater = isVideoInWatchLater(_id, watchLater);
 
-  const handleAddToWatchLater = (video) => {
+  const handleWatchLaterClick = () => {
+    if (!videoInWatchLater) {
+      addToWatchLater(video, playlistDispatch);
+    } else {
+      removeFromWatchLater(_id, playlistDispatch);
+    }
     setShowOptions(false);
-    addToWatchLater(video, playlistDispatch);
   };
 
-  const handleSaveToPlaylist = (video) => {
+  const handleSaveToPlaylist = () => {
     openModal();
     setShowOptions(false);
     setClickedVideo(video);
@@ -52,16 +62,16 @@ export const VideoCard = ({ video, setClickedVideo }) => {
               >
                 <div>
                   <button
-                    onClick={() => handleAddToWatchLater(video)}
+                    onClick={handleWatchLaterClick}
                     className="text-sm flex-row items-center py-1"
                   >
                     <span className="material-icons-outlined text-base mr-1">
-                      watch_later
+                      {videoInWatchLater ? "task_alt" : "watch_later"}
                     </span>
                     Watch later
                   </button>
                   <button
-                    onClick={() => handleSaveToPlaylist(video)}
+                    onClick={handleSaveToPlaylist}
                     className="text-sm flex-row items-center py-1"
                   >
                     <span className="material-icons-outlined text-base mr-1">
