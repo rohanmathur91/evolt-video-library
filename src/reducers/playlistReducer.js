@@ -3,15 +3,6 @@ export const playlistReducer = (playlistState, { type, payload }) => {
     case "SET_PLAYLIST":
       return { ...playlistState, playlists: payload };
 
-    case "ADD_TO_SAVED":
-      return { ...playlistState, saved: payload };
-
-    case "REMOVE_FROM_SAVED":
-      return {
-        ...playlistState,
-        watchLater: playlistState.saved.filter(({ _id }) => _id !== payload),
-      };
-
     case "ADD_TO_WATCH_LATER":
       return !playlistState.watchLater.some(({ _id }) => _id === payload._id)
         ? {
@@ -28,13 +19,18 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         ),
       };
 
-    case "ADD_TO_LIKED":
-      return { ...playlistState, liked: playlistState.liked.concat(payload) };
+    case "ADD_TO_HISTORY":
+      return !playlistState.history.some(({ _id }) => _id === payload._id)
+        ? {
+            ...playlistState,
+            history: playlistState.history.concat(payload),
+          }
+        : playlistState;
 
-    case "REMOVE_FROM_LIKED":
+    case "REMOVE_FROM_HISTORY":
       return {
         ...playlistState,
-        watchLater: playlistState.liked.filter(({ _id }) => _id !== payload),
+        history: playlistState.history.filter(({ _id }) => _id !== payload),
       };
 
     case "ADD_TO_PLAYLIST":
