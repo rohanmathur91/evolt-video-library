@@ -5,11 +5,5 @@ import { usePlaylist } from "../../contexts";
 export const WatchLater = () => {
   const { watchLater } = usePlaylist();
 
-  return (
-    <PlaylistContainer
-      title="Watch later"
-      playlist="watchLater"
-      videoList={watchLater}
-    />
-  );
+  return <PlaylistContainer title="Watch later" videoList={watchLater} />;
 };
