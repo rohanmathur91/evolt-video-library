@@ -15,7 +15,7 @@ export const PlaylistContainer = ({ title, videoList }) => {
 
   const handleRemoveFromPlaylist = (videoId) => {
     if (playlistId) {
-      removeFromPlaylist(videoId, playlistId, playlistDispatch);
+      removeFromPlaylist(videoId, playlistDispatch, playlistId);
     } else {
       removeFromWatchLater(videoId, playlistDispatch);
     }
