@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Sidebar } from "../../components";
 import { usePlaylist } from "../../contexts";
-import styles from "./Playlist.module.css";
+import styles from "./Playlists.module.css";
 
-export const Playlist = () => {
+export const Playlists = () => {
   const { playlists } = usePlaylist();
 
   return (
