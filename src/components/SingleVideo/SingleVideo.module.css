@@ -27,3 +27,13 @@
 .video__options {
   margin-left: auto;
 }
+
+@media screen and (max-width: 30em) {
+  .video__options {
+    margin: 2rem auto;
+  }
+
+  .video__options button {
+    font-size: 1.2rem;
+  }
+}
