@@ -3,17 +3,13 @@
 }
 
 .thumbnail {
-  width: 30rem;
   user-select: none;
 }
 
 .thumbnail img {
-  aspect-ratio: 2/1;
-  object-fit: cover;
-}
-
-.creator__name {
-  color: var(--text-color);
+  width: 100%;
+  height: auto;
+  min-width: 32rem;
 }
 
 .description {
@@ -22,6 +18,11 @@
 
 .details {
   margin-top: auto;
+}
+
+.details,
+.description,
+.creator__name {
   color: var(--text-color);
 }
 
@@ -47,5 +48,9 @@
 @media screen and (max-width: 48em) {
   .container {
     flex-direction: column;
+  }
+
+  .thumbnail {
+    margin-bottom: 1.2rem;
   }
 }

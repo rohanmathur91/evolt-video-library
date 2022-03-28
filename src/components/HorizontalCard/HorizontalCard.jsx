@@ -27,7 +27,7 @@ export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
 
         <div className="flex-row">
           <div
-            className="flex-column py-1 px-2"
+            className="flex-column px-2 my-1"
             onClick={() => navigate(`/video/${_id}`)}
           >
             <p className={`${styles.creator__name}`}>{creatorName}</p>
