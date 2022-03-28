@@ -43,7 +43,7 @@ export const PlaylistContainer = ({
             className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
             <div className="flex-row items-center content-space-between mb-1">
-              <h3 className="text-lg">Are you sure ?</h3>
+              <h3 className="sub-header">Are you sure ?</h3>
               <button
                 onClick={() => handleShowModal(false)}
                 className={`${styles.close__btn} icon-container p-1 rounded-sm`}
@@ -51,9 +51,9 @@ export const PlaylistContainer = ({
                 <span className="material-icons-outlined mx-1">close</span>
               </button>
             </div>
-            <p className={`${styles.message} mb-2 pr-1 font-sm`}>
-              This will clear all the videos from {title}. You won't be able to
-              retrive it again.
+            <p className={`${styles.message} mb-2 pr-1 text-sm`}>
+              This will clear all the videos from {title || playlist?.title}.
+              You won't be able to retrive it again.
             </p>
             <div className="ml-auto mr-2">
               <button
