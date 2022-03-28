@@ -20,7 +20,7 @@ export const Playlists = () => {
             >
               Liked videos{" "}
               <span className={`${styles.video_count} text-sm`}>
-                . {likedVideos.length} video
+                . {likedVideos.length} videos
               </span>
             </Link>
             <Link
@@ -29,7 +29,7 @@ export const Playlists = () => {
             >
               Watch later{" "}
               <span className={`${styles.video_count} text-sm`}>
-                . {watchLater.length} video
+                . {watchLater.length} videos
               </span>
             </Link>
             {playlists.map(({ _id, title }) => (
@@ -38,7 +38,10 @@ export const Playlists = () => {
                 to={`/playlist/${_id}`}
                 className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
               >
-                {title}
+                {title}{" "}
+                <span className={`${styles.video_count} text-sm`}>
+                  . {playlists.length} videos
+                </span>
               </Link>
             ))}
           </div>
