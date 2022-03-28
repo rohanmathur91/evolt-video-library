@@ -5,7 +5,7 @@ import { usePlaylist } from "../../contexts";
 import styles from "./Playlists.module.css";
 
 export const Playlists = () => {
-  const { playlists } = usePlaylist();
+  const { playlists, likedVideos, watchLater } = usePlaylist();
 
   return (
     <div className="flex-row">
@@ -18,13 +18,19 @@ export const Playlists = () => {
               to="/liked-videos"
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
-              Liked videos
+              Liked videos{" "}
+              <span className={`${styles.video_count} text-sm`}>
+                . {likedVideos.length} video
+              </span>
             </Link>
             <Link
               to="/watch-later"
               className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
             >
-              Watch later videos
+              Watch later{" "}
+              <span className={`${styles.video_count} text-sm`}>
+                . {watchLater.length} video
+              </span>
             </Link>
             {playlists.map(({ _id, title }) => (
               <Link
