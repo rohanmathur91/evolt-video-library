@@ -19,20 +19,25 @@ export const VideoListing = () => {
       {showModal && (
         <PlaylistModal video={clickedVideo} handleShowModal={handleShowModal} />
       )}
+
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
           <Categories />
-          <div className={`${styles.videos__container} mb-2`}>
-            {videos.map((video) => (
-              <VideoCard
-                key={video._id}
-                video={video}
-                setClickedVideo={setClickedVideo}
-                handleShowModal={handleShowModal}
-              />
-            ))}
-          </div>
+          {videos.length ? (
+            <div className={`${styles.videos__container} mb-2`}>
+              {videos.map((video) => (
+                <VideoCard
+                  key={video._id}
+                  video={video}
+                  setClickedVideo={setClickedVideo}
+                  handleShowModal={handleShowModal}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className="mt-4 text-center">No videos found.</p>
+          )}
         </div>
       </div>
     </>

@@ -12,8 +12,8 @@
   box-shadow: 0 1px 3px 0px var(--shadow);
 }
 
-.material-icons-outlined {
-  user-select: none;
+.video_count {
+  color: var(--text-color);
 }
 
 @media screen and (max-width: 48em) {
