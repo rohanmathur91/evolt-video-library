@@ -1,7 +1,7 @@
 import React from "react";
 import { PlaylistContainer } from "../../components";
 import { usePlaylist } from "../../contexts";
-import { removeFromHistory } from "../../utils";
+import { removeFromHistory, clearAllHistory } from "../../utils";
 
 export const History = () => {
   const { history } = usePlaylist();
@@ -11,6 +11,7 @@ export const History = () => {
       title="History"
       videoList={history}
       removeVideoHandler={removeFromHistory}
+      deletePlaylistHandler={clearAllHistory}
     />
   );
 };
