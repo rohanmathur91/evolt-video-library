@@ -5,12 +5,15 @@ import {
   createPlaylist,
   addVideoInPlaylist,
   removeFromPlaylist,
+  addInLikeVideos,
+  removeFromLikeVideos,
 } from "../../services";
 import {
-  addToWatchLater,
-  removeFromWatchLater,
+  isVideoLiked,
   isVideoInWatchLater,
   isVideoInPlaylist,
+  addToWatchLater,
+  removeFromWatchLater,
 } from "../../utils";
 import { Modal } from "../";
 import styles from "./PlaylistModal.module.css";
@@ -22,7 +25,9 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
       showInput: false,
       newPlaylistName: "",
     });
-  const { watchLater, playlists, playlistDispatch } = usePlaylist();
+  const { watchLater, likedVideos, playlists, playlistDispatch } =
+    usePlaylist();
+  const likedVideo = isVideoLiked(video._id, likedVideos);
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
 
   const handleInputChange = (event) => {
@@ -39,6 +44,14 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
       playlistModalDispatch,
       playlistDispatch
     );
+  };
+
+  const handleLikeClick = (event) => {
+    if (event.target.checked) {
+      addInLikeVideos(video, playlistDispatch);
+    } else {
+      removeFromLikeVideos(video._id, playlistDispatch);
+    }
   };
 
   const handleWatchLaterChange = (event) => {
@@ -89,6 +102,8 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
             <input
               type="checkbox"
               id="saved-videos"
+              checked={likedVideo}
+              onChange={handleLikeClick}
               className="my-1 mr-2 cursor-pointer"
             />
             Liked Videos

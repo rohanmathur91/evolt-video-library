@@ -6,12 +6,12 @@ import { encodedToken } from "../token";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [{ liked, history, watchLater, playlists }, playlistDispatch] =
+  const [{ history, likedVideos, watchLater, playlists }, playlistDispatch] =
     useReducer(playlistReducer, {
-      liked: [],
       history: [],
       watchLater: [],
       playlists: [],
+      likedVideos: [],
     });
 
   useEffect(() => {
@@ -33,10 +33,10 @@ const PlaylistProvider = ({ children }) => {
   return (
     <PlaylistContext.Provider
       value={{
-        liked,
         history,
         watchLater,
         playlists,
+        likedVideos,
         playlistDispatch,
       }}
     >

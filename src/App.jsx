@@ -7,6 +7,7 @@ import {
   History,
   WatchLater,
   VideoListing,
+  LikedVideos,
 } from "./pages";
 import { Navbar, PlaylistContainer } from "./components";
 import "./App.css";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/explore" element={<VideoListing />} />
         <Route path="/history" element={<History />} />
+        <Route path="/liked-videos" element={<LikedVideos />} />
         <Route path="/video/:videoId" element={<Video />} />
         <Route path="/playlists" element={<Playlists />} />
         <Route path="/playlist/:id" element={<PlaylistContainer />} />
