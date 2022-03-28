@@ -1,6 +1,6 @@
 export const mobileNavigationData = [
   { path: "/profile", icon: "person_outline", optionName: "Profile" },
-  { path: "/home", icon: "home", optionName: "Home" },
+  { path: "/", icon: "home", optionName: "Home" },
   { path: "/explore", icon: "explore", optionName: "Exlore" },
   { path: "/playlists", icon: "video_library", optionName: "Playlists" },
   {
