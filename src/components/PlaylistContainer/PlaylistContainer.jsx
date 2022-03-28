@@ -42,7 +42,7 @@ export const PlaylistContainer = ({
           <div
             className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
-            <div className="flex-row items-center content-space-between mb-1">
+            <div className="flex-row items-center content-space-between">
               <h3 className="sub-header">Are you sure ?</h3>
               <button
                 onClick={() => handleShowModal(false)}
@@ -55,7 +55,7 @@ export const PlaylistContainer = ({
               This will clear all the videos from {title || playlist?.title}.
               You won't be able to retrive it again.
             </p>
-            <div className="ml-auto mr-2">
+            <div className="ml-auto mr-1 pb-1">
               <button
                 className={`${styles.btn__outlined} font-sm p-1 mr-1 rounded-sm font-semibold transition-2`}
                 onClick={() => handleShowModal(false)}
@@ -88,6 +88,7 @@ export const PlaylistContainer = ({
               {(playlistId ||
                 (title === "History" && videoList.length > 0)) && (
                 <button
+                  title="Delete"
                   onClick={() => handleShowModal(true)}
                   className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
                 >

@@ -54,6 +54,7 @@ export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
           </div>
 
           <button
+            title="Remove"
             onClick={() => handleRemoveFromPlaylist(_id)}
             className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
           >
