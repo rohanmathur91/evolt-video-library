@@ -1,0 +1,17 @@
+.container {
+  width: 100%;
+  max-width: 25rem;
+  background-color: var(--white);
+}
+
+.header {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.add__icon {
+  margin-left: 2px;
+}
+
+.btn {
+  text-transform: none;
+}

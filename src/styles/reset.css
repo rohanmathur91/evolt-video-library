@@ -28,3 +28,7 @@ select:focus {
 img {
   vertical-align: middle;
 }
+
+button {
+  text-transform: uppercase;
+}

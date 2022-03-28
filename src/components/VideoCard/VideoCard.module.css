@@ -36,6 +36,10 @@
   box-shadow: 0 1px 3px 0px var(--shadow);
 }
 
+.options button {
+  text-transform: none;
+}
+
 .close__btn:hover {
   color: var(--text-color);
 }

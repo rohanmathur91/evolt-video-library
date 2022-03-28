@@ -1,16 +1,24 @@
 import React, { useState } from "react";
-import { useVideo, usePlaylist } from "../../contexts";
-import { Modal, Sidebar, VideoCard, Categories } from "../../components";
+import { useVideo } from "../../contexts";
+import { useModal } from "../../hooks";
+import {
+  Sidebar,
+  VideoCard,
+  Categories,
+  PlaylistModal,
+} from "../../components";
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
   const [clickedVideo, setClickedVideo] = useState(null);
   const { videos } = useVideo();
-  const { showModal } = usePlaylist();
+  const { showModal, handleShowModal } = useModal();
 
   return (
     <>
-      {showModal && <Modal video={clickedVideo} />}
+      {showModal && (
+        <PlaylistModal video={clickedVideo} handleShowModal={handleShowModal} />
+      )}
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
@@ -21,6 +29,7 @@ export const VideoListing = () => {
                 key={video._id}
                 video={video}
                 setClickedVideo={setClickedVideo}
+                handleShowModal={handleShowModal}
               />
             ))}
           </div>

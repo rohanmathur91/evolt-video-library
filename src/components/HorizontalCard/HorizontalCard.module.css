@@ -1,34 +1,28 @@
 .card {
-  width: 100%;
   background-color: var(--white);
 }
 
-.card,
-.playlist__info {
-  max-width: 62rem;
-}
-
 .thumbnail {
-  max-width: 18rem;
   user-select: none;
 }
 
-.title {
-  line-height: 1.2;
-  font-size: 1.6rem;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  min-width: 32rem;
 }
 
-.close__btn:hover {
-  color: var(--text-color);
+.description {
+  -webkit-line-clamp: 2;
 }
 
 .details {
   margin-top: auto;
+}
+
+.details,
+.description,
+.creator__name {
   color: var(--text-color);
 }
 
@@ -39,9 +33,24 @@
 
 .remove__btn {
   margin-left: auto;
+  visibility: hidden;
   align-self: flex-start;
 }
 
 .remove__btn:hover {
   background-color: var(--light-gray);
+}
+
+.card:hover .remove__btn {
+  visibility: visible;
+}
+
+@media screen and (max-width: 48em) {
+  .container {
+    flex-direction: column;
+  }
+
+  .thumbnail {
+    margin-bottom: 1.2rem;
+  }
 }

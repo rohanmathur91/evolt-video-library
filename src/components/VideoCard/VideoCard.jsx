@@ -8,13 +8,13 @@ import {
 } from "../../utils";
 import styles from "./VideoCard.module.css";
 
-export const VideoCard = ({ video, setClickedVideo }) => {
+export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const navigate = useNavigate();
+  const { playlistDispatch, watchLater } = usePlaylist();
+  const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
-  const { openModal, playlistDispatch, watchLater } = usePlaylist();
-  const navigate = useNavigate();
-  const videoInWatchLater = isVideoInWatchLater(_id, watchLater);
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
@@ -26,7 +26,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
   };
 
   const handleSaveToPlaylist = () => {
-    openModal();
+    handleShowModal(true);
     setShowOptions(false);
     setClickedVideo(video);
   };
@@ -70,7 +70,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
                     <span className="material-icons-outlined text-base mr-1">
                       {videoInWatchLater ? "task_alt" : "watch_later"}
                     </span>
-                    Watch later
+                    Watch Later
                   </button>
                   <button
                     onClick={handleSaveToPlaylist}
@@ -120,4 +120,6 @@ VideoCard.defaultProps = {
     duration: "0:00",
     creatorName: "",
   },
+  setClickedVideo: () => {},
+  handleShowModal: () => {},
 };

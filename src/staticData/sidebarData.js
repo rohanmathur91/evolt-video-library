@@ -1,7 +1,7 @@
 export const sidebarData = [
   { path: "/home", icon: "home", optionName: "Home" },
   { path: "/explore", icon: "explore", optionName: "Exlore" },
-  { path: "/playlist", icon: "video_library", optionName: "Playlists" },
+  { path: "/playlists", icon: "video_library", optionName: "Playlists" },
   {
     path: "/watch-later",
     icon: "watch_later",

@@ -14,8 +14,8 @@
   display: block;
 }
 
-.hamburger__menu {
-  font-size: 3.5rem;
+.menu .hamburger__menu {
+  font-size: 3.4rem;
   user-select: none;
 }
 
@@ -58,7 +58,9 @@
 
 @media screen and (max-width: 64em) {
   .menu {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .profile__icon,

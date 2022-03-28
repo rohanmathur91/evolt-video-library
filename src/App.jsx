@@ -3,7 +3,8 @@ import {
   Home,
   Login,
   Video,
-  Playlist,
+  Playlists,
+  History,
   WatchLater,
   VideoListing,
 } from "./pages";
@@ -18,8 +19,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/explore" element={<VideoListing />} />
+        <Route path="/history" element={<History />} />
         <Route path="/video/:videoId" element={<Video />} />
-        <Route path="/playlist" element={<Playlist />} />
+        <Route path="/playlists" element={<Playlists />} />
         <Route path="/playlist/:id" element={<PlaylistContainer />} />
         <Route path="/watch-later" element={<WatchLater />} />
       </Routes>

@@ -11,7 +11,7 @@ export const deletePlaylist = async (
       headers: { authorization: encodedToken },
     });
 
-    navigate("/playlist");
+    navigate("/playlists");
     playlistDispatch({ type: "DELETE_PLAYLIST", payload: playlistId });
   } catch (error) {
     console.log(error);

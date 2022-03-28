@@ -6,20 +6,13 @@ import { encodedToken } from "../token";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [{ saved, liked, watchLater, playlists, showModal }, playlistDispatch] =
+  const [{ liked, history, watchLater, playlists }, playlistDispatch] =
     useReducer(playlistReducer, {
-      saved: [],
       liked: [],
+      history: [],
       watchLater: [],
       playlists: [],
-      showModal: false,
     });
-
-  const openModal = () =>
-    playlistDispatch({ type: "HANDLE_MODAL", payload: true });
-
-  const closeModal = () =>
-    playlistDispatch({ type: "HANDLE_MODAL", payload: false });
 
   useEffect(() => {
     (async () => {
@@ -40,13 +33,10 @@ const PlaylistProvider = ({ children }) => {
   return (
     <PlaylistContext.Provider
       value={{
-        saved,
         liked,
+        history,
         watchLater,
         playlists,
-        showModal,
-        openModal,
-        closeModal,
         playlistDispatch,
       }}
     >

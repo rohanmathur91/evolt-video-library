@@ -1,98 +1,140 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { deletePlaylist, removeFromPlaylist } from "../../services";
-import { getPlaylistById, removeFromWatchLater } from "../../utils";
 import { usePlaylist } from "../../contexts";
-import { Sidebar, HorizontalCard } from "../";
-import hero from "../../assets/images/hero.svg";
+import { useModal } from "../../hooks";
+import { getPlaylistById } from "../../utils";
+import { Modal, Sidebar, HorizontalCard } from "../";
 import styles from "./PlaylistContainer.module.css";
 
-export const PlaylistContainer = ({ title, videoList }) => {
+export const PlaylistContainer = ({
+  title,
+  videoList,
+  removeVideoHandler,
+  deletePlaylistHandler,
+}) => {
   const navigate = useNavigate();
   const { id: playlistId } = useParams();
+  const { showModal, handleShowModal } = useModal();
   const { playlists, playlistDispatch } = usePlaylist();
   const playlist = getPlaylistById(playlistId, playlists);
 
   const handleRemoveFromPlaylist = (videoId) => {
     if (playlistId) {
-      removeFromPlaylist(videoId, playlistId, playlistDispatch);
+      removeFromPlaylist(videoId, playlistDispatch, playlistId);
     } else {
-      removeFromWatchLater(videoId, playlistDispatch);
+      removeVideoHandler(videoId, playlistDispatch);
     }
   };
 
   const handleDeletePlaylist = () => {
-    deletePlaylist(playlistId, playlistDispatch, navigate);
+    if (playlistId) {
+      deletePlaylist(playlistId, playlistDispatch, navigate);
+    } else {
+      deletePlaylistHandler(playlistDispatch, navigate);
+    }
   };
 
   return (
-    <div className="flex-row">
-      <Sidebar />
-      <div className="main__container w-100 mt-1 px-2">
-        <div className={`${styles.container} mt-4 px-2"`}>
+    <>
+      {showModal && (
+        <Modal>
           <div
-            className={`${styles.playlist__info} mt-1 mx-1 flex-column items-center`}
+            className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
-            <div className={`${styles.hero__image}`}>
-              <img
-                alt="hero"
-                className="rounded-sm"
-                src={
-                  playlistId
-                    ? !playlist?.videos.length
-                      ? hero
-                      : playlist?.videos[0].thumbnail
-                    : !videoList.length
-                    ? hero
-                    : videoList[0].thumbnail
-                }
-              />
+            <div className="flex-row items-center content-space-between mb-1">
+              <h3 className="text-lg">Are you sure ?</h3>
+              <button
+                onClick={() => handleShowModal(false)}
+                className={`${styles.close__btn} icon-container p-1 rounded-sm`}
+              >
+                <span className="material-icons-outlined mx-1">close</span>
+              </button>
             </div>
-            <div className="flex-row items-center content-space-between mt-2 border w-100 p-1 rounded-sm">
-              <div className="text-base px-1">
-                <h3 className="text-base">{title || playlist?.title}</h3>
-                <div>{playlist?.videos.length || videoList.length} videos</div>
-              </div>
-              {playlistId && (
+            <p className={`${styles.message} mb-2 pr-1 font-sm`}>
+              This will clear all the videos from {title}. You won't be able to
+              retrive it again.
+            </p>
+            <div className="ml-auto mr-2">
+              <button
+                className={`${styles.btn__outlined} font-sm p-1 mr-1 rounded-sm font-semibold transition-2`}
+                onClick={() => handleShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className={`${styles.btn__clearAll} font-sm p-1 rounded-sm font-semibold transition-2`}
+                onClick={handleDeletePlaylist}
+              >
+                Clear All
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
+
+      <div className="flex-row">
+        <Sidebar />
+        <div className="main__container w-100 mt-1 px-2">
+          <div className={`${styles.container} mt-4 px-2"`}>
+            <div className="flex-row items-center content-space-between mt-2 w-100 p-1 rounded-sm">
+              <h2 className="text-lg">
+                {title || playlist?.title}{" "}
+                <span className={`${styles.videos__count} font-semibold`}>
+                  . {playlist?.videos.length || videoList.length} videos
+                </span>
+              </h2>
+
+              {(playlistId ||
+                (title === "History" && videoList.length > 0)) && (
                 <button
-                  onClick={handleDeletePlaylist}
-                  className={`${styles.remove__btn} icon-container p-1 rounded-sm`}
+                  onClick={() => handleShowModal(true)}
+                  className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
                 >
                   <span className="material-icons-outlined mx-1">delete</span>
                 </button>
               )}
             </div>
-          </div>
-          <div className="flex-column items-center">
-            {videoList.length ? (
-              videoList.map((video) => (
-                <HorizontalCard
-                  key={video._id}
-                  video={video}
-                  handleRemoveFromPlaylist={handleRemoveFromPlaylist}
-                />
-              ))
-            ) : playlist?.videos.length ? (
-              playlist.videos.map((video) => (
-                <HorizontalCard
-                  key={video._id}
-                  video={video}
-                  handleRemoveFromPlaylist={handleRemoveFromPlaylist}
-                />
-              ))
-            ) : (
-              <p className="text-center">
-                There are no videos in this yet.{" "}
-                <Link to="/explore" className={`${styles.link} font-semibold`}>
-                  Explore all videos
-                </Link>
-              </p>
-            )}
+
+            <div className="flex-column items-center">
+              {videoList.length ? (
+                videoList.map((video) => (
+                  <HorizontalCard
+                    key={video._id}
+                    video={video}
+                    handleRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  />
+                ))
+              ) : playlist?.videos.length ? (
+                playlist.videos.map((video) => (
+                  <HorizontalCard
+                    key={video._id}
+                    video={video}
+                    handleRemoveFromPlaylist={handleRemoveFromPlaylist}
+                  />
+                ))
+              ) : (
+                <p className="text-center mt-6">
+                  There are no videos in this yet.{" "}
+                  <Link
+                    to="/explore"
+                    className={`${styles.link} font-semibold`}
+                  >
+                    Explore all videos
+                  </Link>
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
-PlaylistContainer.defaultProps = { title: "", videoList: [] };
+PlaylistContainer.defaultProps = {
+  title: "",
+  videoList: [],
+  removeHandler: () => {},
+  deleteHandler: () => {},
+};

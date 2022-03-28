@@ -1,18 +1,22 @@
 .container {
+  margin: 2rem;
   display: grid;
-  grid-template-columns: 2fr 4fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
 }
 
 .hero__image {
   max-width: 35rem;
 }
 
-.remove__btn {
+.videos__count {
+  color: var(--text-color);
+}
+
+.delete__btn {
   align-self: flex-start;
 }
 
-.remove__btn:hover {
+.delete__btn:hover {
   background-color: var(--light-gray);
 }
 
@@ -20,8 +24,43 @@
   text-decoration: underline;
 }
 
+/* modal */
+.modal {
+  width: 100%;
+  max-width: 38rem;
+  background-color: var(--white);
+}
+
+.message {
+  color: var(--text-color);
+}
+
+.close__btn {
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.close__btn:hover {
+  background-color: var(--light-gray);
+}
+
+.btn__outlined {
+  border: 1px solid var(--primary-color);
+}
+
+.btn__clearAll,
+.btn__outlined:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.btn__clearAll:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 48em) {
   .container {
+    margin: 1rem;
     grid-template-columns: 1fr;
   }
 }

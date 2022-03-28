@@ -6,3 +6,4 @@ export { HorizontalCard } from "./HorizontalCard/HorizontalCard";
 export { Modal } from "./Modal/Modal";
 export { PlaylistContainer } from "./PlaylistContainer/PlaylistContainer";
 export { SingleVideo } from "./SingleVideo/SingleVideo";
+export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
