@@ -8,7 +8,7 @@ import {
 } from "../../utils";
 import styles from "./VideoCard.module.css";
 
-export const VideoCard = ({ video, setClickedVideo }) => {
+export const VideoCard = ({ video, setShowModal, setClickedVideo }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
@@ -26,7 +26,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
   };
 
   const handleSaveToPlaylist = () => {
-    openModal();
+    setShowModal(true);
     setShowOptions(false);
     setClickedVideo(video);
   };
@@ -120,4 +120,6 @@ VideoCard.defaultProps = {
     duration: "0:00",
     creatorName: "",
   },
+  setShowModal: () => {},
+  setClickedVideo: () => {},
 };

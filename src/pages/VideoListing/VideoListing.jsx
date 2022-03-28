@@ -9,13 +9,15 @@ import {
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
+  const [showModal, setShowModal] = useState(false);
   const [clickedVideo, setClickedVideo] = useState(null);
   const { videos } = useVideo();
-  const { showModal } = usePlaylist();
 
   return (
     <>
-      {showModal && <PlaylistModal video={clickedVideo} />}
+      {showModal && (
+        <PlaylistModal video={clickedVideo} setShowModal={setShowModal} />
+      )}
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
@@ -25,6 +27,7 @@ export const VideoListing = () => {
               <VideoCard
                 key={video._id}
                 video={video}
+                setShowModal={setShowModal}
                 setClickedVideo={setClickedVideo}
               />
             ))}
