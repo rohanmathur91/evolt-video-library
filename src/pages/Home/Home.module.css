@@ -1,0 +1,23 @@
+.header {
+  height: 68vh;
+}
+
+.header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.categories {
+  gap: 1rem;
+}
+
+.category {
+  flex-grow: 1;
+  max-width: 20rem;
+  background-color: var(--light-gray);
+}
+
+.category:hover {
+  box-shadow: 0 1px 3px 0px var(--shadow);
+}
