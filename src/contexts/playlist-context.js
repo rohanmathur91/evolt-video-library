@@ -6,15 +6,13 @@ import { encodedToken } from "../token";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [
-    { liked, history, watchLater, playlists, showModal },
-    playlistDispatch,
-  ] = useReducer(playlistReducer, {
-    liked: [],
-    history: [],
-    watchLater: [],
-    playlists: [],
-  });
+  const [{ liked, history, watchLater, playlists }, playlistDispatch] =
+    useReducer(playlistReducer, {
+      liked: [],
+      history: [],
+      watchLater: [],
+      playlists: [],
+    });
 
   useEffect(() => {
     (async () => {
