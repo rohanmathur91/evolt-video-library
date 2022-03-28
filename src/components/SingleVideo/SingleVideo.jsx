@@ -8,7 +8,7 @@ import {
   isVideoInWatchLater,
 } from "../../utils";
 import { encodedToken } from "../../token";
-import { Modal } from "../";
+import { PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = () => {
@@ -66,7 +66,7 @@ export const SingleVideo = () => {
 
   return (
     <>
-      {showModal && <Modal video={video} />}
+      {showModal && <PlaylistModal video={video} />}
       {loader ? (
         <p className="text-sm text-center mb-2 p-2">Fetching video...</p>
       ) : (

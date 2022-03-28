@@ -17,11 +17,13 @@ const PlaylistProvider = ({ children }) => {
     showModal: false,
   });
 
-  const openModal = () =>
+  const openModal = () => {
     playlistDispatch({ type: "HANDLE_MODAL", payload: true });
+  };
 
-  const closeModal = () =>
+  const closeModal = () => {
     playlistDispatch({ type: "HANDLE_MODAL", payload: false });
+  };
 
   useEffect(() => {
     (async () => {
