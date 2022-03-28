@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "../../contexts";
+import { addInLikeVideos, removeFromLikeVideos } from "../../services";
 import { useModal } from "../../hooks";
 import {
   addToWatchLater,
   removeFromWatchLater,
   isVideoInWatchLater,
+  isVideoLiked,
 } from "../../utils";
 import { encodedToken } from "../../token";
 import { PlaylistModal } from "../";
@@ -15,9 +17,10 @@ import styles from "./SingleVideo.module.css";
 export const SingleVideo = () => {
   const [video, setVideo] = useState(null);
   const [loader, setLoader] = useState(false);
-  const { showModal, handleShowModal } = useModal();
   const { videoId } = useParams();
-  const { watchLater, playlistDispatch } = usePlaylist();
+  const { showModal, handleShowModal } = useModal();
+  const { watchLater, likedVideos, playlistDispatch } = usePlaylist();
+  const isLiked = isVideoLiked(videoId, likedVideos);
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
@@ -57,6 +60,14 @@ export const SingleVideo = () => {
       }
     })();
   }, [video, playlistDispatch]);
+
+  const handleLikeClick = () => {
+    if (!isLiked) {
+      addInLikeVideos(video, playlistDispatch);
+    } else {
+      removeFromLikeVideos(_id, playlistDispatch);
+    }
+  };
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
@@ -116,8 +127,17 @@ export const SingleVideo = () => {
               </div>
 
               <div className={`${styles.video__options} flex-row my-2`}>
-                <button className="icon-container mr-3 font-semibold">
-                  <span className="material-icons-outlined mr-1">thumb_up</span>
+                <button
+                  onClick={handleLikeClick}
+                  className="icon-container mr-3 font-semibold"
+                >
+                  <span
+                    className={`${
+                      isLiked ? "material-icons" : "material-icons-outlined"
+                    } mr-1`}
+                  >
+                    thumb_up
+                  </span>
                   Like
                 </button>
 
