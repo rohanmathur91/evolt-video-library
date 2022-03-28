@@ -42,7 +42,7 @@ export const videos = [
     creatorName: "Marques Brownlee",
     avatar:
       "https://yt3.ggpht.com/lkH37D712tiyphnu0Id0D5MwwQ7IRuwgQLVD05iMXlDWO-kDHut3uI4MgIEAQ9StK0qOST7fiA=s48-c-k-c0x00ffffff-no-rj",
-    category: "Unboxing",
+    category: "Noise Cancelling",
     description:
       "Microsoft. Do you think you can get me to like your headphones just for a new color? Surround yourself with spectacular Omnisonic sound for music, shows, and calls. Stay focused with adjustable noise cancellation. And, listen in comfort with up to 18.5 hours of music listening time.",
   },
