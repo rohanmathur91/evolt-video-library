@@ -70,7 +70,8 @@ export const PlaylistContainer = ({
                 </span>
               </h2>
 
-              {(playlistId || title === "History") && (
+              {(playlistId ||
+                (title === "History" && videoList.length > 0)) && (
                 <button
                   onClick={() => handleShowModal(true)}
                   className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
