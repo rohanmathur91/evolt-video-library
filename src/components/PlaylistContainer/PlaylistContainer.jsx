@@ -1,12 +1,17 @@
 import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { deletePlaylist, removeFromPlaylist } from "../../services";
-import { getPlaylistById, removeFromWatchLater } from "../../utils";
 import { usePlaylist } from "../../contexts";
+import { getPlaylistById } from "../../utils";
 import { Sidebar, HorizontalCard } from "../";
 import styles from "./PlaylistContainer.module.css";
 
-export const PlaylistContainer = ({ title, videoList }) => {
+export const PlaylistContainer = ({
+  title,
+  videoList,
+  removeVideoHandler,
+  deletePlaylistHandler,
+}) => {
   const navigate = useNavigate();
   const { id: playlistId } = useParams();
   const { playlists, playlistDispatch } = usePlaylist();
@@ -16,7 +21,7 @@ export const PlaylistContainer = ({ title, videoList }) => {
     if (playlistId) {
       removeFromPlaylist(videoId, playlistDispatch, playlistId);
     } else {
-      removeFromWatchLater(videoId, playlistDispatch);
+      removeVideoHandler(videoId, playlistDispatch);
     }
   };
 
@@ -79,4 +84,9 @@ export const PlaylistContainer = ({ title, videoList }) => {
   );
 };
 
-PlaylistContainer.defaultProps = { title: "", videoList: [] };
+PlaylistContainer.defaultProps = {
+  title: "",
+  videoList: [],
+  removeHandler: () => {},
+  deleteHandler: () => {},
+};
