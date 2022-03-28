@@ -57,6 +57,7 @@
 .main__container {
   margin: 0 auto;
   max-width: 140.8rem;
+  height: calc(100vh - 8rem);
 }
 
 @media screen and (max-width: 48em) {
