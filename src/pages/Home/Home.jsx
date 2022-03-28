@@ -22,7 +22,7 @@ export const Home = () => {
       </header>
       <section className="mb-4 px-3">
         <h2 className="text-lg my-2">Categories</h2>
-        <div className={`${styles.categories} flex-row wrap`}>
+        <div className={`${styles.categories}`}>
           {categories.map(({ _id, categoryName }) => (
             <p
               key={_id}

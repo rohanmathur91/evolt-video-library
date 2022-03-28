@@ -9,6 +9,8 @@
 }
 
 .categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
 }
 
@@ -19,4 +21,10 @@
 
 .category:hover {
   box-shadow: 0 1px 3px 0px var(--shadow);
+}
+
+@media screen and (max-width: 48em) {
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
