@@ -20,7 +20,7 @@ export const SingleVideo = () => {
   const { videoId } = useParams();
   const { showModal, handleShowModal } = useModal();
   const { watchLater, likedVideos, playlistDispatch } = usePlaylist();
-  const isLiked = isVideoLiked(videoId, likedVideos);
+  const likedVideo = isVideoLiked(videoId, likedVideos);
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
@@ -62,7 +62,7 @@ export const SingleVideo = () => {
   }, [video, playlistDispatch]);
 
   const handleLikeClick = () => {
-    if (!isLiked) {
+    if (!likedVideo) {
       addInLikeVideos(video, playlistDispatch);
     } else {
       removeFromLikeVideos(_id, playlistDispatch);
@@ -133,7 +133,7 @@ export const SingleVideo = () => {
                 >
                   <span
                     className={`${
-                      isLiked ? "material-icons" : "material-icons-outlined"
+                      likedVideo ? "material-icons" : "material-icons-outlined"
                     } mr-1`}
                   >
                     thumb_up
