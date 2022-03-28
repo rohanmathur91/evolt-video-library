@@ -140,3 +140,16 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
     </Modal>
   );
 };
+
+PlaylistModal.defaultProps = {
+  video: {
+    _id: "",
+    alt: "thumbnail",
+    title: "",
+    thumbnail: "",
+    views: "0",
+    duration: "0:00",
+    description: "",
+  },
+  handleShowModal: () => {},
+};

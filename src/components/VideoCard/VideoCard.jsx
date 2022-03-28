@@ -120,6 +120,6 @@ VideoCard.defaultProps = {
     duration: "0:00",
     creatorName: "",
   },
-  setShowModal: () => {},
   setClickedVideo: () => {},
+  handleShowModal: () => {},
 };

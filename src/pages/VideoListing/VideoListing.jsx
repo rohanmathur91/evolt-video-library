@@ -10,9 +10,9 @@ import {
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
-  const { showModal, handleShowModal } = useModal();
   const [clickedVideo, setClickedVideo] = useState(null);
   const { videos } = useVideo();
+  const { showModal, handleShowModal } = useModal();
 
   return (
     <>

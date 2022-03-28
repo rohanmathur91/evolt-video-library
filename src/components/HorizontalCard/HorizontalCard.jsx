@@ -72,6 +72,7 @@ HorizontalCard.defaultProps = {
     title: "",
     thumbnail: "",
     views: "0",
+    description: "",
     duration: "0:00",
   },
   handleRemoveFromPlaylist: () => {},

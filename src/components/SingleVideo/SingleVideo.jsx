@@ -149,5 +149,3 @@ export const SingleVideo = () => {
     </>
   );
 };
-
-SingleVideo.defaultProps = { videoId: "" };
