@@ -1,4 +1,5 @@
 .card {
+  max-width: 35rem;
   background-color: var(--white);
   border: 0.5px solid var(--light-gray);
 }
