@@ -26,7 +26,11 @@ export const PlaylistContainer = ({
   };
 
   const handleDeletePlaylist = () => {
-    deletePlaylist(playlistId, playlistDispatch, navigate);
+    if (playlistId) {
+      deletePlaylist(playlistId, playlistDispatch, navigate);
+    } else {
+      deletePlaylistHandler(playlistDispatch, navigate);
+    }
   };
 
   return (
