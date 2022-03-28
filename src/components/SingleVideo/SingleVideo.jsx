@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { usePlaylist } from "../../contexts";
+import { useModal } from "../../hooks";
 import {
   addToWatchLater,
   removeFromWatchLater,
@@ -14,8 +15,9 @@ import styles from "./SingleVideo.module.css";
 export const SingleVideo = () => {
   const [video, setVideo] = useState(null);
   const [loader, setLoader] = useState(false);
+  const { showModal, handleShowModal } = useModal();
   const { videoId } = useParams();
-  const { showModal, openModal, watchLater, playlistDispatch } = usePlaylist();
+  const { watchLater, playlistDispatch } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
@@ -66,7 +68,9 @@ export const SingleVideo = () => {
 
   return (
     <>
-      {showModal && <PlaylistModal video={video} />}
+      {showModal && (
+        <PlaylistModal video={video} handleShowModal={handleShowModal} />
+      )}
       {loader ? (
         <p className="text-sm text-center mb-2 p-2">Fetching video...</p>
       ) : (
@@ -118,7 +122,7 @@ export const SingleVideo = () => {
                 </button>
 
                 <button
-                  onClick={openModal}
+                  onClick={() => handleShowModal(true)}
                   className="icon-container mr-3 font-semibold"
                 >
                   <span className="material-icons-outlined mr-1">
