@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useVideo } from "../../contexts";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const { searchQuery, videoDispatch } = useVideo();
   const { pathname } = useLocation();
+
+  const handleInputChange = (event) => {
+    videoDispatch({ type: "SET_SEARCH_QUERY", payload: event.target.value });
+  };
 
   return (
     <>
@@ -49,6 +55,8 @@ export const Navbar = () => {
             <input
               type="text"
               autoComplete="false"
+              value={searchQuery}
+              onChange={handleInputChange}
               placeholder="search..."
               className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
             />
