@@ -139,7 +139,7 @@ export const SingleVideo = () => {
               </div>
             </div>
           </section>
-          <p className="text-sm">{description}</p>
+          <p className="text-sm mb-4">{description}</p>
         </div>
       )}
     </>

@@ -39,8 +39,10 @@ export const PlaylistContainer = ({
     <>
       {showModal && (
         <Modal>
-          <div className={`${styles.modal} p-1 pl-2 m-1 rounded-sm`}>
-            <div className="flex-row items-center content-space-between">
+          <div
+            className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
+          >
+            <div className="flex-row items-center content-space-between mb-1">
               <h3 className="text-lg">Are you sure ?</h3>
               <button
                 onClick={() => handleShowModal(false)}
@@ -49,10 +51,23 @@ export const PlaylistContainer = ({
                 <span className="material-icons-outlined mx-1">close</span>
               </button>
             </div>
-            <p>This will clear all the videos from {title}.</p>
-            <div>
-              <button onClick={() => handleShowModal(false)}>Cancel</button>
-              <button onClick={handleDeletePlaylist}>Clear All</button>
+            <p className={`${styles.message} mb-2 pr-1 font-sm`}>
+              This will clear all the videos from {title}. You won't be able to
+              retrive it again.
+            </p>
+            <div className="ml-auto mr-2">
+              <button
+                className={`${styles.btn__outlined} font-sm p-1 mr-1 rounded-sm font-semibold transition-2`}
+                onClick={() => handleShowModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className={`${styles.btn__clearAll} font-sm p-1 rounded-sm font-semibold transition-2`}
+                onClick={handleDeletePlaylist}
+              >
+                Clear All
+              </button>
             </div>
           </div>
         </Modal>
