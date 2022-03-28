@@ -4,7 +4,7 @@ import { encodedToken } from "../../token";
 export const addInLikeVideos = async (video, playlistDispatch) => {
   try {
     const {
-      data: { videos },
+      data: { likes },
     } = await axios.post(
       `/api/user/likes`,
       { video },
@@ -13,6 +13,8 @@ export const addInLikeVideos = async (video, playlistDispatch) => {
       }
     );
 
-    playlistDispatch({ type: "UPDATE_LIKE_VIDEOS", payload: videos });
-  } catch (error) {}
+    playlistDispatch({ type: "UPDATE_LIKE_VIDEOS", payload: likes });
+  } catch (error) {
+    console.log(error);
+  }
 };

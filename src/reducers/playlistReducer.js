@@ -19,6 +19,9 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         ),
       };
 
+    case "UPDATE_LIKE_VIDEOS":
+      return { ...playlistState, likedVideos: [...payload] };
+
     case "ADD_TO_HISTORY":
       return {
         ...playlistState,
