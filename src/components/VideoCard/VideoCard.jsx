@@ -8,13 +8,13 @@ import {
 } from "../../utils";
 import styles from "./VideoCard.module.css";
 
-export const VideoCard = ({ video, setShowModal, setClickedVideo }) => {
+export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const navigate = useNavigate();
+  const { playlistDispatch, watchLater } = usePlaylist();
+  const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
-  const { openModal, playlistDispatch, watchLater } = usePlaylist();
-  const navigate = useNavigate();
-  const videoInWatchLater = isVideoInWatchLater(_id, watchLater);
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
@@ -26,7 +26,7 @@ export const VideoCard = ({ video, setShowModal, setClickedVideo }) => {
   };
 
   const handleSaveToPlaylist = () => {
-    setShowModal(true);
+    handleShowModal(true);
     setShowOptions(false);
     setClickedVideo(video);
   };

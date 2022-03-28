@@ -15,14 +15,14 @@ import {
 import { Modal } from "../";
 import styles from "./PlaylistModal.module.css";
 
-export const PlaylistModal = ({ video }) => {
+export const PlaylistModal = ({ video, handleShowModal }) => {
   const [{ loading, showInput, newPlaylistName }, playlistModalDispatch] =
     useReducer(playlistModalReducer, {
       loading: false,
       showInput: false,
       newPlaylistName: "",
     });
-  const { closeModal, watchLater, playlists, playlistDispatch } = usePlaylist();
+  const { watchLater, playlists, playlistDispatch } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
 
   const handleInputChange = (event) => {
@@ -63,12 +63,12 @@ export const PlaylistModal = ({ video }) => {
 
   return (
     <Modal>
-      <div className={`${styles.container} p-1 rounded-sm flex-column`}>
+      <div className={`${styles.container} p-1 m-1 rounded-sm flex-column`}>
         <div
           className={`${styles.header} flex-row items-center content-space-between py-1 mx-1`}
         >
           <span className="text-base">Save to...</span>
-          <button onClick={closeModal}>
+          <button onClick={() => handleShowModal(false)}>
             <span className="material-icons-outlined">close</span>
           </button>
         </div>
@@ -117,16 +117,16 @@ export const PlaylistModal = ({ video }) => {
               value={newPlaylistName}
               onChange={handleInputChange}
               placeholder="Add new playlist.."
-              className="border rounded-sm p-1 text-base"
+              className="border rounded-sm p-1 text-base mx-1"
             />
-            <button className="p-1 text-base">
+            <button className={`${styles.btn} p-1 text-base`}>
               {loading ? "Create..." : "Create"}
             </button>
           </form>
         ) : (
           <button
             onClick={handleShowInput}
-            className="flex-row items-center content-space-between pb-1 mt-1 mr-1"
+            className={`${styles.btn} flex-row items-center pb-1 mt-1 mr-1`}
           >
             <span
               className={`${styles.add__icon} material-icons-outlined mr-1`}

@@ -14,16 +14,7 @@ const PlaylistProvider = ({ children }) => {
     history: [],
     watchLater: [],
     playlists: [],
-    showModal: false,
   });
-
-  const openModal = () => {
-    playlistDispatch({ type: "HANDLE_MODAL", payload: true });
-  };
-
-  const closeModal = () => {
-    playlistDispatch({ type: "HANDLE_MODAL", payload: false });
-  };
 
   useEffect(() => {
     (async () => {
@@ -48,9 +39,6 @@ const PlaylistProvider = ({ children }) => {
         history,
         watchLater,
         playlists,
-        showModal,
-        openModal,
-        closeModal,
         playlistDispatch,
       }}
     >

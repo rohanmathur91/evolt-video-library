@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useVideo, usePlaylist } from "../../contexts";
+import { useVideo } from "../../contexts";
+import { useModal } from "../../hooks";
 import {
   Sidebar,
   VideoCard,
@@ -9,14 +10,14 @@ import {
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { showModal, handleShowModal } = useModal();
   const [clickedVideo, setClickedVideo] = useState(null);
   const { videos } = useVideo();
 
   return (
     <>
       {showModal && (
-        <PlaylistModal video={clickedVideo} setShowModal={setShowModal} />
+        <PlaylistModal video={clickedVideo} handleShowModal={handleShowModal} />
       )}
       <div className="flex-row">
         <Sidebar />
@@ -27,8 +28,8 @@ export const VideoListing = () => {
               <VideoCard
                 key={video._id}
                 video={video}
-                setShowModal={setShowModal}
                 setClickedVideo={setClickedVideo}
+                handleShowModal={handleShowModal}
               />
             ))}
           </div>

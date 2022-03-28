@@ -24,6 +24,26 @@
   text-decoration: underline;
 }
 
+/* modal */
+.modal {
+  width: 100%;
+  max-width: 38rem;
+  background-color: var(--white);
+}
+
+.message {
+  color: var(--text-color);
+}
+
+.close__btn {
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.close__btn:hover {
+  background-color: var(--light-gray);
+}
+
 @media screen and (max-width: 48em) {
   .container {
     margin: 1rem;

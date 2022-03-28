@@ -1,4 +1,6 @@
 .container {
+  width: 100%;
+  max-width: 25rem;
   background-color: var(--white);
 }
 
@@ -8,4 +10,8 @@
 
 .add__icon {
   margin-left: 2px;
+}
+
+.btn {
+  text-transform: none;
 }

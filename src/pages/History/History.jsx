@@ -1,7 +1,8 @@
 import React from "react";
-import { PlaylistContainer } from "../../components";
-import { usePlaylist } from "../../contexts";
 import { removeFromHistory, clearAllHistory } from "../../services";
+import { usePlaylist } from "../../contexts";
+import { useModal } from "../../hooks";
+import { PlaylistContainer } from "../../components";
 
 export const History = () => {
   const { history } = usePlaylist();
