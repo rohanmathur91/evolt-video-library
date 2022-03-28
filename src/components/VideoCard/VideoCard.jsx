@@ -70,7 +70,7 @@ export const VideoCard = ({ video, setClickedVideo }) => {
                     <span className="material-icons-outlined text-base mr-1">
                       {videoInWatchLater ? "task_alt" : "watch_later"}
                     </span>
-                    Watch later
+                    Watch Later
                   </button>
                   <button
                     onClick={handleSaveToPlaylist}
