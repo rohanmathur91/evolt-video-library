@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -40,17 +41,19 @@ export const Navbar = () => {
           </div>
         </div>
 
-        <span className={`${styles.search} relative rounded-sm`}>
-          <span className={`${styles.search__icon} absolute`}>
-            <span className="material-icons-outlined">search</span>
+        {pathname === "/explore" && (
+          <span className={`${styles.search} relative rounded-sm`}>
+            <span className={`${styles.search__icon} absolute`}>
+              <span className="material-icons-outlined">search</span>
+            </span>
+            <input
+              type="text"
+              autoComplete="false"
+              placeholder="search..."
+              className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
+            />
           </span>
-          <input
-            type="text"
-            autoComplete="false"
-            placeholder="search..."
-            className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
-          />
-        </span>
+        )}
 
         <div className={`${styles.profile__icon}`}>
           <Link to="/profile">
