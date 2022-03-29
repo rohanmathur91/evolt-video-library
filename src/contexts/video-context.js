@@ -10,8 +10,8 @@ const VideoProvider = ({ children }) => {
     useReducer(videoReducer, {
       videos: [],
       categories: [],
-      currentCategory: "",
       searchQuery: "",
+      currentCategory: "All",
     });
 
   useEffect(() => {
