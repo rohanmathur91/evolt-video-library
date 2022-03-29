@@ -7,13 +7,13 @@ import {
   removeFromPlaylist,
   addInLikeVideos,
   removeFromLikeVideos,
+  addToWatchLater,
+  removeFromWatchLater,
 } from "../../services";
 import {
   isVideoLiked,
   isVideoInWatchLater,
   isVideoInPlaylist,
-  addToWatchLater,
-  removeFromWatchLater,
 } from "../../utils";
 import { Modal } from "../";
 import styles from "./PlaylistModal.module.css";

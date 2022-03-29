@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useDocumentTitle } from "../../hooks";
+import { useModal, useDocumentTitle } from "../../hooks";
 import { usePlaylist } from "../../contexts";
-import { addInLikeVideos, removeFromLikeVideos } from "../../services";
-import { useModal } from "../../hooks";
 import {
+  addInLikeVideos,
+  removeFromLikeVideos,
   addToWatchLater,
   removeFromWatchLater,
-  isVideoInWatchLater,
-  isVideoLiked,
-} from "../../utils";
+} from "../../services";
+import { isVideoInWatchLater, isVideoLiked } from "../../utils";
 import { encodedToken } from "../../token";
 import { PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
