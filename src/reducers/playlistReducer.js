@@ -1,5 +1,4 @@
 export const playlistReducer = (playlistState, { type, payload }) => {
-  console.log(type, payload);
   switch (type) {
     case "SET_PLAYLIST":
       return { ...playlistState, playlists: payload };
