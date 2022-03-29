@@ -1,0 +1,7 @@
+.error {
+  color: var(--red);
+}
+
+.validation-msg {
+  background-color: var(--white);
+}
