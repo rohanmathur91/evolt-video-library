@@ -16,32 +16,38 @@ export const Playlists = () => {
           <div className={`${styles.container}`}>
             <Link
               to="/liked-videos"
-              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+              title="View liked videos"
+              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
             >
-              Liked videos{" "}
+              Liked videos
               <span className={`${styles.video_count} text-sm`}>
                 . {likedVideos.length} videos
               </span>
+              <span class="material-icons-outlined ml-auto">open_in_new</span>
             </Link>
             <Link
               to="/watch-later"
-              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+              title="View watch later"
+              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
             >
-              Watch later{" "}
+              Watch later
               <span className={`${styles.video_count} text-sm`}>
                 . {watchLater.length} videos
               </span>
+              <span class="material-icons-outlined ml-auto">open_in_new</span>
             </Link>
-            {playlists.map(({ _id, title }) => (
+            {playlists.map(({ _id, title, videos }) => (
               <Link
                 key={_id}
                 to={`/playlist/${_id}`}
-                className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1`}
+                title="View playlist"
+                className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
               >
-                {title}{" "}
+                {title}
                 <span className={`${styles.video_count} text-sm`}>
-                  . {playlists.length} videos
+                  . {videos.length} videos
                 </span>
+                <span class="material-icons-outlined ml-auto">open_in_new</span>
               </Link>
             ))}
           </div>

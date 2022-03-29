@@ -13,6 +13,7 @@
 }
 
 .video_count {
+  margin-left: 4px;
   color: var(--text-color);
 }
 
