@@ -17,7 +17,7 @@ export const Playlists = () => {
             <Link
               to="/liked-videos"
               title="View liked videos"
-              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
+              className={`${styles.playlist__card} font-semibold p-3 transition-2 text-base border rounded-sm m-1`}
             >
               Liked videos
               <span className={`${styles.video_count} text-sm`}>
@@ -28,7 +28,7 @@ export const Playlists = () => {
             <Link
               to="/watch-later"
               title="View watch later"
-              className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
+              className={`${styles.playlist__card} font-semibold p-3 transition-2 text-base border rounded-sm m-1`}
             >
               Watch later
               <span className={`${styles.video_count} text-sm`}>
@@ -41,7 +41,7 @@ export const Playlists = () => {
                 key={_id}
                 to={`/playlist/${_id}`}
                 title="View playlist"
-                className={`${styles.playlist__card} font-semibold p-3 text-base border rounded-sm m-1 flex-row items-center`}
+                className={`${styles.playlist__card} font-semibold p-3 transition-2 text-base border rounded-sm m-1`}
               >
                 {title}
                 <span className={`${styles.video_count} text-sm`}>

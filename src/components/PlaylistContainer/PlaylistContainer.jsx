@@ -97,7 +97,7 @@ export const PlaylistContainer = ({
                 <button
                   title="Delete"
                   onClick={() => handleShowModal(true)}
-                  className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
+                  className={`${styles.delete__btn} icon-container p-1 rounded-sm transition-2`}
                 >
                   <span className="material-icons-outlined mx-1">delete</span>
                 </button>

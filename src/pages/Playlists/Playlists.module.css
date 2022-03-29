@@ -4,6 +4,8 @@
 }
 
 .playlist__card {
+  display: flex;
+  align-items: center;
   background-color: var(--white);
 }
 
