@@ -64,7 +64,7 @@ export const Navbar = () => {
         )}
 
         <Link
-          to="/profile"
+          to="/login"
           className={`${styles.profile__icon} cursor-pointer flex-column items-center`}
         >
           <span className="material-icons-outlined">person_outline</span>
