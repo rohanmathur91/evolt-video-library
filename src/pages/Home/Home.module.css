@@ -22,7 +22,11 @@
 }
 
 .cta:hover {
-  opacity: 0.8;
+  opacity: 0.9;
+}
+
+.cta:hover span {
+  transform: translateX(1.2rem);
 }
 
 .categories {

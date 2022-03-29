@@ -26,7 +26,9 @@ export const Home = () => {
             className={`${styles.cta} py-2 px-4 text-sm transition-2 rounded-sm icon-container font-bold mt-1`}
           >
             Explore videos{" "}
-            <span className="material-icons-outlined">navigate_next</span>
+            <span className="material-icons-outlined transition-3">
+              navigate_next
+            </span>
           </Link>
         </section>
       </header>
