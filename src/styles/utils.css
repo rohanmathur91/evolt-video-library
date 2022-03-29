@@ -27,6 +27,22 @@
   text-overflow: ellipsis;
 }
 
+/* button */
+.btn-outlined {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-solid,
+.btn-outlined:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+}
+
+.btn-solid:hover {
+  opacity: 0.8;
+}
+
 /* margin */
 .mt-auto {
   margin-top: auto;
