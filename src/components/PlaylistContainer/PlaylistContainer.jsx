@@ -76,7 +76,14 @@ export const PlaylistContainer = ({
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 mt-1 px-2">
-          <div className={`${styles.container} mt-4 px-2"`}>
+          <div className={`${styles.container} mt-2 mx-1 mb-2 px-2`}>
+            <Link
+              to="/explore"
+              className={`${styles.back__link} flex-row items-center mt-1`}
+            >
+              <span class="material-icons-outlined mr-1">arrow_back</span>Goto
+              explore
+            </Link>
             <div className="flex-row items-center content-space-between mt-2 w-100 p-1 rounded-sm">
               <h2 className="text-lg">
                 {title || playlist?.title}{" "}
