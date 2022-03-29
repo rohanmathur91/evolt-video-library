@@ -2,14 +2,12 @@ import React from "react";
 import styles from "./CategoryChip.module.css";
 
 export const CategoryChip = ({
-  _id,
   categoryName,
   currentCategory,
   handleClick,
 }) => {
   return (
     <span
-      key={_id}
       onClick={() => handleClick(categoryName)}
       className={`${styles.chip} ${
         currentCategory === categoryName ? styles.active : ""
@@ -21,7 +19,6 @@ export const CategoryChip = ({
 };
 
 CategoryChip.defaultProps = {
-  _id: "",
   categoryName: "",
   currentCategory: "",
   handleClick: () => {},

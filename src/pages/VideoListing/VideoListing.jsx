@@ -32,14 +32,12 @@ export const VideoListing = () => {
         <div className="main__container w-100 px-2">
           <div className="mb-2 mt-3 px-1 flex-row wrap">
             <CategoryChip
-              _id="all"
               categoryName="All"
               currentCategory={currentCategory}
               handleClick={handleCategoryClick}
             />
             {categories.map(({ _id, categoryName }) => (
               <CategoryChip
-                _id={_id}
                 key={_id}
                 categoryName={categoryName}
                 currentCategory={currentCategory}
