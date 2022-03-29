@@ -42,6 +42,7 @@
 }
 
 .remove__btn:hover {
+  transition: all 0.2s;
   background-color: var(--light-gray);
 }
 
