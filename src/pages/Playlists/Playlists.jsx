@@ -26,7 +26,9 @@ export const Playlists = () => {
               <span className={`${styles.video_count} text-sm`}>
                 . {likedVideos.length} videos
               </span>
-              <span class="material-icons-outlined ml-auto">open_in_new</span>
+              <span className="material-icons-outlined ml-auto">
+                open_in_new
+              </span>
             </Link>
             <Link
               to="/watch-later"
@@ -37,7 +39,9 @@ export const Playlists = () => {
               <span className={`${styles.video_count} text-sm`}>
                 . {watchLater.length} videos
               </span>
-              <span class="material-icons-outlined ml-auto">open_in_new</span>
+              <span className="material-icons-outlined ml-auto">
+                open_in_new
+              </span>
             </Link>
             {playlists.map(({ _id, title, videos }) => (
               <Link
@@ -50,7 +54,9 @@ export const Playlists = () => {
                 <span className={`${styles.video_count} text-sm`}>
                   . {videos.length} videos
                 </span>
-                <span class="material-icons-outlined ml-auto">open_in_new</span>
+                <span className="material-icons-outlined ml-auto">
+                  open_in_new
+                </span>
               </Link>
             ))}
           </main>
