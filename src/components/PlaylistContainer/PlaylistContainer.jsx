@@ -84,7 +84,7 @@ export const PlaylistContainer = ({
               <span class="material-icons-outlined mr-1">arrow_back</span>Goto
               explore
             </Link>
-            <div className="flex-row items-center content-space-between mt-2 w-100 p-1 rounded-sm">
+            <header className="flex-row items-center content-space-between mt-2 w-100 py-1 pl-1 rounded-sm">
               <h2 className="text-lg">
                 {title || playlist?.title}{" "}
                 <span className={`${styles.videos__count} font-semibold`}>
@@ -102,9 +102,9 @@ export const PlaylistContainer = ({
                   <span className="material-icons-outlined mx-1">delete</span>
                 </button>
               )}
-            </div>
+            </header>
 
-            <div className="flex-column items-center">
+            <main className="flex-column items-center">
               {videoList.length ? (
                 videoList.map((video) => (
                   <HorizontalCard
@@ -132,7 +132,7 @@ export const PlaylistContainer = ({
                   </Link>
                 </p>
               )}
-            </div>
+            </main>
           </div>
         </div>
       </div>

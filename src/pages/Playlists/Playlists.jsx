@@ -13,7 +13,7 @@ export const Playlists = () => {
       <div className="main__container w-100 mt-1 px-2">
         <div className="mt-4 px-2">
           <h3 className="m-1 text-center">All playlists</h3>
-          <div className={`${styles.container}`}>
+          <main className={`${styles.container}`}>
             <Link
               to="/liked-videos"
               title="View liked videos"
@@ -50,7 +50,7 @@ export const Playlists = () => {
                 <span class="material-icons-outlined ml-auto">open_in_new</span>
               </Link>
             ))}
-          </div>
+          </main>
         </div>
       </div>
     </div>

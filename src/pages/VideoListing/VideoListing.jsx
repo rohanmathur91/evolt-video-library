@@ -25,7 +25,7 @@ export const VideoListing = () => {
         <div className="main__container w-100 px-2">
           <Categories />
           {videos.length ? (
-            <div className={`${styles.videos__container} mb-2`}>
+            <main className={`${styles.videos__container} mb-2`}>
               {videos.map((video) => (
                 <VideoCard
                   key={video._id}
@@ -34,7 +34,7 @@ export const VideoListing = () => {
                   handleShowModal={handleShowModal}
                 />
               ))}
-            </div>
+            </main>
           ) : (
             <p className="mt-4 text-center">No videos found.</p>
           )}
