@@ -1,23 +1,11 @@
 export const playlistReducer = (playlistState, { type, payload }) => {
+  console.log(type, payload);
   switch (type) {
     case "SET_PLAYLIST":
       return { ...playlistState, playlists: payload };
 
-    case "ADD_TO_WATCH_LATER":
-      return !playlistState.watchLater.some(({ _id }) => _id === payload._id)
-        ? {
-            ...playlistState,
-            watchLater: playlistState.watchLater.concat(payload),
-          }
-        : playlistState;
-
-    case "REMOVE_FROM_WATCH_LATER":
-      return {
-        ...playlistState,
-        watchLater: playlistState.watchLater.filter(
-          ({ _id }) => _id !== payload
-        ),
-      };
+    case "UPDATE_WATCH_LATER":
+      return { ...playlistState, watchLater: [...payload] };
 
     case "UPDATE_LIKE_VIDEOS":
       return { ...playlistState, likedVideos: [...payload] };
