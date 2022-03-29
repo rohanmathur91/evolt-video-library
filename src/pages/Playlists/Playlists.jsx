@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Sidebar } from "../../components";
+import { useScrollToTop, useDocumentTitle } from "../../hooks";
 import { usePlaylist } from "../../contexts";
+import { Sidebar } from "../../components";
 import styles from "./Playlists.module.css";
 
 export const Playlists = () => {
   const { playlists, likedVideos, watchLater } = usePlaylist();
+  useScrollToTop();
+  useDocumentTitle("Playlists");
 
   return (
     <div className="flex-row">

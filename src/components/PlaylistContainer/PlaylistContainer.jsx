@@ -81,8 +81,8 @@ export const PlaylistContainer = ({
               to="/explore"
               className={`${styles.back__link} flex-row items-center mt-1`}
             >
-              <span class="material-icons-outlined mr-1">arrow_back</span>Goto
-              explore
+              <span className="material-icons-outlined mr-1">arrow_back</span>
+              Goto explore
             </Link>
             <header className="flex-row items-center content-space-between mt-2 w-100 py-1 pl-1 rounded-sm">
               <h2 className="text-lg">

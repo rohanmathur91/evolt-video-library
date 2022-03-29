@@ -1,7 +1,10 @@
 import React from "react";
+import { useScrollToTop } from "../../hooks";
 import { Sidebar, SingleVideo } from "../../components";
 
 export const Video = () => {
+  useScrollToTop();
+
   return (
     <div className="flex-row">
       <Sidebar />

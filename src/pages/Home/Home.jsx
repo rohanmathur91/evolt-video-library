@@ -1,11 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useScrollToTop, useDocumentTitle } from "../../hooks";
 import { useVideo } from "../../contexts";
 import { Footer } from "../../components";
 import styles from "./Home.module.css";
 
 export const Home = () => {
   const { categories, videoDispatch } = useVideo();
+  useScrollToTop();
+  useDocumentTitle("Home");
 
   const handleCategoryClick = (category) => {
     videoDispatch({ type: "SET_CURRENT_CATEGORY", payload: category });

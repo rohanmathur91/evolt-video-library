@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useScrollToTop, useDocumentTitle } from "../../hooks";
 import { useVideo } from "../../contexts";
 import { useModal } from "../../hooks";
 import {
@@ -13,6 +14,9 @@ export const VideoListing = () => {
   const [clickedVideo, setClickedVideo] = useState(null);
   const { videos } = useVideo();
   const { showModal, handleShowModal } = useModal();
+
+  useScrollToTop();
+  useDocumentTitle("Explore");
 
   return (
     <>

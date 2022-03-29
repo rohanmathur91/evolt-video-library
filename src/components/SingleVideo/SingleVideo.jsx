@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks";
 import { usePlaylist } from "../../contexts";
 import { addInLikeVideos, removeFromLikeVideos } from "../../services";
 import { useModal } from "../../hooks";
@@ -24,6 +25,8 @@ export const SingleVideo = () => {
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
+
+  useDocumentTitle(title || "Video");
 
   useEffect(() => {
     (async () => {
