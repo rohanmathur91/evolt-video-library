@@ -134,7 +134,10 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
               placeholder="Add new playlist.."
               className="border rounded-sm p-1 text-base mx-1"
             />
-            <button className={`${styles.btn} p-1 text-base`}>
+            <button
+              disabled={loading}
+              className={`${styles.btn} p-1 text-base`}
+            >
               {loading ? "Create..." : "Create"}
             </button>
           </form>
