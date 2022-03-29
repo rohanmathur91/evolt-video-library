@@ -63,14 +63,13 @@ export const Navbar = () => {
           </span>
         )}
 
-        <div className={`${styles.profile__icon}`}>
-          <Link to="/profile">
-            <div className="cursor-pointer flex-column items-center">
-              <span className="material-icons-outlined">person_outline</span>
-              <span className="text-sm font-semibold">Login</span>
-            </div>
-          </Link>
-        </div>
+        <Link
+          to="/profile"
+          className={`${styles.profile__icon} cursor-pointer flex-column items-center`}
+        >
+          <span className="material-icons-outlined">person_outline</span>
+          <span className="text-sm font-semibold">Login</span>
+        </Link>
       </nav>
 
       <MobileNavigation
