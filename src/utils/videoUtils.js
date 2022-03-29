@@ -1,6 +1,8 @@
 export const getVideosByCategory = (videos, currentCategory) => {
   return videos.filter(({ category }) =>
-    currentCategory ? category === currentCategory : true
+    currentCategory && currentCategory !== "All"
+      ? category === currentCategory
+      : true
   );
 };
 
