@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useVideo } from "../../contexts";
-import { Footer, VideoOverviewCard } from "../../components";
+import { Footer } from "../../components";
 import styles from "./Home.module.css";
 
 export const Home = () => {
-  const { videos } = useVideo();
+  const { categories, videoDispatch } = useVideo();
+
+  const handleCategoryClick = (category) => {
+    videoDispatch({ type: "SET_CURRENT_CATEGORY", payload: category });
+  };
 
   return (
     <>
@@ -16,22 +20,43 @@ export const Home = () => {
           </h1>
           <Link
             to="/explore"
-            className={`${styles.cta} py-2 px-4 text-sm transition-2 rounded-sm font-bold mt-1`}
+            className={`${styles.cta} py-2 px-4 text-sm transition-2 rounded-sm icon-container font-bold mt-1`}
           >
-            Explore
+            Explore videos{" "}
+            <span class="material-icons-outlined">navigate_next</span>
           </Link>
         </section>
       </header>
-      <section className="mb-4 px-3">
-        <h2 className="text-lg mt-2">Videos</h2>
-        <div className={`${styles.videos} mt-1`}>
-          {videos?.length ? (
-            videos.slice(0, 4).map((video) => <VideoOverviewCard {...video} />)
+      <div className="mb-4 px-3">
+        <h2 className="text-lg my-2">Categories</h2>
+        <section className={`${styles.categories} mt-1`}>
+          {categories?.length ? (
+            categories.map(({ _id, categoryName, categoryURL }) => (
+              <Link
+                key={_id}
+                to="/explore"
+                onClick={() => handleCategoryClick(categoryName)}
+                className={`${styles.category} border relative rounded-sm cursor-pointer`}
+              >
+                <img
+                  src={categoryURL}
+                  alt="categoryName"
+                  className="rounded-sm"
+                />
+                <div
+                  className={`${styles.category__name} font-semibold p-1 rounded-sm`}
+                >
+                  {categoryName}
+                </div>
+              </Link>
+            ))
           ) : (
-            <p>Loading...</p>
+            <h4 className={`${styles.loader__message} text-center py-6`}>
+              Loading...
+            </h4>
           )}
-        </div>
-      </section>
+        </section>
+      </div>
       <Footer />
     </>
   );
