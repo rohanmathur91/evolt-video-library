@@ -5,5 +5,6 @@
   --secondary-color: #fafafa;
   --background-color: #fafafa78;
   --shadow-color: rgba(0, 0, 0, 0.2);
+  --header-background: rgba(0, 0, 0, 0.5);
   --modal-background: rgba(0, 0, 0, 0.3);
 }
