@@ -44,7 +44,7 @@
   top: 50%;
   bottom: 0;
   backdrop-filter: blur(3px);
-  background-color: var(--header-background);
+  background-color: var(--modal-background);
 }
 
 .loader__message {
