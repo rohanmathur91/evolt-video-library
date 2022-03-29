@@ -75,6 +75,6 @@ export const playlistReducer = (playlistState, { type, payload }) => {
       return { ...playlistState, showModal: payload };
 
     default:
-      throw new Error("Type did not match");
+      throw new Error("Action type did not found");
   }
 };

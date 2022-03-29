@@ -13,6 +13,6 @@ export const videoReducer = (videoState, { type, payload }) => {
       return { ...videoState, currentCategory: payload };
 
     default:
-      throw new Error("Type did not match");
+      throw new Error("Action type did not found");
   }
 };
