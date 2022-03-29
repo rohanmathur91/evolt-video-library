@@ -13,6 +13,6 @@ export const videoReducer = (videoState, { type, payload }) => {
       return { ...videoState, currentCategory: payload };
 
     default:
-      return videoState;
+      throw new Error("Type did not match");
   }
 };

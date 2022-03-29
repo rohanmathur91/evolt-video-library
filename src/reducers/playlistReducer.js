@@ -75,6 +75,6 @@ export const playlistReducer = (playlistState, { type, payload }) => {
       return { ...playlistState, showModal: payload };
 
     default:
-      return playlistState;
+      throw new Error("Type did not match");
   }
 };
