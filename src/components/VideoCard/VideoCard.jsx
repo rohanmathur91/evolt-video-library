@@ -49,8 +49,10 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
         <div className="w-100">
           <div className="flex-row content-space-between items-start my-1 relative">
             <div>
-              <h3 className={`${styles.title}`}>{title}</h3>
-              <div className={`${styles.creator__name} text-sm mt-1`}>
+              <h3 className={`${styles.title} text-ellipsis`}>{title}</h3>
+              <div
+                className={`${styles.creator__name} text-ellipsis text-sm mt-1`}
+              >
                 {creatorName}
               </div>
             </div>
@@ -77,7 +79,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
                     className="text-sm flex-row items-center py-1"
                   >
                     <span className="material-icons-outlined text-base mr-1">
-                      bookmark_border
+                      playlist_add
                     </span>
                     Save to playlist
                   </button>

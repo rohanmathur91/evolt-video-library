@@ -12,6 +12,10 @@
   min-width: 32rem;
 }
 
+.title {
+  -webkit-line-clamp: 1;
+}
+
 .description {
   -webkit-line-clamp: 2;
 }

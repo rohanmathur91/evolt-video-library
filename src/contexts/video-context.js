@@ -1,14 +1,18 @@
 import axios from "axios";
 import { useReducer, useEffect, useContext, createContext } from "react";
+import { getSearchedVideos, getVideosByCategory } from "../utils";
 import { videoReducer } from "../reducers";
 
 const VideoContext = createContext();
 
 const VideoProvider = ({ children }) => {
-  const [{ videos, categories }, videoDispatch] = useReducer(videoReducer, {
-    videos: [],
-    categories: [],
-  });
+  const [{ videos, categories, searchQuery, currentCategory }, videoDispatch] =
+    useReducer(videoReducer, {
+      videos: [],
+      categories: [],
+      searchQuery: "",
+      currentCategory: "All",
+    });
 
   useEffect(() => {
     (async () => {
@@ -30,8 +34,19 @@ const VideoProvider = ({ children }) => {
     })();
   }, []);
 
+  const videosByCategory = getVideosByCategory(videos, currentCategory);
+  const filteredVideos = getSearchedVideos(videosByCategory, searchQuery);
+
   return (
-    <VideoContext.Provider value={{ videos, categories, videoDispatch }}>
+    <VideoContext.Provider
+      value={{
+        categories,
+        searchQuery,
+        currentCategory,
+        videoDispatch,
+        videos: filteredVideos,
+      }}
+    >
       {children}
     </VideoContext.Provider>
   );

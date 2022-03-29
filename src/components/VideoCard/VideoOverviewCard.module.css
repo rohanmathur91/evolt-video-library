@@ -1,0 +1,27 @@
+.card {
+  background-color: var(--white);
+  border: 0.5px solid var(--light-gray);
+}
+
+.thumbnail {
+  height: auto;
+  user-select: none;
+}
+
+.avatar {
+  width: 3.8rem;
+  height: 3.8rem;
+  flex-shrink: 0;
+}
+
+.title {
+  line-height: 1.2;
+  font-size: 1.6rem;
+  -webkit-line-clamp: 1;
+}
+
+.creator__name {
+  margin-top: 4px;
+  -webkit-line-clamp: 1;
+  color: var(--text-color);
+}

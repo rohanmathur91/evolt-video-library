@@ -1,5 +1,5 @@
 export const sidebarData = [
-  { path: "/home", icon: "home", optionName: "Home" },
+  { path: "/", icon: "home", optionName: "Home" },
   { path: "/explore", icon: "explore", optionName: "Exlore" },
   { path: "/playlists", icon: "video_library", optionName: "Playlists" },
   {

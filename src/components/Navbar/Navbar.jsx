@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useVideo } from "../../contexts";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const { searchQuery, videoDispatch } = useVideo();
+  const { pathname } = useLocation();
+
+  const handleInputChange = (event) => {
+    videoDispatch({ type: "SET_SEARCH_QUERY", payload: event.target.value });
+  };
 
   return (
     <>
@@ -40,26 +47,29 @@ export const Navbar = () => {
           </div>
         </div>
 
-        <span className={`${styles.search} relative rounded-sm`}>
-          <span className={`${styles.search__icon} absolute`}>
-            <span className="material-icons-outlined">search</span>
+        {pathname === "/explore" && (
+          <span className={`${styles.search} relative rounded-sm`}>
+            <span className={`${styles.search__icon} absolute`}>
+              <span className="material-icons-outlined">search</span>
+            </span>
+            <input
+              type="text"
+              autoComplete="false"
+              value={searchQuery}
+              onChange={handleInputChange}
+              placeholder="search..."
+              className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
+            />
           </span>
-          <input
-            type="text"
-            autoComplete="false"
-            placeholder="search..."
-            className={`${styles.search__input} border w-100 py-1 pl-6 pr-2 text-base rounded-sm`}
-          />
-        </span>
+        )}
 
-        <div className={`${styles.profile__icon}`}>
-          <Link to="/profile">
-            <div className="cursor-pointer flex-column items-center">
-              <span className="material-icons-outlined">person_outline</span>
-              <span className="text-sm font-semibold">Profile</span>
-            </div>
-          </Link>
-        </div>
+        <Link
+          to="/profile"
+          className={`${styles.profile__icon} cursor-pointer flex-column items-center`}
+        >
+          <span className="material-icons-outlined">person_outline</span>
+          <span className="text-sm font-semibold">Login</span>
+        </Link>
       </nav>
 
       <MobileNavigation

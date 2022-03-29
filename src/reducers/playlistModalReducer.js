@@ -18,6 +18,6 @@ export const playlistModalReducer = (playlistModalState, { type, payload }) => {
       };
 
     default:
-      return playlistModalState;
+      throw new Error("Action type did not found");
   }
 };

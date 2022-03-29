@@ -1,0 +1,11 @@
+.footer {
+  color: var(--primary-color);
+}
+
+.link {
+  font-size: 3rem;
+}
+
+.icons:hover {
+  opacity: 0.8;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { useDocumentTitle } from "../../hooks";
 import { usePlaylist } from "../../contexts";
 import { addInLikeVideos, removeFromLikeVideos } from "../../services";
 import { useModal } from "../../hooks";
@@ -24,6 +25,8 @@ export const SingleVideo = () => {
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
+
+  useDocumentTitle(title || "Video");
 
   useEffect(() => {
     (async () => {
@@ -134,7 +137,7 @@ export const SingleVideo = () => {
                   <span
                     className={`${
                       likedVideo ? "material-icons" : "material-icons-outlined"
-                    } mr-1`}
+                    } ${styles.video__icon}`}
                   >
                     thumb_up
                   </span>
@@ -145,8 +148,10 @@ export const SingleVideo = () => {
                   onClick={() => handleShowModal(true)}
                   className="icon-container mr-3 font-semibold"
                 >
-                  <span className="material-icons-outlined mr-1">
-                    bookmark_border
+                  <span
+                    className={`${styles.video__icon} material-icons-outlined`}
+                  >
+                    playlist_add
                   </span>
                   Save to playlist
                 </button>
@@ -155,7 +160,9 @@ export const SingleVideo = () => {
                   onClick={handleWatchLaterClick}
                   className="icon-container font-semibold"
                 >
-                  <span className="material-icons-outlined mr-1">
+                  <span
+                    className={`${styles.video__icon} material-icons-outlined`}
+                  >
                     {videoInWatchLater ? "task_alt" : "watch_later"}
                   </span>
                   Watch later

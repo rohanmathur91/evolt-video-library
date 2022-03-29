@@ -28,6 +28,10 @@
   margin-left: auto;
 }
 
+.video__icon {
+  margin-right: 5px;
+}
+
 @media screen and (max-width: 30em) {
   .video__options {
     margin: 2rem auto;

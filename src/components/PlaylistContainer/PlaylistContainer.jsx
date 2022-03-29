@@ -42,8 +42,8 @@ export const PlaylistContainer = ({
           <div
             className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
-            <div className="flex-row items-center content-space-between mb-1">
-              <h3 className="text-lg">Are you sure ?</h3>
+            <div className="flex-row items-center content-space-between">
+              <h3 className="sub-header">Are you sure ?</h3>
               <button
                 onClick={() => handleShowModal(false)}
                 className={`${styles.close__btn} icon-container p-1 rounded-sm`}
@@ -51,11 +51,11 @@ export const PlaylistContainer = ({
                 <span className="material-icons-outlined mx-1">close</span>
               </button>
             </div>
-            <p className={`${styles.message} mb-2 pr-1 font-sm`}>
-              This will clear all the videos from {title}. You won't be able to
-              retrive it again.
+            <p className={`${styles.message} mb-2 pr-1 text-sm`}>
+              This will clear all the videos from {title || playlist?.title}.
+              You won't be able to retrieve it again.
             </p>
-            <div className="ml-auto mr-2">
+            <div className="ml-auto mr-1 pb-1">
               <button
                 className={`${styles.btn__outlined} font-sm p-1 mr-1 rounded-sm font-semibold transition-2`}
                 onClick={() => handleShowModal(false)}
@@ -76,8 +76,15 @@ export const PlaylistContainer = ({
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 mt-1 px-2">
-          <div className={`${styles.container} mt-4 px-2"`}>
-            <div className="flex-row items-center content-space-between mt-2 w-100 p-1 rounded-sm">
+          <div className={`${styles.container} mt-2 mx-1 mb-2 px-2`}>
+            <Link
+              to="/explore"
+              className={`${styles.back__link} flex-row items-center mt-1`}
+            >
+              <span className="material-icons-outlined mr-1">arrow_back</span>
+              Goto explore
+            </Link>
+            <header className="flex-row items-center content-space-between mt-2 w-100 py-1 pl-1 rounded-sm">
               <h2 className="text-lg">
                 {title || playlist?.title}{" "}
                 <span className={`${styles.videos__count} font-semibold`}>
@@ -88,15 +95,16 @@ export const PlaylistContainer = ({
               {(playlistId ||
                 (title === "History" && videoList.length > 0)) && (
                 <button
+                  title="Delete"
                   onClick={() => handleShowModal(true)}
-                  className={`${styles.delete__btn} icon-container p-1 rounded-sm`}
+                  className={`${styles.delete__btn} icon-container p-1 rounded-sm transition-2`}
                 >
                   <span className="material-icons-outlined mx-1">delete</span>
                 </button>
               )}
-            </div>
+            </header>
 
-            <div className="flex-column items-center">
+            <main className="flex-column items-center">
               {videoList.length ? (
                 videoList.map((video) => (
                   <HorizontalCard
@@ -124,7 +132,7 @@ export const PlaylistContainer = ({
                   </Link>
                 </p>
               )}
-            </div>
+            </main>
           </div>
         </div>
       </div>

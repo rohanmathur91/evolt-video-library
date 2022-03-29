@@ -1,13 +1,13 @@
 .container {
-  margin: 2rem;
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.hero__image {
-  max-width: 35rem;
+.back__link {
+  display: none;
 }
 
+.back__link,
 .videos__count {
   color: var(--text-color);
 }
@@ -58,9 +58,15 @@
   opacity: 0.8;
 }
 
+@media screen and (max-width: 64em) {
+  .back__link {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 48em) {
   .container {
-    margin: 1rem;
+    padding: 0;
     grid-template-columns: 1fr;
   }
 }

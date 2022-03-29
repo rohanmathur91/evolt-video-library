@@ -4,16 +4,19 @@
 }
 
 .playlist__card {
+  display: flex;
+  align-items: center;
   background-color: var(--white);
 }
 
 .playlist__card:hover {
   cursor: pointer;
-  box-shadow: 0 1px 3px 0px var(--shadow);
+  box-shadow: 0 1px 3px 0px var(--shadow-color);
 }
 
-.material-icons-outlined {
-  user-select: none;
+.video_count {
+  margin-left: 4px;
+  color: var(--text-color);
 }
 
 @media screen and (max-width: 48em) {

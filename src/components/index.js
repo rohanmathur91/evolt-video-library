@@ -1,9 +1,11 @@
 export { Navbar } from "./Navbar/Navbar";
 export { Sidebar } from "./Sidebar/Sidebar";
 export { VideoCard } from "./VideoCard/VideoCard";
-export { Categories } from "./Categories/Categories";
+export { VideoOverviewCard } from "./VideoCard/VideoOverviewCard";
+export { CategoryChip } from "./Category/CategoryChip";
 export { HorizontalCard } from "./HorizontalCard/HorizontalCard";
 export { Modal } from "./Modal/Modal";
 export { PlaylistContainer } from "./PlaylistContainer/PlaylistContainer";
 export { SingleVideo } from "./SingleVideo/SingleVideo";
 export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
+export { Footer } from "./Footer/Footer";

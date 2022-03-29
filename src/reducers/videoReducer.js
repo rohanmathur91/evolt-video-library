@@ -6,7 +6,13 @@ export const videoReducer = (videoState, { type, payload }) => {
     case "INITIALIZE_CATEGORIES":
       return { ...videoState, categories: payload };
 
+    case "SET_SEARCH_QUERY":
+      return { ...videoState, searchQuery: payload };
+
+    case "SET_CURRENT_CATEGORY":
+      return { ...videoState, currentCategory: payload };
+
     default:
-      return videoState;
+      throw new Error("Action type did not found");
   }
 };

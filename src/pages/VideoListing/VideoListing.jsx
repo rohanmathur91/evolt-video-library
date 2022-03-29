@@ -1,38 +1,65 @@
 import React, { useState } from "react";
 import { useVideo } from "../../contexts";
-import { useModal } from "../../hooks";
+import { useModal, useScrollToTop, useDocumentTitle } from "../../hooks";
 import {
   Sidebar,
   VideoCard,
-  Categories,
   PlaylistModal,
+  CategoryChip,
 } from "../../components";
 import styles from "./VideoListing.module.css";
 
 export const VideoListing = () => {
   const [clickedVideo, setClickedVideo] = useState(null);
-  const { videos } = useVideo();
   const { showModal, handleShowModal } = useModal();
+  const { videos, categories, currentCategory, videoDispatch } = useVideo();
+
+  const handleCategoryClick = (category) => {
+    videoDispatch({ type: "SET_CURRENT_CATEGORY", payload: category });
+  };
+
+  useScrollToTop();
+  useDocumentTitle("Explore");
 
   return (
     <>
       {showModal && (
         <PlaylistModal video={clickedVideo} handleShowModal={handleShowModal} />
       )}
+
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
-          <Categories />
-          <div className={`${styles.videos__container} mb-2`}>
-            {videos.map((video) => (
-              <VideoCard
-                key={video._id}
-                video={video}
-                setClickedVideo={setClickedVideo}
-                handleShowModal={handleShowModal}
+          <div className="mb-2 mt-3 px-1 flex-row wrap">
+            <CategoryChip
+              categoryName="All"
+              currentCategory={currentCategory}
+              handleClick={handleCategoryClick}
+            />
+            {categories.map(({ _id, categoryName }) => (
+              <CategoryChip
+                key={_id}
+                categoryName={categoryName}
+                currentCategory={currentCategory}
+                handleClick={handleCategoryClick}
               />
             ))}
           </div>
+
+          {videos.length ? (
+            <main className={`${styles.videos__container} mb-2`}>
+              {videos.map((video) => (
+                <VideoCard
+                  key={video._id}
+                  video={video}
+                  setClickedVideo={setClickedVideo}
+                  handleShowModal={handleShowModal}
+                />
+              ))}
+            </main>
+          ) : (
+            <p className="mt-4 text-center">No videos found.</p>
+          )}
         </div>
       </div>
     </>
