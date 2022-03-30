@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth, useVideo } from "../../contexts";
+import { useAuth, usePlaylist } from "../../contexts";
+import { signupService } from "../../services";
 import { useAuthForm, useScrollToTop, useDocumentTitle } from "../../hooks";
 import { signupErrorReducer, signUpErrorInitialState } from "../../reducers";
 import { validateSignupForm } from "../../utils";
@@ -10,7 +10,7 @@ import { Input } from "../../components";
 export const Signup = () => {
   const navigate = useNavigate();
   const { updateUser } = useAuth();
-  const { videoDispatch } = useVideo();
+  const { playlistDispatch } = usePlaylist();
   const { loading, showPassword, credentials, authFormDispatch } = useAuthForm({
     email: "",
     fullName: "",
@@ -38,33 +38,19 @@ export const Signup = () => {
     });
   };
 
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = (event) => {
     event.preventDefault();
     const isValidForm = validateSignupForm(errorDispatch, credentials);
+
     if (isValidForm) {
-      authFormDispatch({ type: "SET_LOADING", payload: true });
-      errorDispatch({ type: "SET_SIGNUP_FORM_ERROR", payload: "" });
-      try {
-        const {
-          data: { createdUser, encodedToken },
-        } = await axios.post("/api/auth/signup", credentials);
-
-        updateUser(createdUser);
-
-        localStorage.setItem("token", encodedToken);
-        errorDispatch({ type: "CLEAR_SIGNUP_FORM" });
-        authFormDispatch({ type: "SET_LOADING", payload: false });
-        navigate("/");
-      } catch (error) {
-        errorDispatch({
-          type: "SET_SIGNUP_FORM_ERROR",
-          payload:
-            error.response.status === 422
-              ? "Email already exist."
-              : "Something is wrong, please try later.",
-        });
-        authFormDispatch({ type: "SET_LOADING", payload: false });
-      }
+      signupService(
+        credentials,
+        updateUser,
+        playlistDispatch,
+        authFormDispatch,
+        errorDispatch,
+        navigate
+      );
     }
   };
 
