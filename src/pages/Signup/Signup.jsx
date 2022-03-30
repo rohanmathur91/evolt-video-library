@@ -11,7 +11,14 @@ export const Signup = () => {
   const navigate = useNavigate();
   const { updateUser } = useAuth();
   const { playlistDispatch } = usePlaylist();
-  const { loading, showPassword, credentials, authFormDispatch } = useAuthForm({
+  const {
+    loading,
+    showPassword,
+    credentials,
+    handleShowPassword,
+    handleInputChange,
+    authFormDispatch,
+  } = useAuthForm({
     email: "",
     fullName: "",
     password: "",
@@ -24,19 +31,6 @@ export const Signup = () => {
 
   useScrollToTop();
   useDocumentTitle("Signup");
-
-  const handleInputChange = (event, field) => {
-    authFormDispatch({
-      type: "SET_CREDENTIALS",
-      payload: { field, value: event.target.value },
-    });
-  };
-
-  const handleToggleShowPassword = () => {
-    authFormDispatch({
-      type: "SET_SHOW_PASSWORD",
-    });
-  };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -103,7 +97,7 @@ export const Signup = () => {
           />
           {
             <span
-              onClick={handleToggleShowPassword}
+              onClick={handleShowPassword}
               className="material-icons-outlined cursor-pointer visibility-icon"
             >
               {showPassword ? "visibility" : "visibility_off"}

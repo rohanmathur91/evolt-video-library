@@ -1,48 +1,51 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth, useVideo } from "../../contexts";
-import { useScrollToTop, useDocumentTitle } from "../../hooks";
+import { useAuth, usePlaylist } from "../../contexts";
+import { loginService } from "../../services";
+import { useAuthForm, useScrollToTop, useDocumentTitle } from "../../hooks";
 import { Input } from "../../components";
 
 export const Login = () => {
   const [error, setError] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [credentials, setCredentials] = useState({
+  const {
+    loading,
+    showPassword,
+    credentials,
+    handleShowPassword,
+    handleInputChange,
+    authFormDispatch,
+  } = useAuthForm({
     email: "",
     password: "",
   });
 
+  const navigate = useNavigate();
   const { updateUser } = useAuth();
-  const { videoDispatch } = useVideo();
+  const { playlistDispatch } = usePlaylist();
 
   useScrollToTop();
   useDocumentTitle("Login");
 
-  const navigate = useNavigate();
-
-  const handleInputChange = (event, field) => {
-    setCredentials((prevCredentials) => ({
-      ...prevCredentials,
-      [field]: event.target.value,
-    }));
+  const handleTestCredentials = () => {
+    authFormDispatch({
+      type: "SET_TEST_CREDENTIALS",
+      payload: {
+        email: "adarshbalika@gmail.com",
+        password: "adarshBalika123",
+      },
+    });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const {
-        data: { foundUser, encodedToken },
-      } = await axios.post("/api/auth/login", credentials);
-
-      console.log(foundUser);
-      // updateUser(foundUser);
-
-      localStorage.setItem("token", encodedToken);
-      navigate("/");
-    } catch (error) {
-      setError("Email or password is incorrect");
-    }
+    loginService(
+      credentials,
+      updateUser,
+      playlistDispatch,
+      authFormDispatch,
+      setError,
+      navigate
+    );
   };
 
   return (
@@ -72,8 +75,8 @@ export const Login = () => {
           />
           {
             <span
+              onClick={handleShowPassword}
               className="material-icons-outlined cursor-pointer visibility-icon"
-              onClick={() => setShowPassword((showPassword) => !showPassword)}
             >
               {showPassword ? "visibility" : "visibility_off"}
             </span>
@@ -81,18 +84,17 @@ export const Login = () => {
         </div>
 
         <button
-          onClick={() =>
-            setCredentials({
-              email: "adarshbalika@gmail.com",
-              password: "adarshBalika123",
-            })
-          }
+          disabled={loading}
+          onClick={handleTestCredentials}
           className="btn-outlined btn-form w-100 font-semibold transition-2  mb-2 rounded-sm"
         >
-          Try dummy credentials
+          Try test credentials
         </button>
 
-        <button className="btn-solid btn-form w-100 font-semibold transition-2 mb-2 rounded-sm">
+        <button
+          disabled={loading}
+          className="btn-solid btn-form w-100 font-semibold transition-2 mb-2 rounded-sm"
+        >
           Login
         </button>
 
