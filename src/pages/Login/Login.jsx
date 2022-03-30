@@ -84,32 +84,33 @@ export const Login = () => {
           onClick={() =>
             setCredentials({
               email: "adarshbalika@gmail.com",
-              password: "adarshbalika",
+              password: "adarshBalika123",
             })
           }
-          className="btn-outlined p-1 w-100 font-semibold transition-2 mr-1 mb-2 rounded-sm"
+          className="btn-outlined btn-form w-100 font-semibold transition-2  mb-2 rounded-sm"
         >
-          Login using dummy credentials
+          Try dummy credentials
         </button>
 
-        <button className="btn-solid p-1 w-100 font-semibold transition-2 mr-1 mb-2 rounded-sm">
+        <button className="btn-solid btn-form w-100 font-semibold transition-2 mb-2 rounded-sm">
           Login
         </button>
 
         {error && (
-          <div className="mb-2 login-error-msg flex-row items-center">
+          <div className="mb-2 login-error-msg flex-row items-center text-sm">
             <span className="material-icons-outlined mr-1">error_outline</span>
             <p>{error}</p>
           </div>
         )}
 
         <div className="text-sm mb-2 flex-row flex-center">
-          Not a user?
+          New to Evolt-Prime?
           <Link
             to="/signup"
+            title="Sign up now"
             className="font-semibold text-sm flex-row flex-center ml-1"
           >
-            Signup
+            Sign up now
             <span className="material-icons-outlined redirect-icon">
               arrow_right
             </span>
