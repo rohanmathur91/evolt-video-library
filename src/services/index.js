@@ -15,3 +15,6 @@ export { removeFromLikeVideos } from "./likeServices/removeFromLikeVideos";
 // watchlater services
 export { addToWatchLater } from "./watchlaterServices/addToWatchLater";
 export { removeFromWatchLater } from "./watchlaterServices/removeFromWatchLater";
+
+// auth services
+export { signupService } from "./authServices/signupService";
