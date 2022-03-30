@@ -49,7 +49,7 @@ export const Home = () => {
                   className="rounded-sm"
                 />
                 <div
-                  className={`${styles.category__name} font-semibold p-1 rounded-sm`}
+                  className={`${styles.category__name} font-semibold p-1 rounded-sm flex-row flex-center`}
                 >
                   {categoryName}
                 </div>
