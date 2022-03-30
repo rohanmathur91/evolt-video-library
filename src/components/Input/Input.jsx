@@ -22,7 +22,7 @@ export const Input = ({
         placeholder={placeholder}
         onFocus={handleOnFocus}
         onChange={(event) => updateValue(event, id)}
-        className="mt-1 py-1 px-2 text-base border rounded-sm"
+        className={`${styles.input} mt-1 text-base border rounded-sm`}
       />
 
       {error && (
