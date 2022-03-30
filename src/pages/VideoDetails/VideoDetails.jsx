@@ -2,7 +2,7 @@ import React from "react";
 import { useScrollToTop } from "../../hooks";
 import { Sidebar, SingleVideo } from "../../components";
 
-export const Video = () => {
+export const VideoDetails = () => {
   useScrollToTop();
 
   return (

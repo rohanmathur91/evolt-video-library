@@ -51,7 +51,7 @@ export const PlaylistContainer = ({
                 <span className="material-icons-outlined mx-1">close</span>
               </button>
             </div>
-            <p className={`${styles.message} mb-2 pr-1 text-sm`}>
+            <p className={`${styles.message} mb-3 pr-1 text-sm`}>
               This will clear all the videos from {title || playlist?.title}.
               You won't be able to retrieve it again.
             </p>

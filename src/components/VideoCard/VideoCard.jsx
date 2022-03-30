@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlaylist } from "../../contexts";
-import {
-  addToWatchLater,
-  removeFromWatchLater,
-  isVideoInWatchLater,
-} from "../../utils";
+import { addToWatchLater, removeFromWatchLater } from "../../services";
+import { isVideoInWatchLater } from "../../utils";
 import styles from "./VideoCard.module.css";
 
 export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {

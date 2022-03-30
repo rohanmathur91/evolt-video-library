@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useDocumentTitle } from "../../hooks";
+import { useModal, useDocumentTitle } from "../../hooks";
 import { usePlaylist } from "../../contexts";
-import { addInLikeVideos, removeFromLikeVideos } from "../../services";
-import { useModal } from "../../hooks";
 import {
+  addInLikeVideos,
+  removeFromLikeVideos,
   addToWatchLater,
   removeFromWatchLater,
-  isVideoInWatchLater,
-  isVideoLiked,
-} from "../../utils";
+} from "../../services";
+import { isVideoInWatchLater, isVideoLiked } from "../../utils";
 import { encodedToken } from "../../token";
 import { PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
@@ -86,7 +85,7 @@ export const SingleVideo = () => {
         <PlaylistModal video={video} handleShowModal={handleShowModal} />
       )}
       {loader ? (
-        <p className="text-sm text-center mb-2 p-2">Fetching video...</p>
+        <h4 className="text-center mb-2 py-6">Fetching video...</h4>
       ) : (
         <div className="mb-2 p-2">
           <section className={`${styles.container}`}>
@@ -170,7 +169,7 @@ export const SingleVideo = () => {
               </div>
             </div>
           </section>
-          <p className="text-sm mb-4">{description}</p>
+          <p className={`${styles.description} text-sm mb-4`}>{description}</p>
         </div>
       )}
     </>
