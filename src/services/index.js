@@ -18,3 +18,4 @@ export { removeFromWatchLater } from "./watchlaterServices/removeFromWatchLater"
 
 // auth services
 export { signupService } from "./authServices/signupService";
+export { loginService } from "./authServices/loginService";
