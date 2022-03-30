@@ -8,6 +8,9 @@ import { validateSignupForm } from "../../utils";
 import { Input } from "../../components";
 
 export const Signup = () => {
+  const navigate = useNavigate();
+  const { updateUser } = useAuth();
+  const { videoDispatch } = useVideo();
   const { loading, showPassword, credentials, authFormDispatch } = useAuthForm({
     email: "",
     fullName: "",
@@ -18,10 +21,6 @@ export const Signup = () => {
     signupErrorReducer,
     signUpErrorInitialState
   );
-
-  const navigate = useNavigate();
-  const { updateUser } = useAuth();
-  const { videoDispatch } = useVideo();
 
   useScrollToTop();
   useDocumentTitle("Signup");
@@ -144,7 +143,7 @@ export const Signup = () => {
 
         <button
           disabled={loading}
-          className="p-1 w-100 font-semibold btn btn-solid transition-2 mr-1 mb-2 rounded-sm"
+          className="btn-solid btn-form w-100 font-semibold transition-2 mb-2 rounded-sm"
         >
           {loading ? "Signup..." : "Signup"}
         </button>
