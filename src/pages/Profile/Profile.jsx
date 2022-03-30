@@ -22,8 +22,9 @@ export const Profile = () => {
   return (
     <>
       {showModal && (
-        <Modal>
+        <Modal handleShowModal={handleShowModal}>
           <div
+            onClick={(event) => event.stopPropagation()}
             className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
             <div className="flex-row items-center content-space-between">

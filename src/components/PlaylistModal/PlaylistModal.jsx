@@ -75,8 +75,11 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
   };
 
   return (
-    <Modal>
-      <div className={`${styles.container} p-1 m-1 rounded-sm flex-column`}>
+    <Modal handleShowModal={handleShowModal}>
+      <div
+        onClick={(event) => event.stopPropagation()}
+        className={`${styles.container} p-1 m-1 rounded-sm flex-column`}
+      >
         <div
           className={`${styles.header} flex-row items-center content-space-between py-1 mx-1`}
         >
