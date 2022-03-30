@@ -10,8 +10,6 @@ export const Navbar = () => {
   const { pathname } = useLocation();
   const { searchQuery, videoDispatch } = useVideo();
 
-  console.log(user);
-
   const handleInputChange = (event) => {
     videoDispatch({ type: "SET_SEARCH_QUERY", payload: event.target.value });
   };

@@ -1,0 +1,25 @@
+.container {
+  margin: 0 auto;
+  max-width: 140.8rem;
+  height: calc(100vh - 7.3rem);
+}
+
+/* modal */
+.modal {
+  width: 100%;
+  max-width: 38rem;
+  background-color: var(--white);
+}
+
+.message {
+  color: var(--text-color);
+}
+
+.close__btn {
+  margin-left: auto;
+  align-self: flex-start;
+}
+
+.close__btn:hover {
+  background-color: var(--light-gray);
+}

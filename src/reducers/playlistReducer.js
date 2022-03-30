@@ -61,6 +61,15 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         playlists: playlistState.playlists.filter(({ _id }) => _id !== payload),
       };
 
+    case "CLEAR_ALL_USER_VIDEOS":
+      return {
+        ...playlistState,
+        history: [],
+        watchLater: [],
+        playlists: [],
+        likedVideos: [],
+      };
+
     case "HANDLE_MODAL":
       return { ...playlistState, showModal: payload };
 
