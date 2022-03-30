@@ -1,5 +1,4 @@
 export const playlistReducer = (playlistState, { type, payload }) => {
-  console.log(type, payload);
   switch (type) {
     case "INITIALIZE_USER_VIDEOS":
       return { ...playlistState, ...payload };
