@@ -85,7 +85,7 @@ export const SingleVideo = () => {
         <PlaylistModal video={video} handleShowModal={handleShowModal} />
       )}
       {loader ? (
-        <h4 className="text-center mb-2 py-6">Fetching video...</h4>
+        <p className="font-semibold text-center mb-2 py-6">Fetching video...</p>
       ) : (
         <div className="mb-2 p-2">
           <section className={`${styles.container}`}>
