@@ -140,7 +140,7 @@ export const SingleVideo = () => {
                   >
                     thumb_up
                   </span>
-                  Like
+                  {likedVideo ? "Liked" : "Like"}
                 </button>
 
                 <button
