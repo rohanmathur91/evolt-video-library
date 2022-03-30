@@ -15,6 +15,9 @@ export const authFormReducer = (formState, { type, payload }) => {
         },
       };
 
+    case "SET_TEST_CREDENTIALS":
+      return { ...formState, credentials: payload };
+
     default:
       throw new Error("Action type not found");
   }
