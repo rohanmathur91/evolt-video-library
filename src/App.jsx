@@ -3,10 +3,10 @@ import {
   Home,
   Login,
   Signup,
-  Video,
   Playlists,
   History,
   WatchLater,
+  VideoDetails,
   VideoListing,
   LikedVideos,
 } from "./pages";
@@ -23,10 +23,10 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/explore" element={<VideoListing />} />
         <Route path="/history" element={<History />} />
-        <Route path="/liked-videos" element={<LikedVideos />} />
-        <Route path="/video/:videoId" element={<Video />} />
+        <Route path="/video/:videoId" element={<VideoDetails />} />
         <Route path="/playlists" element={<Playlists />} />
         <Route path="/playlist/:id" element={<PlaylistContainer />} />
+        <Route path="/liked-videos" element={<LikedVideos />} />
         <Route path="/watch-later" element={<WatchLater />} />
       </Routes>
     </div>
