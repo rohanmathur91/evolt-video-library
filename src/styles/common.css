@@ -1,0 +1,38 @@
+/* forms */
+.login-form,
+.signup-form {
+  max-width: 40rem;
+  height: fit-content;
+  background-color: var(--white);
+}
+
+.btn-form {
+  padding: 1.2rem;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+}
+
+.login-error-msg {
+  color: var(--red);
+}
+
+.forgot-password {
+  color: var(--primary-color);
+}
+
+.logout {
+  width: 100%;
+  max-width: 50rem;
+}
+
+.visibility-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  user-select: none;
+}
+
+.redirect-icon {
+  font-size: 2.6rem;
+  margin-left: -6px;
+}

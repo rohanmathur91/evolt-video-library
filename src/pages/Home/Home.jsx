@@ -18,7 +18,7 @@ export const Home = () => {
     <>
       <header className={`${styles.banner} flex-row flex-center`}>
         <section className="mx-2 flex-column items-center">
-          <h1 className={`${styles.heading} mb-4`}>
+          <h1 className={`${styles.heading} mb-4 text-center`}>
             View quality reviews for your headphones.
           </h1>
           <Link
@@ -49,7 +49,7 @@ export const Home = () => {
                   className="rounded-sm"
                 />
                 <div
-                  className={`${styles.category__name} font-semibold p-1 rounded-sm`}
+                  className={`${styles.category__name} font-semibold p-1 rounded-sm flex-row flex-center`}
                 >
                   {categoryName}
                 </div>

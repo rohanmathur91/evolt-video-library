@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useVideo } from "../../contexts";
+import { useAuth, useVideo } from "../../contexts";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const { searchQuery, videoDispatch } = useVideo();
+  const { user } = useAuth();
   const { pathname } = useLocation();
+  const { searchQuery, videoDispatch } = useVideo();
 
   const handleInputChange = (event) => {
     videoDispatch({ type: "SET_SEARCH_QUERY", payload: event.target.value });
@@ -64,11 +65,13 @@ export const Navbar = () => {
         )}
 
         <Link
-          to="/profile"
+          to={`${user ? "/profile" : "/login"}`}
           className={`${styles.profile__icon} cursor-pointer flex-column items-center`}
         >
           <span className="material-icons-outlined">person_outline</span>
-          <span className="text-sm font-semibold">Login</span>
+          <span className="text-sm font-semibold">
+            {user ? "Profile" : "Login"}
+          </span>
         </Link>
       </nav>
 

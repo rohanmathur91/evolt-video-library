@@ -3,3 +3,4 @@ export * from "./watchLaterUtils";
 export * from "./historyUtils";
 export * from "./likedVideoUtils";
 export * from "./videoUtils";
+export * from "./validateSignupForm";

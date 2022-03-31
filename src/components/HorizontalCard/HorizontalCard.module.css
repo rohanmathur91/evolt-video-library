@@ -3,13 +3,10 @@
 }
 
 .thumbnail {
-  user-select: none;
-}
-
-.thumbnail img {
   width: 100%;
-  height: auto;
-  min-width: 32rem;
+  min-width: 30rem;
+  max-width: 30rem;
+  user-select: none;
 }
 
 .title {
@@ -50,12 +47,13 @@
   visibility: visible;
 }
 
-@media screen and (max-width: 48em) {
-  .container {
+@media screen and (max-width: 30em) {
+  .card {
     flex-direction: column;
   }
 
   .thumbnail {
+    max-width: none;
     margin-bottom: 1.2rem;
   }
 }

@@ -1,0 +1,11 @@
+.input {
+  padding: 1.2rem;
+}
+
+.error {
+  color: var(--red);
+}
+
+.validation-msg {
+  background-color: var(--white);
+}

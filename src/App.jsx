@@ -2,6 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import {
   Home,
   Login,
+  Signup,
+  Profile,
   Playlists,
   History,
   WatchLater,
@@ -19,6 +21,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/explore" element={<VideoListing />} />
         <Route path="/history" element={<History />} />
         <Route path="/video/:videoId" element={<VideoDetails />} />

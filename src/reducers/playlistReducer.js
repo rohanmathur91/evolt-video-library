@@ -1,5 +1,8 @@
 export const playlistReducer = (playlistState, { type, payload }) => {
   switch (type) {
+    case "INITIALIZE_USER_VIDEOS":
+      return { ...playlistState, ...payload };
+
     case "SET_PLAYLIST":
       return { ...playlistState, playlists: payload };
 
@@ -58,10 +61,19 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         playlists: playlistState.playlists.filter(({ _id }) => _id !== payload),
       };
 
+    case "CLEAR_ALL_USER_VIDEOS":
+      return {
+        ...playlistState,
+        history: [],
+        watchLater: [],
+        playlists: [],
+        likedVideos: [],
+      };
+
     case "HANDLE_MODAL":
       return { ...playlistState, showModal: payload };
 
     default:
-      throw new Error("Action type did not found");
+      throw new Error("Action type not found");
   }
 };

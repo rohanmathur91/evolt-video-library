@@ -44,20 +44,6 @@
   background-color: var(--light-gray);
 }
 
-.btn__outlined {
-  border: 1px solid var(--primary-color);
-}
-
-.btn__clearAll,
-.btn__outlined:hover {
-  color: var(--white);
-  background-color: var(--primary-color);
-}
-
-.btn__clearAll:hover {
-  opacity: 0.8;
-}
-
 @media screen and (max-width: 64em) {
   .back__link {
     display: flex;

@@ -38,8 +38,9 @@ export const PlaylistContainer = ({
   return (
     <>
       {showModal && (
-        <Modal>
+        <Modal handleShowModal={handleShowModal}>
           <div
+            onClick={(event) => event.stopPropagation()}
             className={`${styles.modal} p-1 pl-2 m-1 rounded-sm flex-column`}
           >
             <div className="flex-row items-center content-space-between">
@@ -57,13 +58,13 @@ export const PlaylistContainer = ({
             </p>
             <div className="ml-auto mr-1 pb-1">
               <button
-                className={`${styles.btn__outlined} font-sm p-1 mr-1 rounded-sm font-semibold transition-2`}
                 onClick={() => handleShowModal(false)}
+                className="btn-outlined font-sm p-1 mr-1 rounded-sm font-semibold transition-2"
               >
                 Cancel
               </button>
               <button
-                className={`${styles.btn__clearAll} font-sm p-1 rounded-sm font-semibold transition-2`}
+                className="btn-solid font-sm p-1 rounded-sm font-semibold transition-2"
                 onClick={handleDeletePlaylist}
               >
                 Clear All

@@ -1,4 +1,5 @@
 export { Navbar } from "./Navbar/Navbar";
+export { Input } from "./Input/Input";
 export { Sidebar } from "./Sidebar/Sidebar";
 export { VideoCard } from "./VideoCard/VideoCard";
 export { VideoOverviewCard } from "./VideoCard/VideoOverviewCard";
