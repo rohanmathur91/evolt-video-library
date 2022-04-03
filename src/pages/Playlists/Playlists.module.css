@@ -6,12 +6,12 @@
 .playlist__card {
   display: flex;
   align-items: center;
-  background-color: var(--white);
+  background-color: var(--secondary-color);
 }
 
 .playlist__card:hover {
   cursor: pointer;
-  box-shadow: 0 1px 3px 0px var(--shadow-color);
+  box-shadow: var(--shadow);
 }
 
 .video_count {

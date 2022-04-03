@@ -57,7 +57,7 @@ export const Profile = () => {
         </Modal>
       )}
 
-      <div className="flex-row">
+      <div className="content flex-row">
         <Sidebar />
         <main
           className={`${styles.container} flex-column flex-center w-100 px-2`}

@@ -1,9 +1,9 @@
 .sidebar {
   min-width: 24rem;
   height: calc(100vh - 7.3rem);
-  background-color: var(--white);
   position: sticky;
   top: 7.3rem;
+  background-color: var(--secondary-color);
   border-right: 1px solid var(--light-gray);
 }
 

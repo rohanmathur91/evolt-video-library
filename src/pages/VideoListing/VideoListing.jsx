@@ -27,7 +27,7 @@ export const VideoListing = () => {
         <PlaylistModal video={clickedVideo} handleShowModal={handleShowModal} />
       )}
 
-      <div className="flex-row">
+      <div className="content flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
           <div className="mb-2 mt-3 px-1 flex-row wrap">

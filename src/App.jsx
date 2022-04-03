@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { useTheme } from "./contexts";
 import {
   Home,
   Login,
@@ -12,11 +13,14 @@ import {
   LikedVideos,
 } from "./pages";
 import { Navbar, PlaylistContainer } from "./components";
+
 import "./App.css";
 
 const App = () => {
+  const { theme } = useTheme();
+
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

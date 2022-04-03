@@ -11,7 +11,7 @@ export const Playlists = () => {
   useDocumentTitle("Playlists");
 
   return (
-    <div className="flex-row">
+    <div className="content flex-row">
       <Sidebar />
       <div className="main__container w-100 mt-1 px-2">
         <div className="mt-4 px-2">

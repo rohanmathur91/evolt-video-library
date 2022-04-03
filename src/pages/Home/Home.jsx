@@ -20,7 +20,7 @@ export const Home = () => {
       <header
         className={`${styles.header__container} m-auto flex-row items-center content-space-around`}
       >
-        <section className="mx-3">
+        <section className={`${styles.heading__content} mx-3`}>
           <h1 className={`${styles.heading} mb-4`}>
             Watch quality reviews for your headphones.
           </h1>
@@ -46,7 +46,7 @@ export const Home = () => {
                 key={_id}
                 to="/explore"
                 onClick={() => handleCategoryClick(categoryName)}
-                className={`${styles.category} border relative rounded-sm cursor-pointer`}
+                className={`${styles.category} relative rounded-sm cursor-pointer`}
               >
                 <img
                   src={categoryURL}
@@ -54,7 +54,7 @@ export const Home = () => {
                   className="rounded-sm"
                 />
                 <div
-                  className={`${styles.category__name} font-semibold p-1 rounded-sm flex-row flex-center`}
+                  className={`${styles.category__name} font-semibold p-2 rounded-sm text-center`}
                 >
                   {categoryName}
                 </div>

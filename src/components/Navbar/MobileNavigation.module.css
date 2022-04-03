@@ -2,18 +2,18 @@
   width: 0;
   height: 100vh;
   overflow: hidden;
-  background-color: var(--white);
-  box-shadow: 0 1px 3px 0px var(--shadow-color);
+  background-color: var(--secondary-color);
+  box-shadow: var(--shadow);
 }
 
 .sidebar__header {
-  color: var(--white);
-  background-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: var(--content-background);
 }
 
 .sidebar__close_btn span {
   font-size: 3.2rem;
-  color: var(--white);
+  color: var(--primary-color);
 }
 
 .sidebar__link {

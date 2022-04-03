@@ -1,6 +1,6 @@
 .chip {
   margin: 4px;
-  background-color: var(--white);
+  background-color: var(--background-color);
 }
 
 .chip:hover {

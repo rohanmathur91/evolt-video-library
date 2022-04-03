@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useAuth, useVideo } from "../../contexts";
+import { useAuth, useTheme, useVideo } from "../../contexts";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
@@ -8,6 +8,7 @@ export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const { user } = useAuth();
   const { pathname } = useLocation();
+  const { theme, toggleTheme } = useTheme();
   const { searchQuery, videoDispatch } = useVideo();
 
   const handleInputChange = (event) => {
@@ -64,15 +65,30 @@ export const Navbar = () => {
           </span>
         )}
 
-        <Link
-          to={`${user ? "/profile" : "/login"}`}
-          className={`${styles.profile__icon} cursor-pointer flex-column items-center`}
-        >
-          <span className="material-icons-outlined">person_outline</span>
-          <span className="text-sm font-semibold">
-            {user ? "Profile" : "Login"}
-          </span>
-        </Link>
+        <div className="flex-row">
+          <button
+            title="Change theme"
+            onClick={() => toggleTheme()}
+            className={`${styles.theme__btn} icon-container p-1 rounded-sm border`}
+          >
+            {theme === "light" ? (
+              <span className="material-icons">dark_mode</span>
+            ) : (
+              <span className="material-icons-outlined">light_mode</span>
+            )}
+          </button>
+
+          <Link
+            title={`${user ? "Profile" : "Login"}`}
+            to={`${user ? "/profile" : "/login"}`}
+            className={`${styles.profile__icon} ml-3 cursor-pointer flex-column items-center`}
+          >
+            <span className="material-icons-outlined">person_outline</span>
+            <span className="text-sm font-semibold">
+              {user ? "Profile" : "Login"}
+            </span>
+          </Link>
+        </div>
       </nav>
 
       <MobileNavigation

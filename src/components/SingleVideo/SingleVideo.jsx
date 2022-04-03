@@ -87,7 +87,7 @@ export const SingleVideo = () => {
       {loader ? (
         <p className="font-semibold text-center mb-2 py-6">Fetching video...</p>
       ) : (
-        <div className="mb-2 p-2">
+        <div className="content mb-2 p-2">
           <section className={`${styles.container}`}>
             <iframe
               src={`https://www.youtube.com/embed/${videoId}`}

@@ -35,7 +35,7 @@
 
 .btn-solid,
 .btn-outlined:hover {
-  color: var(--white);
+  color: var(--secondary-color);
   background-color: var(--primary-color);
 }
 
@@ -70,9 +70,20 @@
 }
 
 /* container */
+.content {
+  background-color: var(--content-background);
+}
+
 .main__container {
   margin: 0 auto;
   max-width: 140.8rem;
+  background-color: var(--content-background);
+}
+
+@media screen and (max-width: 64em) {
+  .main__container {
+    height: calc(100vh - 7.2rem);
+  }
 }
 
 @media screen and (max-width: 48em) {

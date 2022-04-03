@@ -1,6 +1,9 @@
 .header__container {
-  max-width: 110rem;
-  height: calc(100vh - 7.2rem);
+  max-width: 120rem;
+  height: calc(100vh - 20rem);
+}
+
+.heading__content {
 }
 
 .banner {
@@ -17,7 +20,7 @@
   letter-spacing: 0.8px;
   word-break: break-word;
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--secondary-color);
   background: var(--primary-color);
 }
 
@@ -35,19 +38,23 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
+.category img {
+  height: 40rem;
+  object-fit: cover;
+}
+
 .category:hover {
-  border: 1px solid var(--light-gray);
-  box-shadow: 0 1px 3px 0px var(--shadow-color);
+  box-shadow: var(--shadow);
 }
 
 .category__name {
-  width: 100%;
-  font-size: 1.8rem;
+  font-size: 2.4rem;
   color: var(--white);
   position: absolute;
-  top: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  backdrop-filter: blur(3px);
   background-color: var(--modal-background);
 }
 
@@ -60,6 +67,11 @@
     margin-top: 2rem;
     max-height: 60rem;
     height: calc(100vh - 7rem);
+  }
+
+  .category img {
+    height: 30rem;
+    object-fit: cover;
   }
 }
 
@@ -74,11 +86,5 @@
 
   .categories {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 30em) {
-  .categories {
-    grid-template-columns: 1fr;
   }
 }

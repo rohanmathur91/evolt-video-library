@@ -1,7 +1,7 @@
 .container {
   width: 100%;
   max-width: 25rem;
-  background-color: var(--white);
+  background-color: var(--secondary-color);
 }
 
 .header {

@@ -28,7 +28,7 @@
 .modal {
   width: 100%;
   max-width: 38rem;
-  background-color: var(--white);
+  background-color: var(--secondary-color);
 }
 
 .message {
@@ -47,6 +47,7 @@
 @media screen and (max-width: 64em) {
   .back__link {
     display: flex;
+    margin-top: 3rem;
   }
 }
 

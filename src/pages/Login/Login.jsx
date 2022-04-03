@@ -49,7 +49,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="w-100 flex-row content-center mt-4">
+    <div className="w-100 form-container flex-row content-center mt-4">
       <form
         onSubmit={handleFormSubmit}
         className="login-form py-2 px-4 w-100 card-shadow rounded-sm m-2"

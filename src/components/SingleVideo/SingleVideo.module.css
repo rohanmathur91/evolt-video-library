@@ -34,6 +34,7 @@
 
 .description {
   line-height: 1.8;
+  color: var(--text-color);
 }
 
 @media screen and (max-width: 30em) {

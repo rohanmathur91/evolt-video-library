@@ -1,10 +1,11 @@
 .videos__container {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  align-items: start;
   gap: 4px;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: start;
+  justify-items: center;
+  background: var(--content-background);
 }
 
 @media screen and (max-width: 48em) {

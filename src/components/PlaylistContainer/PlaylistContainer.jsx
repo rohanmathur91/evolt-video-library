@@ -74,10 +74,10 @@ export const PlaylistContainer = ({
         </Modal>
       )}
 
-      <div className="flex-row">
+      <div className="content flex-row">
         <Sidebar />
         <div className="main__container w-100 mt-1 px-2">
-          <div className={`${styles.container} mt-2 mx-1 mb-2 px-2`}>
+          <div className={`${styles.container} mx-1 mb-2 px-2`}>
             <Link
               to="/explore"
               className={`${styles.back__link} flex-row items-center mt-1`}
