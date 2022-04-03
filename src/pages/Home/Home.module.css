@@ -1,24 +1,24 @@
+.header__container {
+  max-width: 110rem;
+  height: calc(100vh - 7.2rem);
+}
+
 .banner {
-  height: 68vh;
-  background-size: cover;
-  background-position: 47% 45%;
-  background-repeat: no-repeat;
-  background-color: var(--header-background);
-  background-blend-mode: multiply;
-  background-image: url("https://i.ytimg.com/vi/bInJjmH31Hk/hq720.jpg");
+  max-width: 40rem;
 }
 
 .heading {
-  color: var(--white);
   max-width: 41rem;
+  color: var(--primary-color);
 }
 
 .cta {
+  width: max-content;
   letter-spacing: 0.8px;
   word-break: break-word;
   text-transform: uppercase;
-  color: var(--primary-color);
-  background: var(--white);
+  color: var(--white);
+  background: var(--primary-color);
 }
 
 .cta:hover {
@@ -26,7 +26,7 @@
 }
 
 .cta:hover span {
-  transform: translateX(1.2rem);
+  transform: translateX(1.4rem);
 }
 
 .categories {
@@ -55,7 +55,19 @@
   grid-column: 2 / 4;
 }
 
+@media screen and (max-width: 60em) {
+  .header__container {
+    margin-top: 2rem;
+    max-height: 60rem;
+    height: calc(100vh - 7rem);
+  }
+}
+
 @media screen and (max-width: 48em) {
+  .header__container {
+    flex-direction: column-reverse;
+  }
+
   .heading {
     font-size: 4.3rem;
   }

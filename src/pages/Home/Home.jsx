@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useScrollToTop, useDocumentTitle } from "../../hooks";
 import { useVideo } from "../../contexts";
 import { Footer } from "../../components";
+import banner from "../../assets/images/banner.svg";
 import styles from "./Home.module.css";
 
 export const Home = () => {
@@ -16,10 +17,12 @@ export const Home = () => {
 
   return (
     <>
-      <header className={`${styles.banner} flex-row flex-center`}>
-        <section className="mx-2 flex-column items-center">
-          <h1 className={`${styles.heading} mb-4 text-center`}>
-            View quality reviews for your headphones.
+      <header
+        className={`${styles.header__container} m-auto flex-row items-center content-space-around`}
+      >
+        <section className="mx-3">
+          <h1 className={`${styles.heading} mb-4`}>
+            Watch quality reviews for your headphones.
           </h1>
           <Link
             to="/explore"
@@ -31,6 +34,8 @@ export const Home = () => {
             </span>
           </Link>
         </section>
+
+        <img src={banner} alt="banner" className={`${styles.banner} px-2`} />
       </header>
       <div className="mb-4 px-3">
         <h2 className="text-lg my-2">Categories</h2>
