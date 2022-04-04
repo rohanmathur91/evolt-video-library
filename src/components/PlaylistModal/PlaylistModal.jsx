@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import { usePlaylist } from "../../contexts";
 import { playlistModalReducer } from "../../reducers";
+import { useToast } from "../../hooks";
 import {
   createPlaylist,
   addVideoInPlaylist,
@@ -25,6 +26,7 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
       showInput: false,
       newPlaylistName: "",
     });
+  const { showToast } = useToast();
   const { watchLater, likedVideos, playlists, playlistDispatch } =
     usePlaylist();
   const likedVideo = isVideoLiked(video._id, likedVideos);
@@ -38,6 +40,7 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
   };
 
   const handleFormSubmit = (event) => {
+    event.preventDefault();
     createPlaylist(
       event,
       newPlaylistName,
@@ -48,25 +51,25 @@ export const PlaylistModal = ({ video, handleShowModal }) => {
 
   const handleLikeClick = (event) => {
     if (event.target.checked) {
-      addInLikeVideos(video, playlistDispatch);
+      addInLikeVideos(video, playlistDispatch, showToast);
     } else {
-      removeFromLikeVideos(video._id, playlistDispatch);
+      removeFromLikeVideos(video._id, playlistDispatch, showToast);
     }
   };
 
   const handleWatchLaterChange = (event) => {
     if (event.target.checked) {
-      addToWatchLater(video, playlistDispatch);
+      addToWatchLater(video, playlistDispatch, showToast);
     } else {
-      removeFromWatchLater(video._id, playlistDispatch);
+      removeFromWatchLater(video._id, playlistDispatch, showToast);
     }
   };
 
   const handlePlaylistInputChange = (event, playlistId) => {
     if (event.target.checked) {
-      addVideoInPlaylist(video, playlistId, playlistDispatch);
+      addVideoInPlaylist(video, playlistId, playlistDispatch, showToast);
     } else {
-      removeFromPlaylist(video._id, playlistDispatch, playlistId);
+      removeFromPlaylist(video._id, playlistDispatch, playlistId, showToast);
     }
   };
 

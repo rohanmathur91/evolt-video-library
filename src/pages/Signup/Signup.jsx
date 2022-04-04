@@ -2,7 +2,12 @@ import React, { useReducer } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../contexts";
 import { signupService } from "../../services";
-import { useAuthForm, useScrollToTop, useDocumentTitle } from "../../hooks";
+import {
+  useToast,
+  useAuthForm,
+  useScrollToTop,
+  useDocumentTitle,
+} from "../../hooks";
 import { signupErrorReducer, signUpErrorInitialState } from "../../reducers";
 import { validateSignupForm } from "../../utils";
 import { Input } from "../../components";
@@ -28,6 +33,7 @@ export const Signup = () => {
     signupErrorReducer,
     signUpErrorInitialState
   );
+  const { showToast } = useToast();
 
   useScrollToTop();
   useDocumentTitle("Signup");
@@ -43,7 +49,8 @@ export const Signup = () => {
         playlistDispatch,
         authFormDispatch,
         errorDispatch,
-        navigate
+        navigate,
+        showToast
       );
     }
   };

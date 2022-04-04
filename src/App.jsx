@@ -11,13 +11,14 @@ import {
   VideoListing,
   LikedVideos,
 } from "./pages";
-import { Navbar, PlaylistContainer } from "./components";
+import { Toast, Navbar, PlaylistContainer } from "./components";
 import "./App.css";
 
 const App = () => {
   return (
     <div className="app">
       <Navbar />
+      <Toast />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

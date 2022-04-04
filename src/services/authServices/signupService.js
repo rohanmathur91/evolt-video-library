@@ -6,7 +6,8 @@ export const signupService = async (
   playlistDispatch,
   authFormDispatch,
   errorDispatch,
-  navigate
+  navigate,
+  showToast
 ) => {
   try {
     authFormDispatch({ type: "SET_LOADING", payload: true });
@@ -32,6 +33,7 @@ export const signupService = async (
     errorDispatch({ type: "CLEAR_SIGNUP_FORM" });
     authFormDispatch({ type: "SET_LOADING", payload: false });
     navigate("/");
+    showToast("success", "You signup is successfull.");
   } catch (error) {
     errorDispatch({
       type: "SET_SIGNUP_FORM_ERROR",

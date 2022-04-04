@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { deletePlaylist, removeFromPlaylist } from "../../services";
 import { usePlaylist } from "../../contexts";
-import { useModal } from "../../hooks";
+import { useModal, useToast } from "../../hooks";
 import { getPlaylistById } from "../../utils";
 import { Modal, Sidebar, HorizontalCard } from "../";
 import styles from "./PlaylistContainer.module.css";
@@ -15,23 +15,24 @@ export const PlaylistContainer = ({
 }) => {
   const navigate = useNavigate();
   const { id: playlistId } = useParams();
+  const { showToast } = useToast();
   const { showModal, handleShowModal } = useModal();
   const { playlists, playlistDispatch } = usePlaylist();
   const playlist = getPlaylistById(playlistId, playlists);
 
   const handleRemoveFromPlaylist = (videoId) => {
     if (playlistId) {
-      removeFromPlaylist(videoId, playlistDispatch, playlistId);
+      removeFromPlaylist(videoId, playlistDispatch, playlistId, showToast);
     } else {
-      removeVideoHandler(videoId, playlistDispatch);
+      removeVideoHandler(videoId, playlistDispatch, showToast);
     }
   };
 
   const handleDeletePlaylist = () => {
     if (playlistId) {
-      deletePlaylist(playlistId, playlistDispatch, navigate);
+      deletePlaylist(playlistId, playlistDispatch, navigate, showToast);
     } else {
-      deletePlaylistHandler(playlistDispatch, navigate);
+      deletePlaylistHandler(playlistDispatch, navigate, showToast);
     }
   };
 
@@ -67,7 +68,7 @@ export const PlaylistContainer = ({
                 className="btn-solid font-sm p-1 rounded-sm font-semibold transition-2"
                 onClick={handleDeletePlaylist}
               >
-                Clear All
+                {playlist?.title ? "Delete" : "Clear All"}
               </button>
             </div>
           </div>

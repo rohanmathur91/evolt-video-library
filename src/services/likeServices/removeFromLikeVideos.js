@@ -1,7 +1,11 @@
 import axios from "axios";
 import { encodedToken } from "../../token";
 
-export const removeFromLikeVideos = async (videoId, playlistDispatch) => {
+export const removeFromLikeVideos = async (
+  videoId,
+  playlistDispatch,
+  showToast
+) => {
   try {
     const {
       data: { likes },
@@ -10,7 +14,8 @@ export const removeFromLikeVideos = async (videoId, playlistDispatch) => {
     });
 
     playlistDispatch({ type: "UPDATE_LIKE_VIDEOS", payload: likes });
+    showToast("success", "Video removed from liked videos");
   } catch (error) {
-    console.log(error);
+    showToast("success", "Could not remove the video");
   }
 };
