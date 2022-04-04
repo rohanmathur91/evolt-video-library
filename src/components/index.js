@@ -10,3 +10,4 @@ export { PlaylistContainer } from "./PlaylistContainer/PlaylistContainer";
 export { SingleVideo } from "./SingleVideo/SingleVideo";
 export { PlaylistModal } from "./PlaylistModal/PlaylistModal";
 export { Footer } from "./Footer/Footer";
+export { Loader } from "./Loader/Loader";

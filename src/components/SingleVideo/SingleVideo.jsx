@@ -11,7 +11,7 @@ import {
 } from "../../services";
 import { isVideoInWatchLater, isVideoLiked } from "../../utils";
 import { encodedToken } from "../../token";
-import { PlaylistModal } from "../";
+import { Loader, PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = () => {
@@ -85,7 +85,7 @@ export const SingleVideo = () => {
         <PlaylistModal video={video} handleShowModal={handleShowModal} />
       )}
       {loader ? (
-        <p className="font-semibold text-center mb-2 py-6">Fetching video...</p>
+        <Loader />
       ) : (
         <div className="mb-2 p-2">
           <section className={`${styles.container}`}>

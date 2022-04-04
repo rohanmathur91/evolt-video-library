@@ -1,0 +1,7 @@
+.loader {
+  height: 100%;
+}
+
+.loader .MuiCircularProgress-root {
+  color: var(--primary-color);
+}
