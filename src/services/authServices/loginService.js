@@ -6,7 +6,8 @@ export const loginService = async (
   playlistDispatch,
   authFormDispatch,
   setError,
-  navigate
+  navigate,
+  showToast
 ) => {
   try {
     setError("");
@@ -31,6 +32,7 @@ export const loginService = async (
     localStorage.setItem("token", encodedToken);
     authFormDispatch({ type: "SET_LOADING", payload: false });
     navigate("/");
+    showToast("success", "You logged in successfully");
   } catch (error) {
     setError("Email or password is incorrect");
   }

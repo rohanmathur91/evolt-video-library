@@ -4,7 +4,8 @@ import { encodedToken } from "../../token";
 export const deletePlaylist = async (
   playlistId,
   playlistDispatch,
-  navigate
+  navigate,
+  showToast
 ) => {
   try {
     await axios.delete(`/api/user/playlists/${playlistId}`, {
@@ -13,7 +14,8 @@ export const deletePlaylist = async (
 
     navigate("/playlists");
     playlistDispatch({ type: "DELETE_PLAYLIST", payload: playlistId });
+    showToast("success", "Playlist deleted successfully.");
   } catch (error) {
-    console.log(error);
+    showToast("error", "Something went wrong!");
   }
 };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useVideo } from "../../contexts";
 import { useModal, useScrollToTop, useDocumentTitle } from "../../hooks";
 import {
+  Loader,
   Sidebar,
   VideoCard,
   PlaylistModal,
@@ -30,35 +31,37 @@ export const VideoListing = () => {
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
-          <div className="mb-2 mt-3 px-1 flex-row wrap">
-            <CategoryChip
-              categoryName="All"
-              currentCategory={currentCategory}
-              handleClick={handleCategoryClick}
-            />
-            {categories.map(({ _id, categoryName }) => (
-              <CategoryChip
-                key={_id}
-                categoryName={categoryName}
-                currentCategory={currentCategory}
-                handleClick={handleCategoryClick}
-              />
-            ))}
-          </div>
-
-          {videos.length ? (
-            <main className={`${styles.videos__container} mb-2`}>
-              {videos.map((video) => (
-                <VideoCard
-                  key={video._id}
-                  video={video}
-                  setClickedVideo={setClickedVideo}
-                  handleShowModal={handleShowModal}
-                />
-              ))}
-            </main>
+          {!videos.length ? (
+            <Loader />
           ) : (
-            <p className="mt-4 text-center">No videos found.</p>
+            <>
+              <div className="mb-2 mt-3 px-1 flex-row wrap">
+                <CategoryChip
+                  categoryName="All"
+                  currentCategory={currentCategory}
+                  handleClick={handleCategoryClick}
+                />
+                {categories.map(({ _id, categoryName }) => (
+                  <CategoryChip
+                    key={_id}
+                    categoryName={categoryName}
+                    currentCategory={currentCategory}
+                    handleClick={handleCategoryClick}
+                  />
+                ))}
+              </div>
+
+              <main className={`${styles.videos__container} mb-2`}>
+                {videos.map((video) => (
+                  <VideoCard
+                    key={video._id}
+                    video={video}
+                    setClickedVideo={setClickedVideo}
+                    handleShowModal={handleShowModal}
+                  />
+                ))}
+              </main>
+            </>
           )}
         </div>
       </div>

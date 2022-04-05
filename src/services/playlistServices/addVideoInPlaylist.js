@@ -4,7 +4,8 @@ import { encodedToken } from "../../token";
 export const addVideoInPlaylist = async (
   video,
   playlistId,
-  playlistDispatch
+  playlistDispatch,
+  showToast
 ) => {
   try {
     await axios.post(
@@ -19,7 +20,8 @@ export const addVideoInPlaylist = async (
       type: "ADD_TO_PLAYLIST",
       payload: { video, playlistId },
     });
+    showToast("success", "Video added in playlist");
   } catch (error) {
-    console.log(error);
+    showToast("error", "Could not add the video in playlist");
   }
 };

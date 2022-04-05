@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../contexts";
 import { loginService } from "../../services";
-import { useAuthForm, useScrollToTop, useDocumentTitle } from "../../hooks";
+import {
+  useToast,
+  useAuthForm,
+  useScrollToTop,
+  useDocumentTitle,
+} from "../../hooks";
 import { Input } from "../../components";
 
 export const Login = () => {
@@ -18,8 +23,8 @@ export const Login = () => {
     email: "",
     password: "",
   });
-
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const { updateUser } = useAuth();
   const { playlistDispatch } = usePlaylist();
 
@@ -44,7 +49,8 @@ export const Login = () => {
       playlistDispatch,
       authFormDispatch,
       setError,
-      navigate
+      navigate,
+      showToast
     );
   };
 

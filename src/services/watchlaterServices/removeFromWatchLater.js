@@ -1,7 +1,11 @@
 import axios from "axios";
 import { encodedToken } from "../../token";
 
-export const removeFromWatchLater = async (videoId, playlistDispatch) => {
+export const removeFromWatchLater = async (
+  videoId,
+  playlistDispatch,
+  showToast
+) => {
   try {
     const {
       data: { watchlater },
@@ -10,7 +14,8 @@ export const removeFromWatchLater = async (videoId, playlistDispatch) => {
     });
 
     playlistDispatch({ type: "UPDATE_WATCH_LATER", payload: watchlater });
+    showToast("success", "Video removed from watch later");
   } catch (error) {
-    console.log(error);
+    showToast("error", "Something went wrong!");
   }
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { useModal, useDocumentTitle } from "../../hooks";
+import { useModal, useDocumentTitle, useToast } from "../../hooks";
 import { usePlaylist } from "../../contexts";
 import {
   addInLikeVideos,
@@ -11,13 +11,14 @@ import {
 } from "../../services";
 import { isVideoInWatchLater, isVideoLiked } from "../../utils";
 import { encodedToken } from "../../token";
-import { PlaylistModal } from "../";
+import { Loader, PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
 
 export const SingleVideo = () => {
   const [video, setVideo] = useState(null);
   const [loader, setLoader] = useState(false);
   const { videoId } = useParams();
+  const { showToast } = useToast();
   const { showModal, handleShowModal } = useModal();
   const { watchLater, likedVideos, playlistDispatch } = usePlaylist();
   const likedVideo = isVideoLiked(videoId, likedVideos);
@@ -65,17 +66,17 @@ export const SingleVideo = () => {
 
   const handleLikeClick = () => {
     if (!likedVideo) {
-      addInLikeVideos(video, playlistDispatch);
+      addInLikeVideos(video, playlistDispatch, showToast);
     } else {
-      removeFromLikeVideos(_id, playlistDispatch);
+      removeFromLikeVideos(_id, playlistDispatch, showToast);
     }
   };
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
-      addToWatchLater(video, playlistDispatch);
+      addToWatchLater(video, playlistDispatch, showToast);
     } else {
-      removeFromWatchLater(_id, playlistDispatch);
+      removeFromWatchLater(_id, playlistDispatch, showToast);
     }
   };
 
@@ -85,7 +86,7 @@ export const SingleVideo = () => {
         <PlaylistModal video={video} handleShowModal={handleShowModal} />
       )}
       {loader ? (
-        <p className="font-semibold text-center mb-2 py-6">Fetching video...</p>
+        <Loader />
       ) : (
         <div className="mb-2 p-2">
           <section className={`${styles.container}`}>
