@@ -54,7 +54,7 @@ export const Navbar = () => {
               <span className="material-icons-outlined">search</span>
             </span>
             <input
-              type="text"
+              type="search"
               autoComplete="false"
               value={searchQuery}
               onChange={handleInputChange}

@@ -1,5 +1,8 @@
 export const videoReducer = (videoState, { type, payload }) => {
   switch (type) {
+    case "SET_LOADING":
+      return { ...videoState, loading: payload };
+
     case "INITIALIZE_VIDEOS":
       return { ...videoState, videos: payload };
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useContext, createContext, useReducer } from "react";
+import { useAuth } from "./auth-context";
 import { useToast } from "../hooks";
 import { playlistReducer } from "../reducers";
 
@@ -13,22 +14,25 @@ const PlaylistProvider = ({ children }) => {
       playlists: [],
       likedVideos: [],
     });
+  const { user } = useAuth();
   const { showToast } = useToast();
 
   useEffect(() => {
-    (async () => {
-      try {
-        const {
-          data: { playlists },
-        } = await axios.get("/api/user/playlists", {
-          headers: { authorization: localStorage.getItem("token") },
-        });
+    if (user) {
+      (async () => {
+        try {
+          const {
+            data: { playlists },
+          } = await axios.get("/api/user/playlists", {
+            headers: { authorization: localStorage.getItem("token") },
+          });
 
-        playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
-      } catch (error) {
-        showToast("error", "Could not fetch the playlists.");
-      }
-    })();
+          playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
+        } catch (error) {
+          showToast("error", "Could not fetch the playlists.");
+        }
+      })();
+    }
   }, []);
 
   return (
