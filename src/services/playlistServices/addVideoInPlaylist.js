@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const addVideoInPlaylist = async (
   video,
@@ -12,7 +11,7 @@ export const addVideoInPlaylist = async (
       `/api/user/playlists/${playlistId}`,
       { video },
       {
-        headers: { authorization: encodedToken },
+        headers: { authorization: localStorage.getItem("token") },
       }
     );
 

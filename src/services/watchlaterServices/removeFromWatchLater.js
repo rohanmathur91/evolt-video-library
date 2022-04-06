@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const removeFromWatchLater = async (
   videoId,
@@ -10,7 +9,7 @@ export const removeFromWatchLater = async (
     const {
       data: { watchlater },
     } = await axios.delete(`/api/user/watchlater/${videoId}`, {
-      headers: { authorization: encodedToken },
+      headers: { authorization: localStorage.getItem("token") },
     });
 
     playlistDispatch({ type: "UPDATE_WATCH_LATER", payload: watchlater });

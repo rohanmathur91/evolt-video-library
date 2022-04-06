@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const clearAllHistory = async (
   playlistDispatch,
@@ -8,7 +7,7 @@ export const clearAllHistory = async (
 ) => {
   try {
     await axios.delete("/api/user/history/all", {
-      headers: { authorization: encodedToken },
+      headers: { authorization: localStorage.getItem("token") },
     });
 
     navigate("/explore");

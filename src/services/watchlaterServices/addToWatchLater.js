@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const addToWatchLater = async (video, playlistDispatch, showToast) => {
   try {
@@ -9,7 +8,7 @@ export const addToWatchLater = async (video, playlistDispatch, showToast) => {
       `/api/user/watchlater`,
       { video },
       {
-        headers: { authorization: encodedToken },
+        headers: { authorization: localStorage.getItem("token") },
       }
     );
 
