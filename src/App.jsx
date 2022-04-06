@@ -10,6 +10,7 @@ import {
   VideoDetails,
   VideoListing,
   LikedVideos,
+  NotFound,
 } from "./pages";
 import { Toast, Navbar, PlaylistContainer, PrivateRoute } from "./components";
 import "./App.css";
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/liked-videos" element={<LikedVideos />} />
           <Route path="/watch-later" element={<WatchLater />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
