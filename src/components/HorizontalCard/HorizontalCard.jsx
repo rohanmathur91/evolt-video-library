@@ -22,6 +22,7 @@ export const HorizontalCard = ({ video, handleRemoveFromPlaylist }) => {
       <img
         alt={alt}
         src={thumbnail}
+        title={title}
         onClick={() => navigate(`/video/${_id}`)}
         className={`${styles.thumbnail} rounded-sm`}
       />

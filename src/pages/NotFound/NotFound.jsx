@@ -11,9 +11,12 @@ export const NotFound = () => {
         <p>Sorry, we couldn't find the page you're looking for.</p>
         <Link
           to="/"
+          title="Go back home"
           className={`${styles.link} flex-row items-center font-semibold mt-1`}
         >
-          <span class="material-icons-outlined mr-1">keyboard_backspace</span>
+          <span className="material-icons-outlined mr-1">
+            keyboard_backspace
+          </span>
           Go back home
         </Link>
       </div>
