@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useReducer, useEffect, useContext, createContext } from "react";
-import { getSearchedVideos, getVideosByCategory } from "../utils";
+import { useToast } from "../hooks";
 import { videoReducer } from "../reducers";
+import { getSearchedVideos, getVideosByCategory } from "../utils";
 
 const VideoContext = createContext();
 
@@ -13,6 +14,7 @@ const VideoProvider = ({ children }) => {
       searchQuery: "",
       currentCategory: "All",
     });
+  const { showToast } = useToast();
 
   useEffect(() => {
     (async () => {
@@ -29,7 +31,7 @@ const VideoProvider = ({ children }) => {
 
         videoDispatch({ type: "INITIALIZE_CATEGORIES", payload: categories });
       } catch (error) {
-        console.log("Something went wrong!");
+        showToast("error", "Could not able to fetch categories!");
       }
     })();
   }, []);
