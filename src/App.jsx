@@ -11,7 +11,7 @@ import {
   VideoListing,
   LikedVideos,
 } from "./pages";
-import { Toast, Navbar, PlaylistContainer } from "./components";
+import { Toast, Navbar, PlaylistContainer, PrivateRoute } from "./components";
 import "./App.css";
 
 const App = () => {
@@ -23,14 +23,16 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/profile" element={<Profile />} />
         <Route path="/explore" element={<VideoListing />} />
-        <Route path="/history" element={<History />} />
         <Route path="/video/:videoId" element={<VideoDetails />} />
-        <Route path="/playlists" element={<Playlists />} />
-        <Route path="/playlist/:id" element={<PlaylistContainer />} />
-        <Route path="/liked-videos" element={<LikedVideos />} />
-        <Route path="/watch-later" element={<WatchLater />} />
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/playlists" element={<Playlists />} />
+          <Route path="/playlist/:id" element={<PlaylistContainer />} />
+          <Route path="/liked-videos" element={<LikedVideos />} />
+          <Route path="/watch-later" element={<WatchLater />} />
+        </Route>
       </Routes>
     </div>
   );
