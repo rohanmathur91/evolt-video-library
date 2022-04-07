@@ -27,6 +27,7 @@
 ## 🛠 Technologies used
 - ReactJS
 - [Polaroid](https://polaroid7.netlify.app/index.html) component library
+- [Mockbee](https://mockbee.netlify.app/) for backend
 - React Router
 
 ## Live link
