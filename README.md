@@ -101,8 +101,6 @@ npm start
 ## Screenshots
 ![image](https://user-images.githubusercontent.com/61556757/162183850-f6bcb91d-63dc-4ebc-8b84-92c3e0c3d71a.png)
 ![image](https://user-images.githubusercontent.com/61556757/162183887-fab68bcb-a318-49e4-95c0-b7fd0d7151db.png)
-![image](https://user-images.githubusercontent.com/61556757/162183979-998f6cbe-a145-4355-af61-c946799306e5.png)
-![image](https://user-images.githubusercontent.com/61556757/162184099-1475dbd0-3a6c-4bc1-9e6f-1895f056254a.png)
 
 
 ## 👨‍💻 Connect with me 
