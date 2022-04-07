@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useModal, useDocumentTitle, useToast } from "../../hooks";
-import { usePlaylist } from "../../contexts";
+import { useAuth, usePlaylist } from "../../contexts";
 import {
   addInLikeVideos,
   removeFromLikeVideos,
   addToWatchLater,
   removeFromWatchLater,
 } from "../../services";
-import { isVideoInWatchLater, isVideoLiked } from "../../utils";
+import {
+  isVideoLiked,
+  isVideoInHistory,
+  isVideoInWatchLater,
+} from "../../utils";
 import { encodedToken } from "../../token";
 import { Loader, PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
@@ -17,11 +21,14 @@ import styles from "./SingleVideo.module.css";
 export const SingleVideo = () => {
   const [video, setVideo] = useState(null);
   const [loader, setLoader] = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const { videoId } = useParams();
   const { showToast } = useToast();
   const { showModal, handleShowModal } = useModal();
-  const { watchLater, likedVideos, playlistDispatch } = usePlaylist();
+  const { watchLater, likedVideos, history, playlistDispatch } = usePlaylist();
   const likedVideo = isVideoLiked(videoId, likedVideos);
+  const videoInHistory = isVideoInHistory(videoId, history);
   const videoInWatchLater = isVideoInWatchLater(videoId, watchLater);
   const { _id, alt, views, duration, title, avatar, creatorName, description } =
     video ?? {};
@@ -39,15 +46,15 @@ export const SingleVideo = () => {
         setVideo(video);
         setLoader(false);
       } catch (error) {
-        console.log(error);
+        showToast("error", "Could not load the video, try again later!");
       }
     })();
   }, [videoId]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        if (video) {
+    if (user && video && !videoInHistory) {
+      (async () => {
+        try {
           await axios.post(
             "/api/user/history",
             { video },
@@ -57,26 +64,42 @@ export const SingleVideo = () => {
           );
 
           playlistDispatch({ type: "ADD_TO_HISTORY", payload: video });
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, [video, playlistDispatch]);
+      })();
+    }
+  }, [user, video]);
 
   const handleLikeClick = () => {
-    if (!likedVideo) {
-      addInLikeVideos(video, playlistDispatch, showToast);
+    if (!user) {
+      navigate("/login");
     } else {
-      removeFromLikeVideos(_id, playlistDispatch, showToast);
+      if (!likedVideo) {
+        addInLikeVideos(video, playlistDispatch, showToast);
+      } else {
+        removeFromLikeVideos(_id, playlistDispatch, showToast);
+      }
+    }
+  };
+
+  const handleSaveToPlaylist = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      handleShowModal(true);
     }
   };
 
   const handleWatchLaterClick = () => {
-    if (!videoInWatchLater) {
-      addToWatchLater(video, playlistDispatch, showToast);
+    if (!user) {
+      navigate("/login");
     } else {
-      removeFromWatchLater(_id, playlistDispatch, showToast);
+      if (!videoInWatchLater) {
+        addToWatchLater(video, playlistDispatch, showToast);
+      } else {
+        removeFromWatchLater(_id, playlistDispatch, showToast);
+      }
     }
   };
 
@@ -145,7 +168,7 @@ export const SingleVideo = () => {
                 </button>
 
                 <button
-                  onClick={() => handleShowModal(true)}
+                  onClick={handleSaveToPlaylist}
                   className="icon-container mr-3 font-semibold"
                 >
                   <span

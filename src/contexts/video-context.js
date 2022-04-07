@@ -1,21 +1,27 @@
-import axios from "axios";
 import { useReducer, useEffect, useContext, createContext } from "react";
-import { getSearchedVideos, getVideosByCategory } from "../utils";
+import axios from "axios";
+import { useToast } from "../hooks";
 import { videoReducer } from "../reducers";
+import { getSearchedVideos, getVideosByCategory } from "../utils";
 
 const VideoContext = createContext();
 
 const VideoProvider = ({ children }) => {
-  const [{ videos, categories, searchQuery, currentCategory }, videoDispatch] =
-    useReducer(videoReducer, {
-      videos: [],
-      categories: [],
-      searchQuery: "",
-      currentCategory: "All",
-    });
+  const [
+    { videos, loading, categories, searchQuery, currentCategory },
+    videoDispatch,
+  ] = useReducer(videoReducer, {
+    videos: [],
+    categories: [],
+    searchQuery: "",
+    currentCategory: "All",
+    loading: false,
+  });
+  const { showToast } = useToast();
 
   useEffect(() => {
     (async () => {
+      videoDispatch({ type: "SET_LOADING", payload: true });
       try {
         const {
           data: { videos },
@@ -28,8 +34,9 @@ const VideoProvider = ({ children }) => {
         } = await axios.get("/api/categories");
 
         videoDispatch({ type: "INITIALIZE_CATEGORIES", payload: categories });
+        videoDispatch({ type: "SET_LOADING", payload: false });
       } catch (error) {
-        console.log("Something went wrong!");
+        showToast("error", "Something went wrong!");
       }
     })();
   }, []);
@@ -40,6 +47,7 @@ const VideoProvider = ({ children }) => {
   return (
     <VideoContext.Provider
       value={{
+        loading,
         categories,
         searchQuery,
         currentCategory,

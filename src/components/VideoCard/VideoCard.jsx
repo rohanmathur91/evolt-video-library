@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "../../hooks";
-import { usePlaylist } from "../../contexts";
+import { useAuth, usePlaylist } from "../../contexts";
 import { addToWatchLater, removeFromWatchLater } from "../../services";
 import { isVideoInWatchLater } from "../../utils";
 import styles from "./VideoCard.module.css";
 
 export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const { user } = useAuth();
   const navigate = useNavigate();
   const { showToast } = useToast();
   const { playlistDispatch, watchLater } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
+
+  const handleShowOptions = () => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      setShowOptions(true);
+    }
+  };
 
   const handleWatchLaterClick = () => {
     if (!videoInWatchLater) {
@@ -55,7 +64,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
                 {creatorName}
               </div>
             </div>
-            <button onClick={() => setShowOptions(true)}>
+            <button onClick={handleShowOptions}>
               <span className="material-icons-outlined ml-1">more_vert</span>
             </button>
 

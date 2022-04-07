@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const removeFromLikeVideos = async (
   videoId,
@@ -10,7 +9,7 @@ export const removeFromLikeVideos = async (
     const {
       data: { likes },
     } = await axios.delete(`/api/user/likes/${videoId}`, {
-      headers: { authorization: encodedToken },
+      headers: { authorization: localStorage.getItem("token") },
     });
 
     playlistDispatch({ type: "UPDATE_LIKE_VIDEOS", payload: likes });

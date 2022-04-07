@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const removeFromHistory = async (
   videoId,
@@ -8,7 +7,7 @@ export const removeFromHistory = async (
 ) => {
   try {
     await axios.delete(`/api/user/history/${videoId}`, {
-      headers: { authorization: encodedToken },
+      headers: { authorization: localStorage.getItem("token") },
     });
 
     playlistDispatch({ type: "REMOVE_FROM_HISTORY", payload: videoId });

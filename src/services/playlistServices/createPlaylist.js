@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const createPlaylist = async (
   event,
@@ -18,7 +17,7 @@ export const createPlaylist = async (
         playlist: { title: newPlaylistName },
       },
       {
-        headers: { authorization: encodedToken },
+        headers: { authorization: localStorage.getItem("token") },
       }
     );
 

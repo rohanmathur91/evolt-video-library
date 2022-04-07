@@ -13,14 +13,15 @@ import styles from "./VideoListing.module.css";
 export const VideoListing = () => {
   const [clickedVideo, setClickedVideo] = useState(null);
   const { showModal, handleShowModal } = useModal();
-  const { videos, categories, currentCategory, videoDispatch } = useVideo();
+  const { videos, loading, categories, currentCategory, videoDispatch } =
+    useVideo();
+
+  useScrollToTop();
+  useDocumentTitle("Explore");
 
   const handleCategoryClick = (category) => {
     videoDispatch({ type: "SET_CURRENT_CATEGORY", payload: category });
   };
-
-  useScrollToTop();
-  useDocumentTitle("Explore");
 
   return (
     <>
@@ -31,8 +32,12 @@ export const VideoListing = () => {
       <div className="flex-row">
         <Sidebar />
         <div className="main__container w-100 px-2">
-          {!videos.length ? (
+          {loading ? (
             <Loader />
+          ) : !videos.length ? (
+            <p className="text-center font-semibold mt-6 py-6">
+              No videos to show.
+            </p>
           ) : (
             <>
               <div className="mb-2 mt-3 px-1 flex-row wrap">

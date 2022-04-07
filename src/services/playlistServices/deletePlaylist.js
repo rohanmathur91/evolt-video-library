@@ -1,5 +1,4 @@
 import axios from "axios";
-import { encodedToken } from "../../token";
 
 export const deletePlaylist = async (
   playlistId,
@@ -9,7 +8,7 @@ export const deletePlaylist = async (
 ) => {
   try {
     await axios.delete(`/api/user/playlists/${playlistId}`, {
-      headers: { authorization: encodedToken },
+      headers: { authorization: localStorage.getItem("token") },
     });
 
     navigate("/playlists");

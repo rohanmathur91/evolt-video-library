@@ -54,7 +54,7 @@ export const Navbar = () => {
               <span className="material-icons-outlined">search</span>
             </span>
             <input
-              type="text"
+              type="search"
               autoComplete="false"
               value={searchQuery}
               onChange={handleInputChange}
@@ -70,7 +70,7 @@ export const Navbar = () => {
         >
           <span className="material-icons-outlined">person_outline</span>
           <span className="text-sm font-semibold">
-            {user ? "Profile" : "Login"}
+            {user ? `Hi, ${user?.fullName.split(" ")[0]}` : "Login"}
           </span>
         </Link>
       </nav>
