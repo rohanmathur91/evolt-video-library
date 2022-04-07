@@ -14,6 +14,7 @@
 ## Table of Contents
 
 - [About](#about)
+- [Technologies used](#-technologies-used)
 - [Features](#features)
 - [Live link](#live-link)
 - [Getting Started](#getting-started)
@@ -22,6 +23,11 @@
 
 ## About
  - Evolt-Prime is a video library for headphone reviews. Watch quality reviews for your headphones at one place.
+
+## 🛠 Technologies used
+- ReactJS
+- [Polaroid](https://polaroid7.netlify.app/index.html) component library
+- React Router
 
 ## Live link
 [Evolt-Prime](https://evolt-prime.netlify.app/)
