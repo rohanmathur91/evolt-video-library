@@ -28,13 +28,13 @@
 
 ## Features
 **Home Page**: 
-- Home page consist of different categories, on clicking them navigates the user to video listing page with that category applied as filter
+- The home page consists of different categories, clicking them navigates the user to the video listing page with that category applied as a filter.
 
 **Video Listing (Explore)**
-- On this page user can see all the videos and can watch the video by clicking on them. User can:
+- On this page, users can see all the videos and can watch the video by clicking on them. User can:
     - Apply different filters for videos
     - Search for any video
-    - Can create playlist and add video in it
+    - Can create a playlist and add a video in it
     - Can add video in watch later
 
 **Video details**
@@ -44,19 +44,19 @@
   - Add the video into watch later, playlist and can create a playlist
  
  **Playlist Management**
- - In this page user can view all the playlists.
+ - On this page user can view all the playlists.
  - On clicking on any one open's that playlist, where user get option to:
     - Delete the playlist
     - Remove video from playlist
 
 **Watch later**
-- User can add any video into watch later, if video already in watch later then user can remove it.
+- Users can add any video into watch later if a video is already in watch later then the user can remove it.
 
 **Like video**
-- User can like any video, if video already liked then user can remove it from liked videos.
+- Users can like any video, if the video is already liked then the user can remove it from liked videos.
 
 **History**
-- Once user watches the video it gets added into watch history. On history page user can clear all history.
+- Once the user watches the video it gets added to watch history. On the history page, the user can clear all history.
 
 **Authentication**
 - Evolt-Prime also has login, signup and logout feature
