@@ -14,7 +14,6 @@ import {
   isVideoInHistory,
   isVideoInWatchLater,
 } from "../../utils";
-import { encodedToken } from "../../token";
 import { Loader, PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
 
@@ -59,7 +58,7 @@ export const SingleVideo = () => {
             "/api/user/history",
             { video },
             {
-              headers: { authorization: encodedToken },
+              headers: { authorization: localStorage.getItem("token") },
             }
           );
 
