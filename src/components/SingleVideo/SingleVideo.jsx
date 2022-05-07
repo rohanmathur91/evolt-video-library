@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useModal, useDocumentTitle, useToast } from "../../hooks";
 import { useAuth, usePlaylist } from "../../contexts";
@@ -48,27 +48,21 @@ export const SingleVideo = () => {
         showToast("error", "Could not load the video, try again later!");
       }
     })();
-  }, [videoId]);
+  }, [videoId, showToast]);
 
   useEffect(() => {
     if (user && video && !videoInHistory) {
       (async () => {
         try {
-          await axios.post(
-            "/api/user/history",
-            { video },
-            {
-              headers: { authorization: localStorage.getItem("token") },
-            }
-          );
+          await axios.post("/api/user/history", { video });
 
           playlistDispatch({ type: "ADD_TO_HISTORY", payload: video });
         } catch (error) {
-          console.log(error);
+          showToast("error", "Something went wrong!");
         }
       })();
     }
-  }, [user, video]);
+  }, [user, showToast, video, videoInHistory, playlistDispatch]);
 
   const handleLikeClick = () => {
     if (!user) {

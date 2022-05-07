@@ -6,12 +6,10 @@ export const clearAllHistory = async (
   showToast
 ) => {
   try {
-    await axios.delete("/api/user/history/all", {
-      headers: { authorization: localStorage.getItem("token") },
-    });
+    await axios.delete("/api/user/history/all");
 
-    navigate("/explore");
     playlistDispatch({ type: "CLEAR_ALL_HISTORY" });
+    navigate("/explore");
     showToast("success", "History cleared successfully");
   } catch (error) {
     showToast("error", "Could not clear the history");

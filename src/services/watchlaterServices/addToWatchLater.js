@@ -4,13 +4,7 @@ export const addToWatchLater = async (video, playlistDispatch, showToast) => {
   try {
     const {
       data: { watchlater },
-    } = await axios.post(
-      `/api/user/watchlater`,
-      { video },
-      {
-        headers: { authorization: localStorage.getItem("token") },
-      }
-    );
+    } = await axios.post(`/api/user/watchlater`, { video });
 
     playlistDispatch({ type: "UPDATE_WATCH_LATER", payload: watchlater });
     showToast("success", "Video added to watch later");

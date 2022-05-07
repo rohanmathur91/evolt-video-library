@@ -7,13 +7,7 @@ export const addVideoInPlaylist = async (
   showToast
 ) => {
   try {
-    await axios.post(
-      `/api/user/playlists/${playlistId}`,
-      { video },
-      {
-        headers: { authorization: localStorage.getItem("token") },
-      }
-    );
+    await axios.post(`/api/user/playlists/${playlistId}`, { video });
 
     playlistDispatch({
       type: "ADD_TO_PLAYLIST",
