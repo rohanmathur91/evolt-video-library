@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../contexts";
 import { signupService } from "../../services";
@@ -33,10 +33,17 @@ export const Signup = () => {
     signupErrorReducer,
     signUpErrorInitialState
   );
+  const { user } = useAuth();
   const { showToast } = useToast();
 
   useScrollToTop();
   useDocumentTitle("Signup");
+
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();

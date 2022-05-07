@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, usePlaylist } from "../../contexts";
 import { loginService } from "../../services";
 import {
@@ -24,12 +24,19 @@ export const Login = () => {
     password: "",
   });
   const navigate = useNavigate();
+  const location = useLocation();
   const { showToast } = useToast();
-  const { updateUser } = useAuth();
+  const { user, updateUser } = useAuth();
   const { playlistDispatch } = usePlaylist();
 
   useScrollToTop();
   useDocumentTitle("Login");
+
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    }
+  }, [user, navigate]);
 
   const handleTestCredentials = () => {
     authFormDispatch({
@@ -44,6 +51,7 @@ export const Login = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     loginService(
+      location,
       credentials,
       updateUser,
       playlistDispatch,

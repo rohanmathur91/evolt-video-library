@@ -15,10 +15,14 @@ export const signupService = async (
     const {
       data: { createdUser, encodedToken },
     } = await axios.post("/api/auth/signup", credentials);
+    axios.defaults.headers.common["authorization"] = encodedToken;
 
     updateUser(createdUser);
+    errorDispatch({ type: "CLEAR_SIGNUP_FORM" });
+    authFormDispatch({ type: "SET_LOADING", payload: false });
 
-    const { history, watchlater, playlists, likes } = createdUser;
+    const { email, fullName, history, watchlater, playlists, likes } =
+      createdUser;
     playlistDispatch({
       type: "INITIALIZE_USER_VIDEOS",
       payload: {
@@ -30,8 +34,11 @@ export const signupService = async (
     });
 
     localStorage.setItem("token", encodedToken);
-    errorDispatch({ type: "CLEAR_SIGNUP_FORM" });
-    authFormDispatch({ type: "SET_LOADING", payload: false });
+    localStorage.setItem(
+      "evolt-prime-user",
+      JSON.stringify({ email, fullName })
+    );
+
     navigate("/");
     showToast("success", "You signup is successfull.");
   } catch (error) {

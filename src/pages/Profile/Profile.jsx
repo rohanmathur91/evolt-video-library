@@ -1,23 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth, usePlaylist } from "../../contexts";
+import { useAuth } from "../../contexts";
 import { useModal } from "../../hooks";
 import { Modal, Sidebar } from "../../components";
 import styles from "./Profile.module.css";
 
 export const Profile = () => {
-  const navigate = useNavigate();
-  const { user, updateUser } = useAuth();
-  const { playlistDispatch } = usePlaylist();
+  const { user, handleLogout } = useAuth();
   const { showModal, handleShowModal } = useModal();
   const { fullName, email } = user ?? {};
-
-  const handleLogout = () => {
-    updateUser(null);
-    localStorage.removeItem("token");
-    playlistDispatch({ type: "CLEAR_ALL_USER_VIDEOS" });
-    navigate("/");
-  };
 
   return (
     <>
