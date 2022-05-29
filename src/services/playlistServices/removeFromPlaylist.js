@@ -7,9 +7,7 @@ export const removeFromPlaylist = async (
   showToast
 ) => {
   try {
-    await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`, {
-      headers: { authorization: localStorage.getItem("token") },
-    });
+    await axios.delete(`/api/user/playlists/${playlistId}/${videoId}`);
 
     playlistDispatch({
       type: "REMOVE_FROM_PLAYLIST",

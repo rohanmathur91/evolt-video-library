@@ -6,9 +6,7 @@ export const removeFromHistory = async (
   showToast
 ) => {
   try {
-    await axios.delete(`/api/user/history/${videoId}`, {
-      headers: { authorization: localStorage.getItem("token") },
-    });
+    await axios.delete(`/api/user/history/${videoId}`);
 
     playlistDispatch({ type: "REMOVE_FROM_HISTORY", payload: videoId });
     showToast("success", "Video removed from history");

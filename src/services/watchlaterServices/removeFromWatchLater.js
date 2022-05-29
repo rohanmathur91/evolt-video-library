@@ -8,9 +8,7 @@ export const removeFromWatchLater = async (
   try {
     const {
       data: { watchlater },
-    } = await axios.delete(`/api/user/watchlater/${videoId}`, {
-      headers: { authorization: localStorage.getItem("token") },
-    });
+    } = await axios.delete(`/api/user/watchlater/${videoId}`);
 
     playlistDispatch({ type: "UPDATE_WATCH_LATER", payload: watchlater });
     showToast("success", "Video removed from watch later");

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth, useVideo } from "../../contexts";
+import { useOutsideClick } from "../../hooks";
 import { MobileNavigation } from "./MobileNavigation";
 import styles from "./Navbar.module.css";
 
@@ -8,7 +9,10 @@ export const Navbar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const { user } = useAuth();
   const { pathname } = useLocation();
+  const mobileNavigationRef = useRef();
   const { searchQuery, videoDispatch } = useVideo();
+
+  useOutsideClick(mobileNavigationRef, showSidebar, setShowSidebar);
 
   const handleInputChange = (event) => {
     videoDispatch({ type: "SET_SEARCH_QUERY", payload: event.target.value });
@@ -78,6 +82,7 @@ export const Navbar = () => {
       <MobileNavigation
         showSidebar={showSidebar}
         setShowSidebar={setShowSidebar}
+        mobileNavigationRef={mobileNavigationRef}
       />
     </>
   );

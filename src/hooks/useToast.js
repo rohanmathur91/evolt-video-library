@@ -1,7 +1,8 @@
+import { useCallback } from "react";
 import { toast } from "react-toastify";
 
 export const useToast = () => {
-  const showToast = (type, message) => {
+  const showToast = useCallback((type, message) => {
     toast[type](message, {
       position: "top-right",
       autoClose: 2000,
@@ -11,7 +12,7 @@ export const useToast = () => {
       draggable: true,
       progress: undefined,
     });
-  };
+  }, []);
 
   return { showToast };
 };

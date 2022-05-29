@@ -18,14 +18,18 @@ const PlaylistProvider = ({ children }) => {
   const { showToast } = useToast();
 
   useEffect(() => {
+    if (!user) {
+      playlistDispatch({ type: "CLEAR_ALL_USER_VIDEOS" });
+    }
+  }, [user]);
+
+  useEffect(() => {
     if (user) {
       (async () => {
         try {
           const {
             data: { playlists },
-          } = await axios.get("/api/user/playlists", {
-            headers: { authorization: localStorage.getItem("token") },
-          });
+          } = await axios.get("/api/user/playlists");
 
           playlistDispatch({ type: "SET_PLAYLIST", payload: playlists });
         } catch (error) {
@@ -33,7 +37,7 @@ const PlaylistProvider = ({ children }) => {
         }
       })();
     }
-  }, []);
+  }, [user, showToast]);
 
   return (
     <PlaylistContext.Provider

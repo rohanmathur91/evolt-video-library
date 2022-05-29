@@ -7,15 +7,15 @@ export const playlistReducer = (playlistState, { type, payload }) => {
       return { ...playlistState, playlists: payload };
 
     case "UPDATE_WATCH_LATER":
-      return { ...playlistState, watchLater: [...payload] };
+      return { ...playlistState, watchLater: [...payload].reverse() };
 
     case "UPDATE_LIKE_VIDEOS":
-      return { ...playlistState, likedVideos: [...payload] };
+      return { ...playlistState, likedVideos: [...payload].reverse() };
 
     case "ADD_TO_HISTORY":
       return {
         ...playlistState,
-        history: playlistState.history.concat(payload).reverse(),
+        history: [payload, ...playlistState.history],
       };
 
     case "REMOVE_FROM_HISTORY":

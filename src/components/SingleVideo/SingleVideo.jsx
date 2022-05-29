@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useModal, useDocumentTitle, useToast } from "../../hooks";
 import { useAuth, usePlaylist } from "../../contexts";
 import {
@@ -14,7 +14,6 @@ import {
   isVideoInHistory,
   isVideoInWatchLater,
 } from "../../utils";
-import { encodedToken } from "../../token";
 import { Loader, PlaylistModal } from "../";
 import styles from "./SingleVideo.module.css";
 
@@ -23,6 +22,7 @@ export const SingleVideo = () => {
   const [loader, setLoader] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { videoId } = useParams();
   const { showToast } = useToast();
   const { showModal, handleShowModal } = useModal();
@@ -49,31 +49,25 @@ export const SingleVideo = () => {
         showToast("error", "Could not load the video, try again later!");
       }
     })();
-  }, [videoId]);
+  }, [videoId, showToast]);
 
   useEffect(() => {
     if (user && video && !videoInHistory) {
       (async () => {
         try {
-          await axios.post(
-            "/api/user/history",
-            { video },
-            {
-              headers: { authorization: encodedToken },
-            }
-          );
+          await axios.post("/api/user/history", { video });
 
           playlistDispatch({ type: "ADD_TO_HISTORY", payload: video });
         } catch (error) {
-          console.log(error);
+          showToast("error", "Something went wrong!");
         }
       })();
     }
-  }, [user, video]);
+  }, [user, showToast, video, videoInHistory, playlistDispatch]);
 
   const handleLikeClick = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       if (!likedVideo) {
         addInLikeVideos(video, playlistDispatch, showToast);
@@ -85,7 +79,7 @@ export const SingleVideo = () => {
 
   const handleSaveToPlaylist = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       handleShowModal(true);
     }
@@ -93,7 +87,7 @@ export const SingleVideo = () => {
 
   const handleWatchLaterClick = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       if (!videoInWatchLater) {
         addToWatchLater(video, playlistDispatch, showToast);

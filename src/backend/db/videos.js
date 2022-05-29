@@ -104,7 +104,7 @@ export const videos = [
       "https://i.ytimg.com/vi/zFy2TwKKw6Y/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC9vA7MDbOoim7spkkIP43JMzl4tA",
     creatorName: "Joshua Chang",
     avatar:
-      "https://yt3.ggpht.com/Zf2LC18yb-JOpknZ5WbZZ-e-KTbvKCWrJpwfczJgOWywV7OE8iwiqzVOmSIbWRlahM7cvX3wVw=s88-c-k-c0x00ffffff-no-rj",
+      "https://yt3.ggpht.com/ytc/AKedOLRxHZgGHo_Ddm_raaAALu6Fb9wqMSaD2bs5Ke7rrA=s68-c-k-c0x00ffffff-no-rj",
     description:
       "There are now three Airpods to choose from (excluding the Max), and it can be a little confusing to figure out what's right for you. In this video, I try to break down the most important differences between the Airpods 2 (2nd Generation), Airpods 3 (3rd Generation), and Airpods Pros. Thanks for watching!",
   },

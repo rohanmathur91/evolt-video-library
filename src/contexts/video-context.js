@@ -39,7 +39,7 @@ const VideoProvider = ({ children }) => {
         showToast("error", "Something went wrong!");
       }
     })();
-  }, []);
+  }, [showToast]);
 
   const videosByCategory = getVideosByCategory(videos, currentCategory);
   const filteredVideos = getSearchedVideos(videosByCategory, searchQuery);
