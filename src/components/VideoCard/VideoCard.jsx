@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useToast } from "../../hooks";
+import { useToast, useOutsideClick } from "../../hooks";
 import { useAuth, usePlaylist } from "../../contexts";
 import { addToWatchLater, removeFromWatchLater } from "../../services";
 import { isVideoInWatchLater } from "../../utils";
@@ -8,6 +8,7 @@ import styles from "./VideoCard.module.css";
 
 export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const [showOptions, setShowOptions] = useState(false);
+  const optionsRef = useRef();
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,6 +17,8 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
   const { _id, alt, thumbnail, views, duration, title, avatar, creatorName } =
     video;
+
+  useOutsideClick(optionsRef, showOptions, setShowOptions);
 
   const handleShowOptions = () => {
     if (!user) {
@@ -71,6 +74,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
 
             {showOptions && (
               <div
+                ref={optionsRef}
                 className={`${styles.options} py-1 px-2 flex-row items-start border rounded-sm`}
               >
                 <div>

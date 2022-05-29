@@ -4,7 +4,11 @@ import { useAuth } from "../../contexts";
 import { sidebarData } from "../../staticData";
 import styles from "./MobileNavigation.module.css";
 
-export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
+export const MobileNavigation = ({
+  showSidebar,
+  setShowSidebar,
+  mobileNavigationRef,
+}) => {
   const { user } = useAuth();
 
   const handleCloseSidebar = () => {
@@ -13,6 +17,7 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
 
   return (
     <div
+      ref={mobileNavigationRef}
       className={`${styles.sidebar} transition-2 fixed top-0 left-0 z-3 ${
         showSidebar ? styles.sidebar__mobile : ""
       }`}
@@ -67,4 +72,5 @@ export const MobileNavigation = ({ showSidebar, setShowSidebar }) => {
 MobileNavigation.defaultProps = {
   showSidebar: false,
   setShowSidebar: () => {},
+  mobileNavigationRef: { current: null },
 };
