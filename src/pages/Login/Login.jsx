@@ -34,9 +34,9 @@ export const Login = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/", { replace: true });
+      navigate(location.state?.from?.pathname ?? "/", { replace: true });
     }
-  }, [user, navigate]);
+  }, [user, location, navigate]);
 
   const handleTestCredentials = () => {
     authFormDispatch({

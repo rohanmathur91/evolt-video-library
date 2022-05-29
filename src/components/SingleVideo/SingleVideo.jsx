@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useModal, useDocumentTitle, useToast } from "../../hooks";
 import { useAuth, usePlaylist } from "../../contexts";
 import {
@@ -22,6 +22,7 @@ export const SingleVideo = () => {
   const [loader, setLoader] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { videoId } = useParams();
   const { showToast } = useToast();
   const { showModal, handleShowModal } = useModal();
@@ -66,7 +67,7 @@ export const SingleVideo = () => {
 
   const handleLikeClick = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       if (!likedVideo) {
         addInLikeVideos(video, playlistDispatch, showToast);
@@ -78,7 +79,7 @@ export const SingleVideo = () => {
 
   const handleSaveToPlaylist = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       handleShowModal(true);
     }
@@ -86,7 +87,7 @@ export const SingleVideo = () => {
 
   const handleWatchLaterClick = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       if (!videoInWatchLater) {
         addToWatchLater(video, playlistDispatch, showToast);

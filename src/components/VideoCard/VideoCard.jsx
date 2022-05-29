@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "../../hooks";
 import { useAuth, usePlaylist } from "../../contexts";
 import { addToWatchLater, removeFromWatchLater } from "../../services";
@@ -10,6 +10,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
   const [showOptions, setShowOptions] = useState(false);
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { showToast } = useToast();
   const { playlistDispatch, watchLater } = usePlaylist();
   const videoInWatchLater = isVideoInWatchLater(video._id, watchLater);
@@ -18,7 +19,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
 
   const handleShowOptions = () => {
     if (!user) {
-      navigate("/login");
+      navigate("/login", { state: { from: location }, replace: true });
     } else {
       setShowOptions(true);
     }
