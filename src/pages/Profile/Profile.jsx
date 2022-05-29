@@ -55,8 +55,8 @@ export const Profile = () => {
           <div className="m-1">
             <h3 className={`${styles.title} mb-1`}>Your Profile</h3>
             <div className={`${styles.details}`}>
-              <p className="mb-1">Name: {fullName || "Adarsh Balika"}</p>
-              <p className="">Email: {email || "adarshbalika@gmail.com"}</p>
+              <p className="mb-1">Name: {fullName || "Rohan Mathur"}</p>
+              <p>Email: {email || "rohanmathur@gmail.com"}</p>
               <button
                 onClick={() => handleShowModal(true)}
                 className="btn-solid btn-form w-100 font-semibold transition-2 mt-2 rounded-sm"

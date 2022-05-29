@@ -42,8 +42,8 @@ export const Login = () => {
     authFormDispatch({
       type: "SET_TEST_CREDENTIALS",
       payload: {
-        email: "adarshbalika@gmail.com",
-        password: "adarshBalika123",
+        email: "rohanmathur@gmail.com",
+        password: "rohanmathur@123",
       },
     });
   };
