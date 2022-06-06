@@ -49,7 +49,7 @@ export const VideoCard = ({ video, setClickedVideo, handleShowModal }) => {
         <img
           alt={alt}
           src={thumbnail}
-          className={`${styles.thumbnail} rounded-sm`}
+          className={`${styles.thumbnail} rounded-sm w-100`}
         />
       </div>
 

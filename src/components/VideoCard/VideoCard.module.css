@@ -1,4 +1,6 @@
 .card {
+  width: 100%;
+  min-width: 20rem;
   background-color: var(--white);
   border: 0.5px solid var(--light-gray);
 }
@@ -17,7 +19,7 @@
 .title {
   line-height: 1.2;
   font-size: 1.6rem;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
 }
 
 .creator__name {

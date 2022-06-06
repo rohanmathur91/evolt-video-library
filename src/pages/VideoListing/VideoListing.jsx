@@ -56,7 +56,7 @@ export const VideoListing = () => {
                 ))}
               </div>
 
-              <main className={`${styles.videos__container} mb-2`}>
+              <main className={`${styles.videos__container} pb-4 px-1`}>
                 {videos.map((video) => (
                   <VideoCard
                     key={video._id}
