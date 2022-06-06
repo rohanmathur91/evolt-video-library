@@ -106,7 +106,7 @@ export const PlaylistContainer = ({
               )}
             </header>
 
-            <main className="flex-column items-center">
+            <main className="flex-column items-center pb-4">
               {videoList.length ? (
                 videoList.map((video) => (
                   <HorizontalCard
